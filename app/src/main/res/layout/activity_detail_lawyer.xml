@@ -139,7 +139,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
-                    <ImageView
+                    <!--<ImageView
                         android:id="@+id/img_skill_paint"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
@@ -173,7 +173,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:src="@drawable/ic_skill_building"
-                        android:visibility="gone" />
+                        android:visibility="gone" />-->
                 </LinearLayout>
 
                 <LinearLayout

@@ -67,7 +67,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_weight="1"
                     android:drawableRight="@drawable/ic_arrow_down"
-                    android:text="Kategori" />
+                    android:text="Bahasa" />
 
             </LinearLayout>
 
@@ -82,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bahasa"/>
+                        android:text="Bidang"/>
 
                     <TextView
                         android:id="@+id/txtBidang"
@@ -91,7 +91,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_weight="1"
                         android:drawableRight="@drawable/ic_arrow_down"
-                        android:text="Bidang" />
+                        android:text=" Bidang" />
 
                 </LinearLayout>
 
@@ -161,8 +161,48 @@
             android:layout_marginTop="20dp"
             android:text="Cari lawyer"
             android:textColor="#ffff"
+            android:id="@+id/btnSearchLawyer"
             android:layout_gravity="center"
             android:background="@drawable/bg_radius_transparant_orange"/>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/rel_map"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".base.ui.add_location.AddLocationActivity"/>-->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_marker"
+            android:layout_centerInParent="true"
+            android:paddingBottom="32dp"
+            android:src="@drawable/ic_place_black_24dp"/>
+
+        <Button
+            android:id="@+id/btnSimpanMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="14dp"
+            android:layout_marginEnd="18dp"
+            android:text="Simpan Lokasi" />
+
+
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

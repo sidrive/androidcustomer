@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity{
 
     @OnClick(R.id.btnLogin)
     public void showLogin(){
-        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
         startActivity(i);
     }
 

@@ -50,7 +50,7 @@
     <string name="text_workman_location">Alamat Anda (klik pada peta)</string>
 
     <!-- String related to main page -->
-    <string name="text_search_tukang">Cari Tukang</string>
+    <string name="text_search_lawyer">Cari Lawyer</string>
     <string name="text_history">History Project</string>
     <string name="text_help">Bantuan</string>
     <string name="text_info">Information</string>
