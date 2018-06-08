@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import lawyerku.android_customer.MainActivity;
 import lawyerku.android_customer.R;
 
 public class MainActivityCustomer extends AppCompatActivity{
@@ -27,7 +28,7 @@ public class MainActivityCustomer extends AppCompatActivity{
 
     @OnClick(R.id.button_history)
     public void showProject(){
-        Intent i = new Intent(MainActivityCustomer.this, MainActivityCustomer.class);
+        Intent i = new Intent(MainActivityCustomer.this, MainActivity.class);
         startActivity(i);
     }
 }
