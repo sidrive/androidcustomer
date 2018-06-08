@@ -1,6 +1,8 @@
 package lawyerku.android_customer.ui;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
@@ -8,6 +10,8 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -107,5 +111,49 @@ public class DetailPerkara extends AppCompatActivity implements GoogleMap.OnCame
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @OnClick(R.id.btnBayar)
+    public void showPayment(){
+        LayoutInflater li = LayoutInflater.from(this);
+        View promptsView = li.inflate(R.layout.purchase_activity, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this,R.style.MyAlertDialogStyle);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+//        final Button btnAccept = (Button) promptsView
+//                .findViewById(R.id.btnAccept);
+
+
+
+
+//        userInput.setText(String.valueOf(barang.getStokBarang()));
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+//        btnDecline.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View arg0) {
+//
+//                alertDialog.dismiss();
+//
+//            }
+//        });
+
+        // show it
+        alertDialog.show();
     }
 }

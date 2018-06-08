@@ -242,7 +242,14 @@
 
 
                 <include layout="@layout/layout_status_penanganan"/>
+
+
             </android.support.v7.widget.CardView>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bayar"
+                android:id="@+id/btnBayar"/>
 
 
         </LinearLayout>
