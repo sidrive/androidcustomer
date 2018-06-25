@@ -12,5 +12,5 @@ import dagger.Component;
 //                NetworkModule.class
         }
 )
-public class AppComponent {
+public interface AppComponent {
 }
