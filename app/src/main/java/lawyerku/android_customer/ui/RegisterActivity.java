@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import lawyerku.android_customer.MainActivity;
 import lawyerku.android_customer.R;
+import lawyerku.android_customer.ui.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
