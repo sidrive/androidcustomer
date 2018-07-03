@@ -110,7 +110,7 @@
             android:text="SIGN UP NOW"
             android:textColor="#f95402"
             android:id="@+id/btnSingup"
-            android:background="@drawable/bg_radius_transparant_white"/>
+            android:background="@drawable/bg_radius_transparent_white"/>
     </LinearLayout>
 
 

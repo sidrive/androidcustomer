@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lawyerku-android-mitra</string>
+    <string name="app_name">Lawyerku Customer</string>
 
     <string name="text_edit_profile">Edit Profile</string>
     <string name="action_ok">OK</string>
@@ -11,7 +11,7 @@
     <string name="error_403">Anda tidak memiliki akses untuk fitur ini</string>
     <string name="error_unauthenticated">Username dan password tidak sesuai</string>
     <string name="error_lost_connection">Pastikan device anda terkoneksi internet</string>
-    <string name="dialog_back_to_main">Ke halaman utama sekarang?</string>
+    <string name="dialog_back_to_main">Back to login screen</string>
     <string name="dialog_project_cancel">Proyek yakin dibatalkan?</string>
 
     <!-- Strings related to login and register-->
@@ -29,12 +29,12 @@
     <string name="prompt_cellphone1">Telepon / HP 1</string>
     <string name="prompt_cellphone2">Telepon / HP 2</string>
     <string name="prompt_nik">No.KTP/SIM</string>
-    <string name="text_forgot_password">Lupa password?</string>
-    <string name="text_or">atau</string>
+    <string name="text_forgot_password">Forgot Password</string>
+    <string name="text_or">OR</string>
     <string name="text_please_wait">Tunggu sebentar</string>
     <string name="action_register_customer">Register Customer</string>
     <string name="action_register_workman">Register Mitra Ketukang</string>
-    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in">LOGIN</string>
     <string name="error_empty_login_id">Login ID tidak boleh kosong</string>
     <string name="error_empty_password">Password tidak boleh kosong dan minimal 6 karakter</string>
     <string name="error_empty_name">Nama tidak boleh kosong dan minimal 5 karakter</string>
@@ -152,4 +152,29 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="str_fblogin">LOGIN WITH FACEBOOK</string>
+    <string name="str_register">CREATE AN ACCOUNT</string>
+  <string name="desc_forgot">We just need your registered email address to send your password reset</string>
+  <string name="str_btn_resetpass">RESET PASSWORD</string>
+  <string name="str_first_name">First Name</string>
+    <string name="str_last_name">Last Name</string>
+  <string name="str_phone_number">Phone Number</string>
+  <string name="str_e_mail">E-mail</string>
+  <string name="str_password">Password</string>
+  <string name="str_sign_up_now">SIGN UP NOW</string>
+  <string name="str_are_you_sure_fb">Are you sure?</string>
+    <string name="str_accept">Accept</string>
+  <string name="str_decline">Decline</string>
+  <string name="str_pilih_lawyer_yang_sesuai">Pilih lawyer yang sesuai</string>
+    <string name="str_find_lawyer">Find Lawyer</string>
+  <string name="str_information">Information</string>
+    <string name="str_panduan_penggunaan_aplikasi">Panduan penggunaan aplikasi</string>
+    <string name="str_bantuan">Bantuan</string>
+    <string name="str_daftar_transaksi">Daftar transaksi</string>
+    <string name="str_history">History Project</string>
+  <string name="str_deskripsi">Deskripsi</string>
+    <string name="str_cari_lawyer">CARI LAWYER</string>
+    <string name="str_location">Location</string>
+  <string name="str_bahasa">Bahasa</string>
+    <string name="str_bidang">Bidang</string>
 </resources>

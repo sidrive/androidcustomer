@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".mainfragment.PerkaraNewFragment">
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".mainfragment.PerkaraNewFragment">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/lnPerkara">
-            <include layout="@layout/list_item_perkara"/>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+  <android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/res_9dp"
+    >
+    <LinearLayout
+      android:id="@+id/lnPerkara"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/res_9dp"
+      android:orientation="vertical">
+      <include layout="@layout/list_item_perkara_cons"/>
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
 
 
 </FrameLayout>
