@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lawyerku.android_customer.R;
+import lawyerku.android_customer.api.model.CredentialModel;
 import lawyerku.android_customer.base.BaseActivity;
 import lawyerku.android_customer.base.BaseApplication;
 import lawyerku.android_customer.ui.ForgotPasswordActivity;
@@ -23,13 +26,18 @@ public class LoginActivity extends BaseActivity{
     @Inject
     LoginPresenter presenter;
 
+    @BindView(R.id.txtEmail)
+    TextView txtEmail;
+
+    @BindView(R.id.txtPassword)
+    TextView txtPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        presenter.show();
 
     }
 
@@ -42,8 +50,15 @@ public class LoginActivity extends BaseActivity{
 
     @OnClick(R.id.btnLogin)
     public void showLogin(){
-        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
-        startActivity(i);
+
+        CredentialModel.Request credential = new CredentialModel.Request();
+        credential.email = txtEmail.getText().toString();
+        credential.password = txtPassword.getText().toString();
+
+        presenter.validateLogin(credential);
+
+//        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
+//        startActivity(i);
     }
 
     @OnClick(R.id.txtForgotPassword)
@@ -104,6 +119,11 @@ public class LoginActivity extends BaseActivity{
 
         // show it
         alertDialog.show();
+    }
+
+    public void loginProses(){
+        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
+        startActivity(i);
     }
 
 }
