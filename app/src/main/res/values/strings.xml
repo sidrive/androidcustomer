@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lawyerku-android-mitra</string>
+    <string name="app_name">Lawyerku-android-customer</string>
 
     <string name="text_edit_profile">Edit Profile</string>
     <string name="action_ok">OK</string>
@@ -35,8 +35,10 @@
     <string name="action_register_customer">Register Customer</string>
     <string name="action_register_workman">Register Mitra Ketukang</string>
     <string name="action_sign_in">Sign in</string>
+    <string name="error_empty_username">Username tidak boleh kosong</string>
     <string name="error_empty_login_id">Login ID tidak boleh kosong</string>
     <string name="error_empty_password">Password tidak boleh kosong dan minimal 6 karakter</string>
+    <string name="error_empty_cpassword">Password tidak sama, silahkan masukkan password lagi untuk konfirmasi</string>
     <string name="error_empty_name">Nama tidak boleh kosong dan minimal 5 karakter</string>
     <string name="error_empty_address">Alamat tidak boleh kosong dan minimal 10 karakter</string>
     <string name="error_empty_phone">Telepon tidak boleh kosong dan minimal 7 karakter</string>

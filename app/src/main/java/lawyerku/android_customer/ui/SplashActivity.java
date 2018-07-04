@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import lawyerku.android_customer.MainActivity;
 import lawyerku.android_customer.R;
+import lawyerku.android_customer.ui.register.RegisterActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
