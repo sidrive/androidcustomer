@@ -1,6 +1,6 @@
-package lawyerku.android_customer;
+package lawyerku.customer;
 
-import static lawyerku.android_customer.ui.LoginActivity.setWindowFlag;
+import static lawyerku.customer.ui.login.LoginActivity.setWindowFlag;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,13 +21,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import lawyerku.android_customer.mainfragment.HistoryFragment;
-import lawyerku.android_customer.mainfragment.PerkaraNewFragment;
-import lawyerku.android_customer.mainfragment.PerkaraNewFragment.OnFragmentInteractionListener;
-import lawyerku.android_customer.mainfragment.ViewPagerAdapter;
-import lawyerku.android_customer.ui.DetailProfileActivity;
-import lawyerku.android_customer.ui.DetailProfileActivityCons;
-import lawyerku.android_customer.ui.MessageActivity;
+import lawyerku.customer.mainfragment.HistoryFragment;
+import lawyerku.customer.mainfragment.PerkaraNewFragment.OnFragmentInteractionListener;
+import lawyerku.customer.mainfragment.ViewPagerAdapter;
+import lawyerku.customer.ui.DetailProfileActivity;
+import lawyerku.customer.ui.DetailProfileActivityCons;
+import lawyerku.customer.ui.MessageActivity;
 
 public class MainActivityCons extends AppCompatActivity implements OnFragmentInteractionListener,
     HistoryFragment.OnFragmentInteractionListener {

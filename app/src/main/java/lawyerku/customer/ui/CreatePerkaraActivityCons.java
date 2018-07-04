@@ -1,10 +1,9 @@
-package lawyerku.android_customer.ui;
+package lawyerku.customer.ui;
 
-import static lawyerku.android_customer.ui.LoginActivity.setWindowFlag;
+import static lawyerku.customer.ui.login.LoginActivity.setWindowFlag;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,7 +21,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import lawyerku.android_customer.R;
+import lawyerku.customer.R;
 
 public class CreatePerkaraActivityCons extends AppCompatActivity {
 

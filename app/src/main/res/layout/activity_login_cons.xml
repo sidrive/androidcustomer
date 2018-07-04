@@ -101,10 +101,22 @@
     app:layout_constraintTop_toBottomOf="@id/btn_login"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/btn_facebook"
+    app:layout_constraintBottom_toTopOf="@id/login_button"
     />
+  <com.facebook.login.widget.LoginButton
+      android:id="@+id/login_button"
+      android:layout_width="250dp"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginStart="32dp"
+      android:layout_marginEnd="32dp"
+      app:layout_constraintTop_toBottomOf="@id/tv_or"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/tv_register_ask"/>
   <Button
     android:id="@+id/btn_facebook"
+      android:visibility="gone"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:text="@string/str_fblogin"
@@ -125,7 +137,7 @@
     android:textColor="@color/strawLawyer"
     android:layout_marginTop="16dp"
     android:layout_marginBottom="?attr/actionBarSize"
-    app:layout_constraintTop_toBottomOf="@id/btn_facebook"
+    app:layout_constraintTop_toBottomOf="@id/login_button"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"

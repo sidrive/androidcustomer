@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,11 +48,11 @@ public class LoginActivity extends BaseActivity{
     @Inject
     LoginPresenter presenter;
 
-    @BindView(R.id.txtEmail)
-    TextView txtEmail;
+    @BindView(R.id.et_username)
+    EditText txtEmail;
 
-    @BindView(R.id.txtPassword)
-    TextView txtPassword;
+    @BindView(R.id.et_password)
+    EditText txtPassword;
 
     private LoginButton loginButton;
     private static final String EMAIL = "email";

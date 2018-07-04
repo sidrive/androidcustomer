@@ -1,8 +1,7 @@
-package lawyerku.android_customer.ui;
+package lawyerku.customer.ui;
 
-import static lawyerku.android_customer.ui.LoginActivity.setWindowFlag;
+import static lawyerku.customer.ui.login.LoginActivity.setWindowFlag;
 
-import android.Manifest;
 import android.Manifest.permission;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -34,7 +33,7 @@ import com.google.android.gms.maps.GoogleMap.OnCameraIdleListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import lawyerku.android_customer.R;
+import lawyerku.customer.R;
 
 public class DetailPerkaraCons extends AppCompatActivity implements OnCameraIdleListener,
     OnMapReadyCallback {

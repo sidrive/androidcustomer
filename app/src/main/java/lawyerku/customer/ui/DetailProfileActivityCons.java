@@ -1,4 +1,4 @@
-package lawyerku.android_customer.ui;
+package lawyerku.customer.ui;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -21,8 +21,8 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import lawyerku.android_customer.MainActivityCons;
-import lawyerku.android_customer.R;
+import lawyerku.customer.MainActivityCons;
+import lawyerku.customer.R;
 
 public class DetailProfileActivityCons extends AppCompatActivity {
 

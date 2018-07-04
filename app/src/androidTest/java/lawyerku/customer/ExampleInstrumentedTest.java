@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("lawyerku.android_customer", appContext.getPackageName());
+        assertEquals("lawyerku.customer", appContext.getPackageName());
     }
 }

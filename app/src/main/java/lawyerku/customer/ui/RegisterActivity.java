@@ -1,6 +1,6 @@
-package lawyerku.android_customer.ui;
+package lawyerku.customer.ui;
 
-import static lawyerku.android_customer.ui.LoginActivity.setWindowFlag;
+import static lawyerku.customer.ui.login.LoginActivity.setWindowFlag;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,8 +12,9 @@ import android.view.View;
 import android.view.WindowManager;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import lawyerku.android_customer.MainActivity;
-import lawyerku.android_customer.R;
+import lawyerku.customer.MainActivity;
+import lawyerku.customer.R;
+import lawyerku.customer.ui.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 

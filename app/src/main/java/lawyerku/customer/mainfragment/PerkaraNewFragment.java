@@ -1,4 +1,4 @@
-package lawyerku.android_customer.mainfragment;
+package lawyerku.customer.mainfragment;
 
 import android.content.Context;
 import android.content.Intent;

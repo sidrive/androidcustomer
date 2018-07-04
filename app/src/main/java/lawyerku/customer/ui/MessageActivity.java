@@ -1,6 +1,6 @@
 package lawyerku.customer.ui;
 
-import static lawyerku.android_customer.ui.LoginActivity.setWindowFlag;
+import static lawyerku.customer.ui.login.LoginActivity.setWindowFlag;
 
 import android.graphics.Color;
 import android.os.Build;
