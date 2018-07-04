@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">Lawyerku-android-customer</string>
+
+    <string name="facebook_app_id">1530710300367183</string>
+    <string name="fb_login_protocol_scheme">fb1530710300367183</string>
+
+        <string name="app_name">Lawyerku-android-customer</string>
 
     <string name="text_edit_profile">Edit Profile</string>
     <string name="action_ok">OK</string>
