@@ -16,10 +16,10 @@ import rx.subscriptions.CompositeSubscription;
 import static com.google.android.gms.internal.zzt.TAG;
 
 public class LoginPresenter implements BasePresenter{
-    LoginActivity activity;
+    LoginActivityCons activity;
     private CompositeSubscription subscription;
 
-    public LoginPresenter(LoginActivity activity){
+    public LoginPresenter(LoginActivityCons activity){
         this.activity = activity;
         this.subscription = new CompositeSubscription();
     }

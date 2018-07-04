@@ -10,5 +10,5 @@ import lawyerku.android_customer.base.annotation.ActivityScope;
         }
 )
 public interface RegisterActivityComponent {
-    RegisterActivity inject(RegisterActivity activity);
+    RegisterActivityCons inject(RegisterActivityCons activity);
 }

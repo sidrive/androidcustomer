@@ -22,11 +22,11 @@ import static com.google.android.gms.internal.zzt.TAG;
 
 public class RegisterPresenter implements BasePresenter {
 
-    RegisterActivity activity;
+    RegisterActivityCons activity;
 //    CredentialModel credentialModel;
     private CompositeSubscription subscription;
 
-    public RegisterPresenter(RegisterActivity activity/*,CredentialModel credentialModel*/){
+    public RegisterPresenter(RegisterActivityCons activity/*,CredentialModel credentialModel*/){
         this.activity = activity;
         this.subscription = new CompositeSubscription();
 //        this.credentialModel = credentialModel;

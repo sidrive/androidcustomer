@@ -7,15 +7,15 @@ import lawyerku.android_customer.base.annotation.ActivityScope;
 
 @Module
 public class RegisterActivityModule {
-    RegisterActivity activity;
+    RegisterActivityCons activity;
 
-    public RegisterActivityModule(RegisterActivity activity){
+    public RegisterActivityModule(RegisterActivityCons activity){
         this.activity = activity;
     }
 
     @ActivityScope
     @Provides
-    RegisterActivity provideRegisterActivity(){
+    RegisterActivityCons provideRegisterActivity(){
         return activity;
     }
 

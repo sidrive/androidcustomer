@@ -10,5 +10,5 @@ import lawyerku.android_customer.base.annotation.ActivityScope;
         }
 )
 public interface LoginActivityComponent {
-    LoginActivity inject(LoginActivity activity);
+    LoginActivityCons inject(LoginActivityCons activity);
 }

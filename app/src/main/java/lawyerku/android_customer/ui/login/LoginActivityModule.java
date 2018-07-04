@@ -6,15 +6,15 @@ import lawyerku.android_customer.base.annotation.ActivityScope;
 
 @Module
 public class LoginActivityModule {
-    LoginActivity activity;
+    LoginActivityCons activity;
 
-    public LoginActivityModule(LoginActivity activity){
+    public LoginActivityModule(LoginActivityCons activity){
         this.activity = activity;
     }
 
     @ActivityScope
     @Provides
-    LoginActivity provideLoginActivity(){return activity;}
+    LoginActivityCons provideLoginActivity(){return activity;}
 
     @ActivityScope
     @Provides

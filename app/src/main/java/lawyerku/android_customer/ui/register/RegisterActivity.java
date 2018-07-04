@@ -64,9 +64,9 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void setupActivityComponent() {
-        BaseApplication.get(this).getAppComponent()
-                .plus(new RegisterActivityModule(this))
-                .inject(this);
+//        BaseApplication.get(this).getAppComponent()
+//                .plus(new RegisterActivityModule(this))
+//                .inject(this);
     }
 
     @OnClick(R.id.btnSingup)

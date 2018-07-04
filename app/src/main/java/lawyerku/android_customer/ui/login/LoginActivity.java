@@ -13,10 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
-<<<<<<< HEAD:app/src/main/java/lawyerku/android_customer/ui/LoginActivity.java
-=======
 import android.widget.TextView;
->>>>>>> develop:app/src/main/java/lawyerku/android_customer/ui/login/LoginActivity.java
 
 import javax.inject.Inject;
 
@@ -55,9 +52,9 @@ public class LoginActivity extends BaseActivity{
 
     @Override
     protected void setupActivityComponent() {
-        BaseApplication.get(this).getAppComponent()
-                .plus(new LoginActivityModule(this))
-                .inject(this);
+//        BaseApplication.get(this).getAppComponent()
+//                .plus(new LoginActivityModule(this))
+//                .inject(this);
     }
 
     private void transparentStatusBar(){
@@ -88,14 +85,14 @@ public class LoginActivity extends BaseActivity{
   @OnClick(R.id.btn_login)
     public void showLogin(){
 
-        CredentialModel.Request credential = new CredentialModel.Request();
-        credential.email = txtEmail.getText().toString();
-        credential.password = txtPassword.getText().toString();
+//        CredentialModel.Request credential = new CredentialModel.Request();
+//        credential.email = txtEmail.getText().toString();
+//        credential.password = txtPassword.getText().toString();
+//
+//        presenter.validateLogin(credential);
 
-        presenter.validateLogin(credential);
-
-//        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
-//        startActivity(i);
+        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
+        startActivity(i);
     }
 
     @OnClick(R.id.tv_forgot)

@@ -1,6 +1,6 @@
 package lawyerku.android_customer.ui;
 
-import static lawyerku.android_customer.ui.LoginActivity.setWindowFlag;
+import static lawyerku.android_customer.ui.login.LoginActivity.setWindowFlag;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,13 +9,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-<<<<<<< HEAD
+
 import android.view.View;
 import android.view.WindowManager;
 import lawyerku.android_customer.MainActivity;
-=======
->>>>>>> develop
 import lawyerku.android_customer.R;
+import lawyerku.android_customer.ui.login.LoginActivity;
+import lawyerku.android_customer.ui.login.LoginActivityCons;
 import lawyerku.android_customer.ui.register.RegisterActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -59,7 +59,7 @@ public class SplashActivity extends AppCompatActivity {
       public void run() {
         // This method will be executed once the timer is over
         // Start your app main activity
-        Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+        Intent i = new Intent(SplashActivity.this, LoginActivityCons.class);
         startActivity(i);
 
         // close this activity
