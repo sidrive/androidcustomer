@@ -1,4 +1,4 @@
-package lawyerku.android_customer.ui;
+package lawyerku.android_customer.ui.login;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -6,19 +6,41 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
+<<<<<<< HEAD:app/src/main/java/lawyerku/android_customer/ui/LoginActivity.java
+=======
+import android.widget.TextView;
+>>>>>>> develop:app/src/main/java/lawyerku/android_customer/ui/login/LoginActivity.java
 
+import javax.inject.Inject;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lawyerku.android_customer.R;
+import lawyerku.android_customer.api.model.CredentialModel;
+import lawyerku.android_customer.base.BaseActivity;
+import lawyerku.android_customer.base.BaseApplication;
+import lawyerku.android_customer.ui.ForgotPasswordActivity;
+import lawyerku.android_customer.ui.MainActivityCustomer;
+import lawyerku.android_customer.ui.register.RegisterActivity;
 
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends BaseActivity{
+
+    @Inject
+    LoginPresenter presenter;
+
+    @BindView(R.id.txtEmail)
+    TextView txtEmail;
+
+    @BindView(R.id.txtPassword)
+    TextView txtPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +50,14 @@ public class LoginActivity extends AppCompatActivity{
         transparentStatusBar();
         getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+
+    }
+
+    @Override
+    protected void setupActivityComponent() {
+        BaseApplication.get(this).getAppComponent()
+                .plus(new LoginActivityModule(this))
+                .inject(this);
     }
 
     private void transparentStatusBar(){
@@ -57,8 +87,15 @@ public class LoginActivity extends AppCompatActivity{
 
   @OnClick(R.id.btn_login)
     public void showLogin(){
-        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
-        startActivity(i);
+
+        CredentialModel.Request credential = new CredentialModel.Request();
+        credential.email = txtEmail.getText().toString();
+        credential.password = txtPassword.getText().toString();
+
+        presenter.validateLogin(credential);
+
+//        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
+//        startActivity(i);
     }
 
     @OnClick(R.id.tv_forgot)
@@ -120,5 +157,12 @@ public class LoginActivity extends AppCompatActivity{
         // show it
         alertDialog.show();
     }
+
+    public void loginProses(){
+        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
+        startActivity(i);
+    }
+
+
 
 }

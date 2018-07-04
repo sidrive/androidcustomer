@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+<<<<<<< HEAD
 import android.view.View;
 import android.view.WindowManager;
 import lawyerku.android_customer.MainActivity;
+=======
+>>>>>>> develop
 import lawyerku.android_customer.R;
+import lawyerku.android_customer.ui.register.RegisterActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
