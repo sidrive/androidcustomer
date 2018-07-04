@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/charcoalLawyer"
+  android:theme="@style/LoginTheme"
+  >
+  <ImageView
+    android:id="@+id/img_logo"
+    android:layout_width="240dp"
+    android:layout_height="72dp"
+    android:layout_marginTop="?android:attr/actionBarSize"
+    android:layout_marginBottom="@dimen/res_24dp"
+    android:paddingStart="@dimen/res_24dp"
+    android:paddingEnd="@dimen/res_24dp"
+    android:src="@drawable/logotulisan"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/rv_message"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/res_9dp"
+    android:layout_marginEnd="@dimen/res_9dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/img_logo"
+    app:layout_constraintBottom_toTopOf="@id/et_message"
+    />
+
+  <EditText
+    android:id="@+id/et_message"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/res_9dp"
+    android:layout_marginStart="@dimen/res_9dp"
+    android:paddingStart="@dimen/res_9dp"
+    android:inputType="text"
+    android:drawablePadding="@dimen/res_9dp"
+    android:drawableStart="@drawable/ic_chat_bubble_outline_black_24dp"
+    android:hint="chat"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/btn_send"
+    app:layout_constraintStart_toStartOf="parent"
+    />
+
+  <Button
+    android:id="@+id/btn_send"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/res_32dp"
+    android:layout_marginBottom="@dimen/res_18dp"
+    android:layout_marginEnd="@dimen/res_9dp"
+    android:background="@color/strawLawyer"
+    android:text="Send"
+    android:textColor="@color/charcoalLawyer"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/et_message"
+    />
+
+</android.support.constraint.ConstraintLayout>

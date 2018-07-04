@@ -1,4 +1,4 @@
-package lawyerku.customer.mainfragment;
+package lawyerku.android_customer.mainfragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import lawyerku.customer.R;
 import lawyerku.customer.ui.DetailPerkara;
+import lawyerku.customer.ui.DetailPerkaraCons;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,7 +78,7 @@ public class PerkaraNewFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
 
-                Intent i = new Intent(getActivity(), DetailPerkara.class);
+                Intent i = new Intent(getActivity(), DetailPerkaraCons.class);
                 startActivity(i);
 
             }

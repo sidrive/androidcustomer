@@ -1,4 +1,4 @@
-package lawyerku.customer.mainfragment;
+package lawyerku.android_customer.mainfragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import lawyerku.customer.R;
 import lawyerku.customer.ui.DetailPerkara;
+import lawyerku.customer.ui.DetailPerkaraCons;
 
 import static android.content.ContentValues.TAG;
 
@@ -83,7 +84,7 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
 
-                Intent i = new Intent(getActivity(), DetailPerkara.class);
+                Intent i = new Intent(getActivity(), DetailPerkaraCons.class);
                 startActivity(i);
 
             }

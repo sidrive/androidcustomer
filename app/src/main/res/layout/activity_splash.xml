@@ -16,6 +16,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
+
+              android:paddingStart="@dimen/res_32dp"
+              android:paddingEnd="@dimen/res_32dp"
                 android:src="@drawable/logotulisan"
                 android:scaleType="fitCenter"/>
         </LinearLayout>

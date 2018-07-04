@@ -8,6 +8,11 @@
     <color name="grayLight">#f1f1f1</color>
     <color name="black">#000000</color>
 
+    <color name="charcoalLawyer">#323133</color>
+    <color name="charcoalLawyerLight">#3C3B3D</color>
+    <color name="strawLawyer">#E0C341</color>
+    <color name="grayLawyer">#B3B3B3</color>
+
     <color name="colorPrimaryRed">#E8641A</color>
     <color name="colorPrimaryRedDark">#E8641A</color>
 
@@ -18,4 +23,5 @@
 
     <color name="primary">#bf9b30</color>
     <color name="colorShadowWhite">#5Effffff</color>
+  <color name="dark_green">#388E3C</color>
 </resources>

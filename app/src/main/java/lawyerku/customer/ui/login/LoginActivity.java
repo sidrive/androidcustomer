@@ -1,11 +1,17 @@
 package lawyerku.customer.ui.login;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,8 +60,10 @@ public class LoginActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_cons);
         ButterKnife.bind(this);
+        transparentStatusBar();
+        getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
@@ -71,8 +79,6 @@ public class LoginActivity extends BaseActivity{
 
     }
 
-
-
     @Override
     protected void setupActivityComponent() {
         BaseApplication.get(this).getAppComponent()
@@ -80,7 +86,32 @@ public class LoginActivity extends BaseActivity{
                 .inject(this);
     }
 
-    @OnClick(R.id.btnLogin)
+    private void transparentStatusBar(){
+      if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
+        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
+      }
+      if (Build.VERSION.SDK_INT >= 19) {
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+      }
+      //make fully Android Transparent Status bar
+      if (Build.VERSION.SDK_INT >= 21) {
+        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+      }
+    }
+
+  public static void setWindowFlag(Activity activity, final int bits, boolean on) {
+    Window win = activity.getWindow();
+    WindowManager.LayoutParams winParams = win.getAttributes();
+    if (on) {
+      winParams.flags |= bits;
+    } else {
+      winParams.flags &= ~bits;
+    }
+    win.setAttributes(winParams);
+  }
+
+  @OnClick(R.id.btn_login)
     public void showLogin(){
 
         CredentialModel.Request credential = new CredentialModel.Request();
@@ -93,22 +124,22 @@ public class LoginActivity extends BaseActivity{
 //        startActivity(i);
     }
 
-    @OnClick(R.id.txtForgotPassword)
+    @OnClick(R.id.tv_forgot)
     public void showForgotPasswordActivity(){
         Intent i = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
         startActivity(i);
     }
 
-    @OnClick(R.id.txtRegister)
+    @OnClick(R.id.tv_register_ask)
     public void showRegisterActivity(){
         Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(i);
     }
 
-    @OnClick(R.id.btnLoginFb)
+    @OnClick(R.id.btn_facebook)
     public void showLoginFB(){
         LayoutInflater li = LayoutInflater.from(this);
-        View promptsView = li.inflate(R.layout.loginfacebook, null);
+        View promptsView = li.inflate(R.layout.login_facebook_cons, null);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
@@ -117,9 +148,9 @@ public class LoginActivity extends BaseActivity{
         alertDialogBuilder.setView(promptsView);
 
         final Button btnAccept = (Button) promptsView
-                .findViewById(R.id.btnAccept);
+                .findViewById(R.id.btn_accept);
         final Button btnDecline = (Button) promptsView
-                .findViewById(R.id.btnDecline);
+                .findViewById(R.id.btn_decline);
 
         btnAccept.setOnClickListener(new View.OnClickListener(){
             @Override
