@@ -32,15 +32,16 @@ public interface LawyerkuService {
 //    Observable<CredentialModel.LoginResponse> login(
 //            @Body CredentialModel.Request body);
 
-    @Headers("Accept:application/json")
+//    @Headers("Accept:application/json")
+    @Headers("Content-Type:application/json")
     @POST("api/login")
     Observable<CredentialModel.LoginResponse> login(
             @Body CredentialModel.Request body);
 
     @Headers("Accept:application/json")
-    @POST("api/registration/{type}?api_token=b3b45k4n")
+    @POST("api/register/")
     Observable<CredentialModel.RegistrationResponse> register(
-            @Path("type") String type,
+//            @Path("type") String type,
             @Body CredentialModel.Request body);
 
     //    ==============================================================

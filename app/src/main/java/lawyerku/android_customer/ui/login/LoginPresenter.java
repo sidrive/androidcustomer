@@ -6,6 +6,7 @@ import android.widget.Toast;
 import lawyerku.android_customer.R;
 import lawyerku.android_customer.api.LawyerkuService;
 import lawyerku.android_customer.api.model.CredentialModel;
+import lawyerku.android_customer.base.BaseInterface;
 import lawyerku.android_customer.base.BasePresenter;
 import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
@@ -39,6 +40,8 @@ public class LoginPresenter implements BasePresenter{
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
+                    Log.e(TAG, "validateLogin: "+response.success.token );
+
                     if (response.status >= 200 && response.status < 300) {
 //                        GlobalPreferences.write(PrefKeys.loggedIn, true, Boolean.class);
 //                        GlobalPreferences.write(PrefKeys.accessToken, String.format(Locale.US, "Bearer %s", response.accessToken), String.class);
@@ -73,4 +76,6 @@ public class LoginPresenter implements BasePresenter{
 //                    listener.hideLoading();
                 }));
     }
+
+
 }

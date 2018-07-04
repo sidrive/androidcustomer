@@ -9,9 +9,9 @@ public class CredentialModel {
     public static class Request {
 
         public String name;
-        @SerializedName("cellphone_number_1") public String cellphone1;
-        @SerializedName("cellphone_number_2") public String cellphone2;
-        @SerializedName("id_number") public String nik;
+//        @SerializedName("cellphone_number_1") public String cellphone1;
+//        @SerializedName("cellphone_number_2") public String cellphone2;
+//        @SerializedName("id_number") public String nik;
 
         // ====== Request for Register Customer
         public String address;
@@ -20,25 +20,74 @@ public class CredentialModel {
 
         // ====== Request for Register Workman
         public int level;
-        @SerializedName("have_smartphone") public boolean haveSmartphone;
-        @SerializedName("address_1") public String address1;
-        @SerializedName("address_2") public String address2;
-        @SerializedName("gps_latitude") public Double latitude;
-        @SerializedName("gps_longitude") public Double longitude;
-        @SerializedName("rate_min") public int rateMin;
-        @SerializedName("rate_max") public int rateMax;
-        public List<Integer> languages;
-        public List<Integer> jobs;
+//        @SerializedName("have_smartphone") public boolean haveSmartphone;
+//        @SerializedName("address_1") public String address1;
+//        @SerializedName("address_2") public String address2;
+//        @SerializedName("gps_latitude") public Double latitude;
+//        @SerializedName("gps_longitude") public Double longitude;
+//        @SerializedName("rate_min") public int rateMin;
+//        @SerializedName("rate_max") public int rateMax;
+//        public List<Integer> languages;
+//        public List<Integer> jobs;
 
         // ====== Request for Login
         public String username;
         public String password;
+        public String c_password;
+        public String first_name;
+        public String last_name;
+        public String role_id;
+        public String cellphone_number_1;
+
+        @Override
+        public String toString() {
+            return "Request{" +
+                    "name='" + name + '\'' +
+                    ", address='" + address + '\'' +
+                    ", phoneNumber='" + phoneNumber + '\'' +
+                    ", email='" + email + '\'' +
+                    ", level=" + level +
+                    ", username='" + username + '\'' +
+                    ", password='" + password + '\'' +
+                    ", cpassword='" + c_password + '\'' +
+                    ", firstname='" + first_name + '\'' +
+                    ", lastname='" + last_name + '\'' +
+                    '}';
+        }
     }
 
     public static class RegistrationResponse {
         public int status;
         public Error message;
         public Request data;
+        public Success success;
+        public String error;
+
+        @Override
+        public String toString() {
+            return "RegistrationResponse{" +
+                    "status=" + status +
+                    ", message=" + message +
+                    ", data=" + data +
+                    ", success=" + success +
+                    ", error='" + error + '\'' +
+                    '}';
+        }
+    }
+
+
+
+    public static class Success{
+        public String name;
+        public String token;
+
+        @Override
+        public String toString() {
+            return "Success{" +
+                    "name='" + name +
+                    ", token='" + token + '\'' +
+                    '}';
+        }
     }
 
     public static class LoginResponse {
@@ -47,6 +96,7 @@ public class CredentialModel {
         public String accessToken;
         public String message;
         public String userType;
+        public Success success;
     }
 
     public static class Error{

@@ -3,6 +3,7 @@ package lawyerku.android_customer.ui.login;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import lawyerku.android_customer.base.BaseActivity;
 import lawyerku.android_customer.base.BaseApplication;
 import lawyerku.android_customer.ui.ForgotPasswordActivity;
 import lawyerku.android_customer.ui.MainActivityCustomer;
-import lawyerku.android_customer.ui.RegisterActivity;
+import lawyerku.android_customer.ui.register.RegisterActivity;
 
 public class LoginActivity extends BaseActivity{
 
@@ -125,5 +126,7 @@ public class LoginActivity extends BaseActivity{
         Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
         startActivity(i);
     }
+
+
 
 }
