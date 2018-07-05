@@ -2,6 +2,8 @@ package lawyerku.customer.ui.register;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,34 +30,34 @@ public class RegisterActivity extends BaseActivity {
     RegisterPresenter presenter;
 
 
-    @BindView(R.id.input_username)
-    TextView txtUsername;
+    @BindView(R.id.et_username)
+    TextInputEditText txtUsername;
 
-    @BindView(R.id.input_email)
-    TextView txtEmail;
+    @BindView(R.id.et_email)
+    TextInputEditText txtEmail;
 
-    @BindView(R.id.input_password)
-    TextView txtPassword;
+    @BindView(R.id.et_password_reg)
+    TextInputEditText txtPassword;
 
-    @BindView(R.id.input_cpassword)
-    TextView txtCpassword;
+    @BindView(R.id.et_cpassword_reg)
+    TextInputEditText txtCpassword;
 
-    @BindView(R.id.input_firstName)
-    TextView txtFirstName;
+    @BindView(R.id.et_first_name)
+    TextInputEditText txtFirstName;
 
-    @BindView(R.id.input_lastName)
-    TextView txtLastName;
+    @BindView(R.id.et_last_name)
+    TextInputEditText txtLastName;
 
-    @BindView(R.id.input_Address)
-    TextView txtAddress;
+    @BindView(R.id.et_address)
+    TextInputEditText txtAddress;
 
-    @BindView(R.id.input_phone)
-    TextView txtPhone;
+    @BindView(R.id.et_phone_number)
+    TextInputEditText txtPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_registration_cons);
         ButterKnife.bind(this);
 
 
@@ -69,10 +71,10 @@ public class RegisterActivity extends BaseActivity {
                 .inject(this);
     }
 
-    @OnClick(R.id.btnSingup)
+    @OnClick(R.id.btn_sign_up)
     public void register(){
-//        validate();
-        presenter.login();
+        validate();
+//        presenter.login();
     }
 
     public void logogin(){

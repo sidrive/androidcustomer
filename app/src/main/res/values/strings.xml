@@ -163,11 +163,13 @@
     <string name="str_register">CREATE AN ACCOUNT</string>
   <string name="desc_forgot">We just need your registered email address to send your password reset</string>
   <string name="str_btn_resetpass">RESET PASSWORD</string>
+    <string name="str_username">Username</string>
   <string name="str_first_name">First Name</string>
     <string name="str_last_name">Last Name</string>
   <string name="str_phone_number">Phone Number</string>
   <string name="str_e_mail">E-mail</string>
   <string name="str_password">Password</string>
+    <string name="str_cpassword">Confirm password</string>
   <string name="str_sign_up_now">SIGN UP NOW</string>
   <string name="str_are_you_sure_fb">Are you sure?</string>
     <string name="str_accept">Accept</string>
