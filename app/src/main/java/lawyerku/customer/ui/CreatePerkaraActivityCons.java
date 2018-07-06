@@ -1,7 +1,7 @@
 package lawyerku.customer.ui;
 
+import android.app.Activity;
 import static lawyerku.customer.ui.login.LoginActivity.setWindowFlag;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build.VERSION;
@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,8 +47,10 @@ public class CreatePerkaraActivityCons extends AppCompatActivity {
   Button btnCariLawyer;
 
 
-  CharSequence[] bahasa = {"Indonesia","Inggris"};
-  CharSequence[] bidang = {"Perkara","Perdata"};
+
+
+  CharSequence[] bahasa = {"Indonesia", "Inggris"};
+  CharSequence[] bidang = {"Perkara", "Perdata"};
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class CreatePerkaraActivityCons extends AppCompatActivity {
     setContentView(R.layout.activity_create_perkara_cons);
     ButterKnife.bind(this);
     transparentStatusBar();
+
   }
 
   private void transparentStatusBar() {
@@ -69,6 +74,17 @@ public class CreatePerkaraActivityCons extends AppCompatActivity {
       setWindowFlag(this, LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
       getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
+  }
+
+  public static void setWindowFlag(Activity activity, final int bits, boolean on) {
+    Window win = activity.getWindow();
+    WindowManager.LayoutParams winParams = win.getAttributes();
+    if (on) {
+      winParams.flags |= bits;
+    } else {
+      winParams.flags &= ~bits;
+    }
+    win.setAttributes(winParams);
   }
 
   @OnClick(R.id.btn_cari_lawyer)
@@ -89,8 +105,8 @@ public class CreatePerkaraActivityCons extends AppCompatActivity {
     }
   }
 
-  private void showLanguage(){
-    final AlertDialog.Builder alert = new AlertDialog.Builder(this,R.style.MyAlertDialogStyle);
+  private void showLanguage() {
+    final AlertDialog.Builder alert = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
     alert.setTitle("Pilih Bahasa");
     alert.setSingleChoiceItems(bahasa, 0, (dialog, which) -> {
       handleSelectCategoryBahasa(which);
@@ -101,15 +117,15 @@ public class CreatePerkaraActivityCons extends AppCompatActivity {
     alert.show();
   }
 
-  private void handleSelectCategoryBahasa(int pos){
+  private void handleSelectCategoryBahasa(int pos) {
 //        kategoriVal = pos;
     String kategoris = bahasa[pos].toString();
     spinnerBahasa.setText(kategoris);
-    Log.e("Bahasa", "handleSelectCategoryKategori: "+pos );
+    Log.e("Bahasa", "handleSelectCategoryKategori: " + pos);
   }
 
-  private void showBidang(){
-    final AlertDialog.Builder alert = new AlertDialog.Builder(this,R.style.MyAlertDialogStyle);
+  private void showBidang() {
+    final AlertDialog.Builder alert = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
     alert.setTitle("Pilih Bidang");
     alert.setSingleChoiceItems(bidang, 0, (dialog, which) -> {
       handleSelectCategoryBidang(which);
@@ -120,10 +136,10 @@ public class CreatePerkaraActivityCons extends AppCompatActivity {
     alert.show();
   }
 
-  private void handleSelectCategoryBidang(int pos){
+  private void handleSelectCategoryBidang(int pos) {
 //        kategoriVal = pos;
     String kategoris = bidang[pos].toString();
     spinnerBidang.setText(kategoris);
-    Log.e("Bahasa", "handleSelectCategoryKategori: "+pos );
+    Log.e("Bahasa", "handleSelectCategoryKategori: " + pos);
   }
 }

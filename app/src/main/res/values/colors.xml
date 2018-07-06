@@ -16,6 +16,9 @@
     <color name="colorPrimaryRed">#E8641A</color>
     <color name="colorPrimaryRedDark">#E8641A</color>
 
+    <color name="goldenBrownLawyer">#996515</color>
+    <color name="goldenRodLawyer">#DAA520</color>
+
 
     <color name="gold">#f4a10e</color>
     <color name="blue">#2984ea</color>

@@ -4,14 +4,15 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/charcoalLawyer"
+  android:background="@drawable/bg_grad1"
   android:theme="@style/LoginTheme"
+  android:fitsSystemWindows="true"
   >
   <ImageView
     android:id="@+id/img_logo"
     android:layout_width="240dp"
     android:layout_height="72dp"
-    android:layout_marginTop="?android:attr/actionBarSize"
+    android:layout_marginTop="@dimen/res_32dp"
     android:layout_marginBottom="@dimen/res_24dp"
     android:paddingStart="@dimen/res_24dp"
     android:paddingEnd="@dimen/res_24dp"
@@ -20,16 +21,54 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     />
+
+  <TextView
+    android:id="@+id/tv_example_chat"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/res_24dp"
+    android:layout_marginStart="@dimen/res_9dp"
+    android:layout_marginEnd="@dimen/res_9dp"
+    android:padding="@dimen/res_18dp"
+    android:background="@drawable/card_shape2"
+    android:text="Hai, Bolehkah saya bertanya?"
+    android:textAlignment="textStart"
+    android:textColor="@color/charcoalLawyer"
+    android:textSize="14sp"
+    app:layout_constraintBottom_toTopOf="@id/tv_example_chat2"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/img_logo"
+    />
+
+  <TextView
+    android:id="@+id/tv_example_chat2"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/res_9dp"
+    android:layout_marginStart="@dimen/res_9dp"
+    android:layout_marginEnd="@dimen/res_9dp"
+    android:padding="@dimen/res_18dp"
+    android:background="@drawable/card_shape3"
+    android:text="Silahkan, apa yang bisa saya bantu?"
+    android:textAlignment="textStart"
+    android:textColor="@color/charcoalLawyer"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tv_example_chat"
+
+    />
   <android.support.v7.widget.RecyclerView
     android:id="@+id/rv_message"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/res_9dp"
     android:layout_marginEnd="@dimen/res_9dp"
+    app:layout_constraintBottom_toTopOf="@id/et_message"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/img_logo"
-    app:layout_constraintBottom_toTopOf="@id/et_message"
+    app:layout_constraintTop_toBottomOf="@id/tv_example_chat2"
     />
 
   <EditText
@@ -39,24 +78,22 @@
     android:layout_marginBottom="@dimen/res_9dp"
     android:layout_marginStart="@dimen/res_9dp"
     android:paddingStart="@dimen/res_9dp"
-    android:inputType="text"
     android:drawablePadding="@dimen/res_9dp"
-    android:drawableStart="@drawable/ic_chat_bubble_outline_black_24dp"
-    android:hint="chat"
+    android:hint="Type here..."
+    android:inputType="text"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@id/btn_send"
     app:layout_constraintStart_toStartOf="parent"
     />
 
-  <Button
+  <ImageButton
     android:id="@+id/btn_send"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/res_32dp"
-    android:layout_marginBottom="@dimen/res_18dp"
+    android:layout_marginBottom="16dp"
     android:layout_marginEnd="@dimen/res_9dp"
-    android:background="@color/strawLawyer"
-    android:text="Send"
-    android:textColor="@color/charcoalLawyer"
+    android:background="@drawable/card_shape1"
+    android:src="@drawable/ic_send_black_24dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@id/et_message"

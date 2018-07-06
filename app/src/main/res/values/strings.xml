@@ -1,189 +1,187 @@
 <resources>
+  <string name="app_name">Lawyerku Customer</string>
+  <string name="text_edit_profile">Edit Profile</string>
+  <string name="action_ok">OK</string>
+  <string name="action_cancel">Batal</string>
+  <string name="dialog_exit">Yakin keluar aplikasi?</string>
+  <string name="prompt_update_profile">Simpan Profile</string>
+  <!--<string name="error_general">Gangguan pada jaringan, silakan dicoba beberapa saat lagi</string>-->
+  <string name="error_general">Anda tidak memiliki akses untuk fitur ini</string>
+  <string name="error_403">Anda tidak memiliki akses untuk fitur ini</string>
+  <string name="error_unauthenticated">Username dan password tidak sesuai</string>
+  <string name="error_lost_connection">Pastikan device anda terkoneksi internet</string>
+  <string name="dialog_back_to_main">Back to login screen</string>
+  <string name="dialog_project_cancel">Proyek yakin dibatalkan?</string>
 
-    <string name="facebook_app_id">1530710300367183</string>
-    <string name="fb_login_protocol_scheme">fb1530710300367183</string>
+  <string name="facebook_app_id">1530710300367183</string>
+  <string name="fb_login_protocol_scheme">fb1530710300367183</string>
 
-        <string name="app_name">Lawyerku-android-customer</string>
+  <!-- String related to main page -->
+  <string name="text_search_lawyer">Cari Lawyer</string>
+  <string name="text_history">History Project</string>
+  <string name="text_help">Bantuan</string>
+  <string name="text_info">Information</string>
+  <string name="text_search_tukang_desc">Pilih tukang yang sesuai</string>
+  <string name="text_history_desc">Daftar proyek sebelumnya</string>
+  <string name="text_help_desc">Panduan penggunaan aplikasi</string>
+  <string name="text_info_desc">Information</string>
+  <string name="dialog_has_project">Proyek anda belum memiliki tukang. Klik OK untuk melakukan pencarian.</string>
 
-    <string name="text_edit_profile">Edit Profile</string>
-    <string name="action_ok">OK</string>
-    <string name="action_cancel">Batal</string>
-    <string name="dialog_exit">Yakin keluar aplikasi?</string>
-    <string name="prompt_update_profile">Simpan Profile</string>
-    <!--<string name="error_general">Gangguan pada jaringan, silakan dicoba beberapa saat lagi</string>-->
-    <string name="error_general">Anda tidak memiliki akses untuk fitur ini</string>
-    <string name="error_403">Anda tidak memiliki akses untuk fitur ini</string>
-    <string name="error_unauthenticated">Username dan password tidak sesuai</string>
-    <string name="error_lost_connection">Pastikan device anda terkoneksi internet</string>
-    <string name="dialog_back_to_main">Back to login screen</string>
-    <string name="dialog_project_cancel">Proyek yakin dibatalkan?</string>
+  <!-- Strings related to login and register-->
+  <string name="prompt_login_id">Login ID</string>
+  <string name="prompt_email">Email</string>
+  <string name="prompt_password">Password</string>
+  <string name="prompt_name">Nama</string>
+  <string name="prompt_address">Alamat Sesuai KTP/SIM</string>
+  <string name="prompt_address_2">Alamat Domisili</string>
+  <string name="prompt_languages">Bahasa yang dikuasai</string>
+  <string name="prompt_skills">@string/text_skill</string>
+  <string name="prompt_price_rate">Harga Min &amp; max</string>
+  <string name="prompt_level">@string/text_level</string>
+  <string name="prompt_phone">Telepon</string>
+  <string name="prompt_cellphone1">Telepon / HP 1</string>
+  <string name="prompt_cellphone2">Telepon / HP 2</string>
+  <string name="prompt_nik">No.KTP/SIM</string>
+  <string name="text_forgot_password">Forgot Password</string>
+  <string name="text_or">OR</string>
+  <string name="text_please_wait">Tunggu sebentar</string>
+  <string name="action_register_customer">Register Customer</string>
+  <string name="action_register_workman">Register Mitra Ketukang</string>
+  <string name="action_sign_in">LOGIN</string>
 
-    <!-- Strings related to login and register-->
-    <string name="prompt_login_id">Login ID</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="prompt_name">Nama</string>
-    <string name="prompt_address">Alamat Sesuai KTP/SIM</string>
-    <string name="prompt_address_2">Alamat Domisili</string>
-    <string name="prompt_languages">Bahasa yang dikuasai</string>
-    <string name="prompt_skills">@string/text_skill</string>
-    <string name="prompt_price_rate">Harga Min &amp; max</string>
-    <string name="prompt_level">@string/text_level</string>
-    <string name="prompt_phone">Telepon</string>
-    <string name="prompt_cellphone1">Telepon / HP 1</string>
-    <string name="prompt_cellphone2">Telepon / HP 2</string>
-    <string name="prompt_nik">No.KTP/SIM</string>
-    <string name="text_forgot_password">Forgot Password</string>
-    <string name="text_or">OR</string>
-    <string name="text_please_wait">Tunggu sebentar</string>
-    <string name="action_register_customer">Register Customer</string>
-    <string name="action_register_workman">Register Mitra Ketukang</string>
-    <string name="action_sign_in">LOGIN</string>
+  <string name="error_empty_username">Username tidak boleh kosong</string>
+  <string name="error_empty_login_id">Login ID tidak boleh kosong</string>
+  <string name="error_empty_password">Password tidak boleh kosong dan minimal 6 karakter</string>
+  <string name="error_empty_cpassword">Password tidak sama, silahkan masukkan password lagi untuk konfirmasi</string>
+  <string name="error_empty_name">Nama tidak boleh kosong dan minimal 5 karakter</string>
+  <string name="error_empty_address">Alamat tidak boleh kosong dan minimal 10 karakter</string>
+  <string name="error_empty_phone">Telepon tidak boleh kosong dan minimal 7 karakter</string>
+  <string name="error_empty_nik">NIK tidak boleh kosong dan minimal 5 karakter</string>
+  <string name="error_empty_email">Email tidak boleh kosong atau tidak valid</string>
+  <string name="error_empty_location">Lokasi tidak boleh kosong</string>
+  <string name="error_empty_level">Level tidak boleh kosong</string>
+  <string name="error_empty_jobs">Keahlian tidak boleh kosong</string>
+  <string name="error_empty_languages">Bahasa tidak boleh kosong</string>
+  <string name="text_workman_reg_complete">Silahkan datang ke Toko Cat Wawawa untuk aktivasi</string>
+  <string name="text_workman_location">Alamat Anda (klik pada peta)</string>
 
-    <string name="error_empty_username">Username tidak boleh kosong</string>
-    <string name="error_empty_login_id">Login ID tidak boleh kosong</string>
-    <string name="error_empty_password">Password tidak boleh kosong dan minimal 6 karakter</string>
-    <string name="error_empty_cpassword">Password tidak sama, silahkan masukkan password lagi untuk konfirmasi</string>
-    <string name="error_empty_name">Nama tidak boleh kosong dan minimal 5 karakter</string>
-    <string name="error_empty_address">Alamat tidak boleh kosong dan minimal 10 karakter</string>
-    <string name="error_empty_phone">Telepon tidak boleh kosong dan minimal 7 karakter</string>
-    <string name="error_empty_nik">NIK tidak boleh kosong dan minimal 5 karakter</string>
-    <string name="error_empty_email">Email tidak boleh kosong atau tidak valid</string>
-    <string name="error_empty_location">Lokasi tidak boleh kosong</string>
-    <string name="error_empty_level">Level tidak boleh kosong</string>
-    <string name="error_empty_jobs">Keahlian tidak boleh kosong</string>
-    <string name="error_empty_languages">Bahasa tidak boleh kosong</string>
-    <string name="text_workman_reg_complete">Silahkan datang ke Toko Cat Wawawa untuk aktivasi</string>
-    <string name="text_workman_location">Alamat Anda (klik pada peta)</string>
+  <!-- String related to criteria page -->
+  <string name="text_criteria">Pilih Bahasa Tukang</string>
+  <string name="text_choose_language">Pilih Bahasa</string>
+  <string name="text_skill">Keahlian</string>
+  <string name="text_skill_create">Pilih keahlian tukang</string>
+  <string name="text_skill_paint">Cat</string>
+  <string name="text_skill_electric">Listrik</string>
+  <string name="text_skill_pipe">Ledeng</string>
+  <string name="text_skill_building">Bangunan</string>
+  <string name="dialog_empty_language">Pilihan bahasa tidak boleh kosong</string>
 
-    <!-- String related to main page -->
-    <string name="text_search_lawyer">Cari Lawyer</string>
-    <string name="text_history">History Project</string>
-    <string name="text_help">Bantuan</string>
-    <string name="text_info">Information</string>
-    <string name="text_search_tukang_desc">Pilih tukang yang sesuai</string>
-    <string name="text_history_desc">Daftar proyek sebelumnya</string>
-    <string name="text_help_desc">Panduan penggunaan aplikasi</string>
-    <string name="text_info_desc">Information</string>
-    <string name="dialog_has_project">Proyek anda belum memiliki tukang. Klik OK untuk melakukan pencarian.</string>
+  <!-- String related to create project page -->
+  <string name="text_create_project">Buat Proyek</string>
+  <string name="text_language">Bahasa</string>
+  <string name="prompt_project_name">Nama Proyek</string>
+  <string name="prompt_description">Deskripsi Proyek</string>
+  <string name="prompt_project_start">Tanggal mulai</string>
+  <string name="prompt_project_end">Tanggal selesai</string>
+  <string name="text_location">Maps Proyek</string>
+  <string name="text_colon">:</string>
+  <string name="text_project_location">Lokasi Proyek</string>
+  <string name="text_address_location">Saya disini</string>
+  <string name="text_project_location_map">Lokasi Proyek (klik pada peta)</string>
+  <string name="text_change_location">Klik peta untuk merubah lokasi proyek</string>
+  <string name="dialog_empty_description">Deskripsi tidak boleh kosong</string>
+  <string name="dialog_location_not_found">Lokasi proyek tidak ditemukan.</string>
 
-    <!-- String related to criteria page -->
-    <string name="text_criteria">Pilih Bahasa Tukang</string>
-    <string name="text_choose_language">Pilih Bahasa</string>
-    <string name="text_skill">Keahlian</string>
-    <string name="text_skill_create">Pilih keahlian tukang</string>
-    <string name="text_skill_paint">Cat</string>
-    <string name="text_skill_electric">Listrik</string>
-    <string name="text_skill_pipe">Ledeng</string>
-    <string name="text_skill_building">Bangunan</string>
-    <string name="dialog_empty_language">Pilihan bahasa tidak boleh kosong</string>
+  <!-- String related to dialog ongoing -->
+  <string name="text_dialog_desc">desc</string>
+  <string name="text_dialog_type">type</string>
+  <string name="text_dialog_address">address</string>
+  <!-- String related to workmen page -->
+  <string name="text_workmans">Daftar Tukang</string>
+  <string name="text_workman">Tukang</string>
+  <string name="text_workman_empty">Data tidak ditemukan</string>
+  <string name="text_project_cancelled">Proyek berhasil dibatalkan</string>
 
-    <!-- String related to create project page -->
-    <string name="text_create_project">Buat Proyek</string>
-    <string name="text_language">Bahasa</string>
-    <string name="prompt_project_name">Nama Proyek</string>
-    <string name="prompt_description">Deskripsi Proyek</string>
-    <string name="prompt_project_start">Tanggal mulai</string>
-    <string name="prompt_project_end">Tanggal selesai</string>
-    <string name="text_location">Maps Proyek</string>
-    <string name="text_colon">:</string>
-    <string name="text_project_location">Lokasi Proyek</string>
-    <string name="text_address_location">Saya disini</string>
-    <string name="text_project_location_map">Lokasi Proyek (klik pada peta)</string>
-    <string name="text_change_location">Klik peta untuk merubah lokasi proyek</string>
-    <string name="dialog_empty_description">Deskripsi tidak boleh kosong</string>
-    <string name="dialog_location_not_found">Lokasi proyek tidak ditemukan.</string>
+  <!-- String related to detail workman page -->
+  <string name="text_detail_workman">Detail Tukang</string>
+  <string name="text_level">Level</string>
+  <string name="text_rating">Rating</string>
+  <string name="text_price">Biaya/Hari</string>
+  <string name="text_nego">(Nego)</string>
+  <string name="text_choose">Pilih</string>
+  <string name="text_workman_not_set">Tidak ada tukang dipilih.</string>
 
-    <!-- String related to dialog ongoing -->
-    <string name="text_dialog_desc">desc</string>
-    <string name="text_dialog_type">type</string>
-    <string name="text_dialog_address">address</string>
-    <!-- String related to workmen page -->
-    <string name="text_workmans">Daftar Tukang</string>
-    <string name="text_workman">Tukang</string>
-    <string name="text_workman_empty">Data tidak ditemukan</string>
-    <string name="text_project_cancelled">Proyek berhasil dibatalkan</string>
+  <!-- String related to profile page -->
+  <string name="text_profile">Profile</string>
+  <string name="text_profile_updated">Info profil berhasil diubah</string>
 
-    <!-- String related to detail workman page -->
-    <string name="text_detail_workman">Detail Tukang</string>
-    <string name="text_level">Level</string>
-    <string name="text_rating">Rating</string>
-    <string name="text_price">Biaya/Hari</string>
-    <string name="text_nego">(Nego)</string>
-    <string name="text_choose">Pilih</string>
-    <string name="text_workman_not_set">Tidak ada tukang dipilih.</string>
+  <!-- String related to detail project page -->
+  <string name="text_detail_project">Detail Proyek</string>
+  <string name="text_type">Tipe</string>
+  <string name="text_description">@string/prompt_description</string>
+  <string name="text_update_project">Ubah Proyek</string>
+  <string name="text_update_workman">Ubah Tukang</string>
+  <string name="text_call_workman">Silakan menghubungi tukang</string>
+  <string name="text_deal">Deal</string>
+  <string name="text_no_deal">No Deal</string>
+  <string name="text_done">Selesai</string>
+  <string name="text_undone">Tidak Selesai</string>
+  <string name="text_status">Status:</string>
+  <string name="text_status_start">Berlangsung mulai</string>
+  <string name="text_add_rate">Berikan rating</string>
+  <string name="dialog_completion">Proyek sudah selesai?</string>
+  <string name="dialog_un_completion">Proyek tidak selesai?</string>
+  <string name="dialog_workman_not_set">Tukang belum dipilih</string>
+  <string name="dialog_phone_not_found">Tidak ada telepon dipilih</string>
+  <string name="dialog_project_nodeal"> Apakah proyek no deal ?</string>
+  <string name="dialog_project_deal">Apakah proyek sudah deal ?</string>
+  <string name="dialog_project_deal_ok">OK</string>
+  <string name="dialog_project_deal_cancel">CANCEL</string>
+  <string name="text_back_to_home">Ke Halaman Utama</string>
+  <string name="text_rating_title">Berikan rating</string>
 
-    <!-- String related to profile page -->
-    <string name="text_profile">Profile</string>
-    <string name="text_profile_updated">Info profil berhasil diubah</string>
+  <!-- String related to detail project page -->
+  <string name="text_start">Mulai</string>
+  <string name="text_end">Selesai</string>
+  <string name="dialog_empty_comment">Komentar tidak boleh kosong</string>
+  <string name="dialog_empty_rating">Rating tidak boleh kosong</string>
+  <string name="prompt_comment">Berikan komentar</string>
+  <string name="text_no_pojek">No.Proyek</string>
+  <string name="text_no_done">Tidak Selesai</string>
+  <string name="nol_bintang">0 Bintang</string>
+  <!-- String related to dialog on going proyek -->
+  <string name="on_going_dialog_title">Proyek Berjalan</string>
+  <string name="on_going_dialog_belum">BELUM</string>
+  <string name="on_going_dialog_selesai">SELESAI</string>
+  <string name="filter">Filter :</string>
 
-    <!-- String related to detail project page -->
-    <string name="text_detail_project">Detail Proyek</string>
-    <string name="text_type">Tipe</string>
-    <string name="text_description">@string/prompt_description</string>
-    <string name="text_update_project">Ubah Proyek</string>
-    <string name="text_update_workman">Ubah Tukang</string>
-    <string name="text_call_workman">Silakan menghubungi tukang</string>
-    <string name="text_deal">Deal</string>
-    <string name="text_no_deal">No Deal</string>
-    <string name="text_done">Selesai</string>
-    <string name="text_undone">Tidak Selesai</string>
-    <string name="text_status">Status:</string>
-    <string name="text_status_start">Berlangsung mulai</string>
-    <string name="text_add_rate">Berikan rating</string>
-    <string name="dialog_completion">Proyek sudah selesai?</string>
-    <string name="dialog_un_completion">Proyek tidak selesai?</string>
-    <string name="dialog_workman_not_set">Tukang belum dipilih</string>
-    <string name="dialog_phone_not_found">Tidak ada telepon dipilih</string>
-    <string name="dialog_project_nodeal"> Apakah proyek no deal ?</string>
-    <string name="dialog_project_deal">Apakah proyek sudah deal ?</string>
-    <string name="dialog_project_deal_ok">OK</string>
-    <string name="dialog_project_deal_cancel">CANCEL</string>
-    <string name="text_back_to_home">Ke Halaman Utama</string>
-    <string name="text_rating_title">Berikan rating</string>
-
-    <!-- String related to detail project page -->
-    <string name="text_start">Mulai</string>
-    <string name="text_end">Selesai</string>
-    <string name="dialog_empty_comment">Komentar tidak boleh kosong</string>
-    <string name="dialog_empty_rating">Rating tidak boleh kosong</string>
-    <string name="prompt_comment">Berikan komentar</string>
-    <string name="text_no_pojek">No.Proyek</string>
-    <string name="text_no_done">Tidak Selesai</string>
-    <string name="nol_bintang">0 Bintang</string>
-    <!-- String related to dialog on going proyek -->
-    <string name="on_going_dialog_title">Proyek Berjalan</string>
-    <string name="on_going_dialog_belum">BELUM</string>
-    <string name="on_going_dialog_selesai">SELESAI</string>
-    <string name="filter">Filter :</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="str_fblogin">LOGIN WITH FACEBOOK</string>
-    <string name="str_register">CREATE AN ACCOUNT</string>
+  <string name="str_register">CREATE AN ACCOUNT</string>
   <string name="desc_forgot">We just need your registered email address to send your password reset</string>
   <string name="str_btn_resetpass">RESET PASSWORD</string>
-    <string name="str_username">Username</string>
+  <string name="str_username">Username</string>
   <string name="str_first_name">First Name</string>
-    <string name="str_last_name">Last Name</string>
+  <string name="str_last_name">Last Name</string>
   <string name="str_phone_number">Phone Number</string>
   <string name="str_e_mail">E-mail</string>
   <string name="str_password">Password</string>
-    <string name="str_cpassword">Confirm password</string>
+  <string name="str_cpassword">Confirm password</string>
   <string name="str_sign_up_now">SIGN UP NOW</string>
   <string name="str_are_you_sure_fb">Are you sure?</string>
-    <string name="str_accept">Accept</string>
+  <string name="str_accept">Accept</string>
   <string name="str_decline">Decline</string>
   <string name="str_pilih_lawyer_yang_sesuai">Pilih lawyer yang sesuai</string>
-    <string name="str_find_lawyer">Find Lawyer</string>
+  <string name="str_find_lawyer">Cari Pengacara</string>
   <string name="str_information">Information</string>
-    <string name="str_panduan_penggunaan_aplikasi">Panduan penggunaan aplikasi</string>
-    <string name="str_bantuan">Bantuan</string>
-    <string name="str_daftar_transaksi">Daftar transaksi</string>
-    <string name="str_history">History Project</string>
+  <string name="str_panduan_penggunaan_aplikasi">Panduan penggunaan aplikasi</string>
+  <string name="str_bantuan">Bantuan</string>
+  <string name="str_daftar_transaksi">Daftar transaksi</string>
+  <string name="str_history">History Project</string>
   <string name="str_deskripsi">Deskripsi</string>
-    <string name="str_cari_lawyer">CARI LAWYER</string>
-    <string name="str_location">Location</string>
+  <string name="str_cari_lawyer">CARI LAWYER</string>
+  <string name="str_location">Location</string>
   <string name="str_bahasa">Bahasa</string>
-    <string name="str_bidang">Bidang</string>
+  <string name="str_bidang">Bidang</string>
 </resources>

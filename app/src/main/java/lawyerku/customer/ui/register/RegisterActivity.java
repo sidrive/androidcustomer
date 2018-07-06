@@ -39,7 +39,7 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R.id.et_password_reg)
     TextInputEditText txtPassword;
 
-    @BindView(R.id.et_cpassword_reg)
+    @BindView(R.id.et_password_confirm)
     TextInputEditText txtCpassword;
 
     @BindView(R.id.et_first_name)
@@ -66,9 +66,9 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void setupActivityComponent() {
-        BaseApplication.get(this).getAppComponent()
-                .plus(new RegisterActivityModule(this))
-                .inject(this);
+//        BaseApplication.get(this).getAppComponent()
+//                .plus(new RegisterActivityModule(this))
+//                .inject(this);
     }
 
     @OnClick(R.id.btn_sign_up)

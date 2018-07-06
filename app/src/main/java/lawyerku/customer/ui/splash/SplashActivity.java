@@ -85,12 +85,11 @@ public class SplashActivity extends BaseActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
+                Intent i = new Intent(SplashActivity.this, RegisterActivity.class);
+                startActivity(i);
 
                 initActivity(accessTokenFacebook);
                 finish();
-
-                // close this activity
-
             }
         }, SPLASH_TIME_OUT);
 

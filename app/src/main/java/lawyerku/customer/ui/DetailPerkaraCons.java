@@ -1,12 +1,9 @@
 package lawyerku.customer.ui;
 
-import static lawyerku.customer.ui.login.LoginActivity.setWindowFlag;
-
 import android.Manifest.permission;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -20,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -74,6 +72,17 @@ public class DetailPerkaraCons extends AppCompatActivity implements OnCameraIdle
       setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
       getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
+  }
+
+  public static void setWindowFlag(Activity activity, final int bits, boolean on) {
+    Window win = activity.getWindow();
+    WindowManager.LayoutParams winParams = win.getAttributes();
+    if (on) {
+      winParams.flags |= bits;
+    } else {
+      winParams.flags &= ~bits;
+    }
+    win.setAttributes(winParams);
   }
 
   @Override
@@ -143,20 +152,13 @@ public class DetailPerkaraCons extends AppCompatActivity implements OnCameraIdle
 
     // set prompts.xml to alertdialog builder
     alertDialogBuilder.setView(promptsView);
-
 //        final Button btnAccept = (Button) promptsView
 //                .findViewById(R.id.btnAccept);
 
 //        userInput.setText(String.valueOf(barang.getStokBarang()));
     // set dialog message
     alertDialogBuilder
-        .setCancelable(false)
-        .setNegativeButton("Cancel",
-            new OnClickListener() {
-              public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-              }
-            });
+        .setCancelable(true);
 
     // create alert dialog
     AlertDialog alertDialog = alertDialogBuilder.create();

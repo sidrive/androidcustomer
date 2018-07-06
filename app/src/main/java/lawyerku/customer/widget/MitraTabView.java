@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import lawyerku.customer.R;
 
 public class MitraTabView extends LinearLayout {
