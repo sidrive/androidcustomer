@@ -13,6 +13,20 @@
   <string name="dialog_back_to_main">Back to login screen</string>
   <string name="dialog_project_cancel">Proyek yakin dibatalkan?</string>
 
+  <string name="facebook_app_id">1530710300367183</string>
+  <string name="fb_login_protocol_scheme">fb1530710300367183</string>
+
+  <!-- String related to main page -->
+  <string name="text_search_lawyer">Cari Lawyer</string>
+  <string name="text_history">History Project</string>
+  <string name="text_help">Bantuan</string>
+  <string name="text_info">Information</string>
+  <string name="text_search_tukang_desc">Pilih tukang yang sesuai</string>
+  <string name="text_history_desc">Daftar proyek sebelumnya</string>
+  <string name="text_help_desc">Panduan penggunaan aplikasi</string>
+  <string name="text_info_desc">Information</string>
+  <string name="dialog_has_project">Proyek anda belum memiliki tukang. Klik OK untuk melakukan pencarian.</string>
+
   <!-- Strings related to login and register-->
   <string name="prompt_login_id">Login ID</string>
   <string name="prompt_email">Email</string>
@@ -34,6 +48,7 @@
   <string name="action_register_customer">Register Customer</string>
   <string name="action_register_workman">Register Mitra Ketukang</string>
   <string name="action_sign_in">LOGIN</string>
+
   <string name="error_empty_username">Username tidak boleh kosong</string>
   <string name="error_empty_login_id">Login ID tidak boleh kosong</string>
   <string name="error_empty_password">Password tidak boleh kosong dan minimal 6 karakter</string>
@@ -49,17 +64,6 @@
   <string name="error_empty_languages">Bahasa tidak boleh kosong</string>
   <string name="text_workman_reg_complete">Silahkan datang ke Toko Cat Wawawa untuk aktivasi</string>
   <string name="text_workman_location">Alamat Anda (klik pada peta)</string>
-
-  <!-- String related to main page -->
-  <string name="text_search_lawyer">Cari Lawyer</string>
-  <string name="text_history">History Project</string>
-  <string name="text_help">Bantuan</string>
-  <string name="text_info">Information</string>
-  <string name="text_search_tukang_desc">Pilih tukang yang sesuai</string>
-  <string name="text_history_desc">Daftar proyek sebelumnya</string>
-  <string name="text_help_desc">Panduan penggunaan aplikasi</string>
-  <string name="text_info_desc">Information</string>
-  <string name="dialog_has_project">Proyek anda belum memiliki tukang. Klik OK untuk melakukan pencarian.</string>
 
   <!-- String related to criteria page -->
   <string name="text_criteria">Pilih Bahasa Tukang</string>
@@ -157,11 +161,13 @@
   <string name="str_register">CREATE AN ACCOUNT</string>
   <string name="desc_forgot">We just need your registered email address to send your password reset</string>
   <string name="str_btn_resetpass">RESET PASSWORD</string>
+  <string name="str_username">Username</string>
   <string name="str_first_name">First Name</string>
   <string name="str_last_name">Last Name</string>
   <string name="str_phone_number">Phone Number</string>
   <string name="str_e_mail">E-mail</string>
   <string name="str_password">Password</string>
+  <string name="str_cpassword">Confirm password</string>
   <string name="str_sign_up_now">SIGN UP NOW</string>
   <string name="str_are_you_sure_fb">Are you sure?</string>
   <string name="str_accept">Accept</string>

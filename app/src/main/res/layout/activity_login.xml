@@ -45,7 +45,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="rakhasn2410@gmail.com"
+                android:text="egy@example.com"
                 android:drawableLeft="@drawable/ic_email"
                 android:drawablePadding="10dp"
                 android:id="@+id/txtEmail"
@@ -55,7 +55,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="jamban201"
+                android:text="rahasia"
                 android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="10dp"
                 android:inputType="textPassword"
@@ -102,7 +102,14 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"/>
 
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
             <Button
+                android:visibility="gone"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:text="SIGN IN with facebook account"

@@ -51,9 +51,9 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:hint="Username"
-          app:backgroundTint="@color/colorWhite"
           android:inputType="text"
           android:maxLines="1"
+          app:backgroundTint="@color/colorWhite"
           />
 
       </android.support.design.widget.TextInputLayout>
@@ -76,8 +76,8 @@
           android:id="@+id/et_first_name"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:hint="@string/str_first_name"
           android:backgroundTint="@color/colorWhite"
+          android:hint="@string/str_first_name"
           android:inputType="text"
           android:maxLines="1"
           />
@@ -101,8 +101,8 @@
           android:id="@+id/et_last_name"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:hint="@string/str_last_name"
           android:backgroundTint="@color/colorWhite"
+          android:hint="@string/str_last_name"
           android:inputType="text"
           android:maxLines="1"
           />
@@ -125,8 +125,8 @@
           android:id="@+id/et_phone_number"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:hint="@string/str_phone_number"
           android:backgroundTint="@color/colorWhite"
+          android:hint="@string/str_phone_number"
           android:inputType="phone"
           android:maxLines="1"
           android:textColor="@color/colorWhite"
@@ -151,8 +151,8 @@
           android:id="@+id/et_email"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:hint="@string/str_e_mail"
           android:backgroundTint="@color/colorWhite"
+          android:hint="@string/str_e_mail"
           android:inputType="textEmailAddress"
           android:maxLines="1"
           />
@@ -179,8 +179,8 @@
           android:id="@+id/et_password_reg"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:hint="@string/str_password"
           android:backgroundTint="@color/colorWhite"
+          android:hint="@string/str_password"
           android:inputType="textPassword"
           android:maxLines="1"
           />
@@ -207,8 +207,8 @@
           android:id="@+id/et_password_confirm"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:hint="Confirm Password"
           android:backgroundTint="@color/colorWhite"
+          android:hint="Confirm Password"
           android:inputType="textPassword"
           android:maxLines="1"
           />
@@ -234,10 +234,9 @@
           android:layout_height="wrap_content"
           android:hint="Alamat sesuai KTP / SIM"
           android:inputType="textMultiLine"
-          app:backgroundTint="@color/colorWhite"
           android:maxLines="5"
+          app:backgroundTint="@color/colorWhite"
           />
-
       </android.support.design.widget.TextInputLayout>
 
       <Button
@@ -258,6 +257,4 @@
         />
     </android.support.constraint.ConstraintLayout>
   </ScrollView>
-
-
 </android.support.constraint.ConstraintLayout>
