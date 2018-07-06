@@ -19,7 +19,7 @@ public class CredentialModel {
         public String email;
 
         // ====== Request for Register Workman
-        public int level;
+//        public int level;
 //        @SerializedName("have_smartphone") public boolean haveSmartphone;
 //        @SerializedName("address_1") public String address1;
 //        @SerializedName("address_2") public String address2;
@@ -37,21 +37,23 @@ public class CredentialModel {
         public String first_name;
         public String last_name;
         public String role_id;
-        public String cellphone_number_1;
+        public String phone_number_1;
+        public String phone_number_2;
+
 
         @Override
         public String toString() {
             return "Request{" +
-                    "name='" + name + '\'' +
-                    ", address='" + address + '\'' +
-                    ", phoneNumber='" + phoneNumber + '\'' +
+                    "address='" + address + '\'' +
                     ", email='" + email + '\'' +
-                    ", level=" + level +
                     ", username='" + username + '\'' +
                     ", password='" + password + '\'' +
-                    ", cpassword='" + c_password + '\'' +
-                    ", firstname='" + first_name + '\'' +
-                    ", lastname='" + last_name + '\'' +
+                    ", c_password='" + c_password + '\'' +
+                    ", first_name='" + first_name + '\'' +
+                    ", last_name='" + last_name + '\'' +
+                    ", role_id='" + role_id + '\'' +
+                    ", phone_number_1='" + phone_number_1 + '\'' +
+                    ", phone_number_2='" + phone_number_2 + '\'' +
                     '}';
         }
     }

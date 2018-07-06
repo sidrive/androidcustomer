@@ -61,14 +61,13 @@ public class RegisterActivity extends BaseActivity {
         ButterKnife.bind(this);
 
 
-
     }
 
     @Override
     protected void setupActivityComponent() {
-//        BaseApplication.get(this).getAppComponent()
-//                .plus(new RegisterActivityModule(this))
-//                .inject(this);
+        BaseApplication.get(this).getAppComponent()
+                .plus(new RegisterActivityModule(this))
+                .inject(this);
     }
 
     @OnClick(R.id.btn_sign_up)
@@ -158,9 +157,9 @@ public class RegisterActivity extends BaseActivity {
             credential.first_name = txtFirstName.getText().toString();
             credential.last_name = txtLastName.getText().toString();
             credential.address = txtAddress.getText().toString();
-            credential.phoneNumber = txtPhone.getText().toString();
+            credential.phone_number_1 = txtPhone.getText().toString();
             credential.role_id = "2";
-            credential.cellphone_number_1 = "0";
+            credential.phone_number_2 = "0";
 
             presenter.register(credential,"customer");
 

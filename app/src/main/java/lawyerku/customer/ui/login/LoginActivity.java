@@ -56,6 +56,8 @@ public class LoginActivity extends BaseActivity{
 
     private LoginButton loginButton;
     private static final String EMAIL = "email";
+    private static final String USER_POSTS = "user_posts";
+    private static final String AUTH_TYPE = "rerequest";
 
     CallbackManager callbackManager = CallbackManager.Factory.create();
 
@@ -117,14 +119,14 @@ public class LoginActivity extends BaseActivity{
   @OnClick(R.id.btn_login)
     public void showLogin(){
 
-//        CredentialModel.Request credential = new CredentialModel.Request();
-//        credential.email = txtEmail.getText().toString();
-//        credential.password = txtPassword.getText().toString();
-//
-//        presenter.validateLogin(credential);
+        CredentialModel.Request credential = new CredentialModel.Request();
+        credential.email = txtEmail.getText().toString();
+        credential.password = txtPassword.getText().toString();
 
-        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
-        startActivity(i);
+        presenter.validateLogin(credential);
+
+//        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
+//        startActivity(i);
     }
 
     @OnClick(R.id.tv_forgot)
@@ -139,53 +141,7 @@ public class LoginActivity extends BaseActivity{
         startActivity(i);
     }
 
-    @OnClick(R.id.btn_facebook)
-    public void showLoginFB(){
-        LayoutInflater li = LayoutInflater.from(this);
-        View promptsView = li.inflate(R.layout.login_facebook_cons, null);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                this);
-
-        // set prompts.xml to alertdialog builder
-        alertDialogBuilder.setView(promptsView);
-
-        final Button btnAccept = (Button) promptsView
-                .findViewById(R.id.btn_accept);
-        final Button btnDecline = (Button) promptsView
-                .findViewById(R.id.btn_decline);
-
-        btnAccept.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View arg0) {
-
-                Intent i = new Intent(getApplicationContext(), MainActivityCustomer.class);
-                startActivity(i);
-
-            }
-        });
-
-
-//        userInput.setText(String.valueOf(barang.getStokBarang()));
-        // set dialog message
-        alertDialogBuilder
-                .setCancelable(false);
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        btnDecline.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View arg0) {
-
-                alertDialog.dismiss();
-
-            }
-        });
-
-        // show it
-        alertDialog.show();
-    }
 
     public void loginProses(){
         Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
@@ -195,7 +151,8 @@ public class LoginActivity extends BaseActivity{
     private void initFBbutton() {
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.setReadPermissions(Arrays.asList(EMAIL));
+        loginButton.setReadPermissions(Arrays.asList(EMAIL, USER_POSTS));
+        loginButton.setAuthType(AUTH_TYPE);
         // If you are using in a fragment, call loginButton.setFragment(this);
 
         // Callback registration

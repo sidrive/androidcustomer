@@ -48,6 +48,7 @@ public class RegisterPresenter implements BasePresenter {
 
     public void register(CredentialModel.Request request, String type) {
 //        listener.showLoading();
+        Log.e(TAG, "register: "+request );
 
 //        if (!SysUtils.isOnline(App.getContext())) {
 //            listener.onError(App.getContext().getString(R.string.error_lost_connection));

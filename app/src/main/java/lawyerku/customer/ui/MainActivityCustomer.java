@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,8 +18,11 @@ import butterknife.OnClick;
 import lawyerku.customer.MainActivity;
 import lawyerku.customer.R;
 import lawyerku.customer.MainActivityCons;
+import lawyerku.customer.api.facebook.GetUserCallback;
+import lawyerku.customer.api.facebook.User;
+import lawyerku.customer.api.facebook.UserRequest;
 
-public class MainActivityCustomer extends AppCompatActivity {
+public class MainActivityCustomer extends AppCompatActivity implements GetUserCallback.IGetUserResponse {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -64,5 +68,16 @@ public class MainActivityCustomer extends AppCompatActivity {
       winParams.flags &= ~bits;
     }
     win.setAttributes(winParams);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    UserRequest.makeUserRequest(new GetUserCallback(MainActivityCustomer.this).getCallback());
+  }
+
+  @Override
+  public void onCompleted(User user) {
+    Log.e("Profile FB", "onCompleted: "+user.getEmail() );
   }
 }
