@@ -72,7 +72,8 @@ public class LoginActivity extends BaseActivity{
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if(accessToken != null){
-            Log.e("Tag", "onCreate: "+accessToken.getPermissions());
+            Log.e("Tag", "onCreate: "+accessToken);
+            loginProses();
         }
 
 

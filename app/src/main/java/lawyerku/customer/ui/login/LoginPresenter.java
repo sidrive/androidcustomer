@@ -42,6 +42,10 @@ public class LoginPresenter implements BasePresenter{
                 .subscribe(response -> {
                     Log.e(TAG, "validateLogin: "+response.success.token );
 
+                    if(response.success.token != null){
+                        activity.loginProses();
+                    }
+
                     if (response.status >= 200 && response.status < 300) {
 //                        GlobalPreferences.write(PrefKeys.loggedIn, true, Boolean.class);
 //                        GlobalPreferences.write(PrefKeys.accessToken, String.format(Locale.US, "Bearer %s", response.accessToken), String.class);
@@ -60,10 +64,6 @@ public class LoginPresenter implements BasePresenter{
                         .subscribe());
 //                        activity.loginProses();
 
-                    } else {
-
-                        Toast.makeText(activity, "User/Password Salah", Toast.LENGTH_SHORT).show();
-//                        listener.onError(response.message);
                     }
 //                    listener.hideLoading();
                     Log.e(TAG, "validateLogin: "+response.message );
