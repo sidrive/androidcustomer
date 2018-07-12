@@ -22,6 +22,10 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 
 import javax.inject.Inject;
 
@@ -31,25 +35,22 @@ public class SplashActivity extends BaseActivity {
     SplashPresenter presenter;
 
     private static int SPLASH_TIME_OUT = 3000;
+    private CallbackManager callbackManager;
+    private ProfileTracker profileTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_splash_cons);
 
         AccessToken accessTokenFacebook = AccessToken.getCurrentAccessToken();
 
         initMain(accessTokenFacebook);
         transparentStatusBar();
+
   }
 
-    /*@Override
-    protected void setupActivityComponent() {
-        BaseApplication.get(this).getCredentialModelComponent()
-                .plus(new SplashActivityModule(this))
-                .inject(this);
-        BaseApplication.get(this).createSplashComponent(this);
-    }*/
+
 
     @Override
     protected void setupActivityComponent() {
@@ -104,11 +105,13 @@ public class SplashActivity extends BaseActivity {
         }
         if(accessTokenFacebook != null){
 
-            Intent i = new Intent(SplashActivity.this, MainActivityCustomer.class);
+            Intent i = new Intent(SplashActivity.this, RegisterActivity.class);
             startActivity(i);
         }
 
     }
+
+
 
 
 }

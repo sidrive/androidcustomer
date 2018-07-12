@@ -56,6 +56,7 @@ public class LoginActivity extends BaseActivity{
 
     private LoginButton loginButton;
     private static final String EMAIL = "email";
+    private static final String PROFILE = "public_profile";
     private static final String USER_POSTS = "user_posts";
     private static final String AUTH_TYPE = "rerequest";
 
@@ -86,9 +87,9 @@ public class LoginActivity extends BaseActivity{
 
     @Override
     protected void setupActivityComponent() {
-//        BaseApplication.get(this).getAppComponent()
-//                .plus(new LoginActivityModule(this))
-//                .inject(this);
+        BaseApplication.get(this).getAppComponent()
+                .plus(new LoginActivityModule(this))
+                .inject(this);
     }
 
     private void transparentStatusBar(){
@@ -151,7 +152,7 @@ public class LoginActivity extends BaseActivity{
     private void initFBbutton() {
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.setReadPermissions(Arrays.asList(EMAIL, USER_POSTS));
+        loginButton.setReadPermissions(Arrays.asList(EMAIL, USER_POSTS, PROFILE));
         loginButton.setAuthType(AUTH_TYPE);
         // If you are using in a fragment, call loginButton.setFragment(this);
 

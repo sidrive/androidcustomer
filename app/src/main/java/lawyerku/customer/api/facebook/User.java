@@ -9,6 +9,17 @@ public class User {
     private final String email;
     private final String permissions;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "picture=" + picture +
+                ", name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", permissions='" + permissions + '\'' +
+                '}';
+    }
+
     public User(Uri picture, String name,
                 String id, String email, String permissions) {
         this.picture = picture;
@@ -16,6 +27,7 @@ public class User {
         this.id = id;
         this.email = email;
         this.permissions = permissions;
+
     }
 
     public Uri getPicture() {

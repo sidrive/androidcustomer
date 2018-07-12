@@ -10,6 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,12 +25,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lawyerku.customer.R;
+import lawyerku.customer.api.facebook.GetUserCallback;
+import lawyerku.customer.api.facebook.User;
+import lawyerku.customer.api.facebook.UserRequest;
 import lawyerku.customer.api.model.CredentialModel;
 import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
+import lawyerku.customer.ui.MainActivityCustomer;
 import lawyerku.customer.ui.login.LoginActivity;
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity implements GetUserCallback.IGetUserResponse {
     @Inject
     RegisterPresenter presenter;
 
@@ -60,7 +69,8 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_registration_cons);
         ButterKnife.bind(this);
 
-
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        initProfileFB(accessToken);
     }
 
     @Override
@@ -68,6 +78,28 @@ public class RegisterActivity extends BaseActivity {
         BaseApplication.get(this).getAppComponent()
                 .plus(new RegisterActivityModule(this))
                 .inject(this);
+    }
+
+
+    public void initProfileFB(AccessToken accessToken){
+
+        if(Profile.getCurrentProfile() != null){
+            String fbid = Profile.getCurrentProfile().getId();
+            GraphRequest request = GraphRequest.newGraphPathRequest(
+                    accessToken,
+                    "/"+fbid,
+                    new GraphRequest.Callback() {
+                        @Override
+                        public void onCompleted(GraphResponse response) {
+                            // Insert your code here
+                            Log.e("response", "onCompleted: "+response );
+                        }
+                    });
+
+            request.executeAsync();
+        }
+
+
     }
 
     @OnClick(R.id.btn_sign_up)
@@ -180,5 +212,20 @@ public class RegisterActivity extends BaseActivity {
 
         }
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UserRequest.makeUserRequest(new GetUserCallback(RegisterActivity.this).getCallback());
+    }
+
+    @Override
+    public void onCompleted(User user) {
+        if(user != null){
+            txtEmail.setText(user.getEmail());
+            txtFirstName.setText(Profile.getCurrentProfile().getFirstName().toString());
+            txtLastName.setText(Profile.getCurrentProfile().getMiddleName().toString()+" "+Profile.getCurrentProfile().getLastName().toString());
+        }
     }
 }

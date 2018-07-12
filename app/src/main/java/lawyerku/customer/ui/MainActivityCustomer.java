@@ -78,6 +78,6 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
 
   @Override
   public void onCompleted(User user) {
-    Log.e("Profile FB", "onCompleted: "+user.getEmail() );
+
   }
 }

@@ -33,7 +33,7 @@
     android:backgroundTint="@color/colorWhite"
     android:drawablePadding="16dp"
     android:drawableEnd="@drawable/ic_email"
-    android:hint="Username"
+    android:hint="Email"
     android:inputType="textEmailAddress"
     app:layout_constraintBottom_toTopOf="@id/et_password"
     app:layout_constraintEnd_toEndOf="parent"

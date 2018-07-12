@@ -12,8 +12,7 @@ import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
-
-import static com.google.android.gms.internal.zzt.TAG;
+;import static com.facebook.login.widget.ProfilePictureView.TAG;
 
 public class LoginPresenter implements BasePresenter{
   LoginActivity activity;

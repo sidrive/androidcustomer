@@ -1,6 +1,7 @@
 package lawyerku.customer.api.facebook;
 
 import android.net.Uri;
+import android.util.Log;
 
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
@@ -8,6 +9,8 @@ import com.facebook.GraphResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.facebook.GraphRequest.TAG;
 
 public class GetUserCallback {
     public interface IGetUserResponse {
@@ -44,6 +47,7 @@ public class GetUserCallback {
     private User jsonToUser(JSONObject user) throws JSONException {
         Uri picture = Uri.parse(user.getJSONObject("picture").getJSONObject("data").getString
                 ("url"));
+        Log.e(TAG, "jsonToUser: "+user );
         String name = user.getString("name");
         String id = user.getString("id");
         String email = null;
