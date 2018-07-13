@@ -11,7 +11,7 @@ public class CredentialModel {
         public String name;
 //        @SerializedName("cellphone_number_1") public String cellphone1;
 //        @SerializedName("cellphone_number_2") public String cellphone2;
-//        @SerializedName("id_number") public String nik;
+        @SerializedName("id_number") public String nik;
 
         // ====== Request for Register Customer
         public String address;

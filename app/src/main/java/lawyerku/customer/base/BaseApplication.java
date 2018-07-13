@@ -1,6 +1,8 @@
 package lawyerku.customer.base;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.location.Geocoder;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
@@ -20,6 +22,10 @@ public class BaseApplication extends MultiDexApplication {
     private CredentialModelComponent credentialModelComponent;
     private SplashComponent splashComponent;
 
+    @SuppressLint("StaticFieldLeak")
+    private static Context contextto;
+    private static Geocoder geocoder;
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
@@ -36,6 +42,7 @@ public class BaseApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         initAppComponent();
+        contextto = getApplicationContext();
     }
 
     private void initAppComponent() {
@@ -58,5 +65,9 @@ public class BaseApplication extends MultiDexApplication {
     public SplashComponent createSplashComponent(SplashActivity activity){
         splashComponent = credentialModelComponent.plus(new SplashModule(activity));
         return splashComponent;
+    }
+
+    public static Context getContext() {
+        return contextto;
     }
 }

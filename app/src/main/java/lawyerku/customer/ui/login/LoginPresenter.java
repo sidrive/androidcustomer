@@ -3,11 +3,15 @@ package lawyerku.customer.ui.login;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 import lawyerku.customer.R;
 import lawyerku.customer.api.LawyerkuService;
 import lawyerku.customer.api.model.CredentialModel;
 import lawyerku.customer.base.BaseInterface;
 import lawyerku.customer.base.BasePresenter;
+import lawyerku.customer.preference.GlobalPreference;
+import lawyerku.customer.preference.PrefKey;
 import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -42,6 +46,8 @@ public class LoginPresenter implements BasePresenter{
                     Log.e(TAG, "validateLogin: "+response.success.token );
 
                     if(response.success.token != null){
+                        GlobalPreference.write(PrefKey.loggedIn, true, Boolean.class);
+                        GlobalPreference.write(PrefKey.accessToken, String.format(Locale.US, "Bearer %s", response.accessToken), String.class);
                         activity.loginProses();
                     }
 

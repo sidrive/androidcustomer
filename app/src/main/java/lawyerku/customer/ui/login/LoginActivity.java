@@ -149,6 +149,11 @@ public class LoginActivity extends BaseActivity{
         startActivity(i);
     }
 
+    public void loginProsesFB(){
+        Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(i);
+    }
+
     private void initFBbutton() {
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
@@ -161,7 +166,7 @@ public class LoginActivity extends BaseActivity{
             @Override
             public void onSuccess(LoginResult loginResult) {
 
-                loginProses();
+                loginProsesFB();
             }
 
             @Override

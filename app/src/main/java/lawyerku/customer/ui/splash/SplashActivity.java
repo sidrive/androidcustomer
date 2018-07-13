@@ -13,6 +13,8 @@ import lawyerku.customer.MainActivity;
 import lawyerku.customer.R;
 import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
+import lawyerku.customer.preference.GlobalPreference;
+import lawyerku.customer.preference.PrefKey;
 import lawyerku.customer.ui.MainActivityCustomer;
 import lawyerku.customer.ui.login.LoginActivity;
 import lawyerku.customer.ui.register.RegisterActivity;
@@ -34,6 +36,8 @@ public class SplashActivity extends BaseActivity {
     @Inject
     SplashPresenter presenter;
 
+
+
     private static int SPLASH_TIME_OUT = 3000;
     private CallbackManager callbackManager;
     private ProfileTracker profileTracker;
@@ -44,8 +48,11 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash_cons);
 
         AccessToken accessTokenFacebook = AccessToken.getCurrentAccessToken();
+        GlobalPreference globalPreference = new GlobalPreference();
 
         initMain(accessTokenFacebook);
+//        init();
+
         transparentStatusBar();
 
   }
@@ -74,6 +81,26 @@ public class SplashActivity extends BaseActivity {
     }
   }
 
+  private void init(){
+      if(GlobalPreference.read(PrefKey.loggedIn,Boolean.class)){
+          Log.e("init", "init: null" );
+//                boolean loggedIn = GlobalPreference.read(PrefKey.loggedIn,Boolean.class);
+//                if(loggedIn){
+//                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
+//                    startActivity(i);
+//                }
+            }
+            else{
+          Log.e("init", "init: "+GlobalPreference.read(PrefKey.loggedIn,Boolean.class) );
+      }
+
+
+//
+//                Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+//                startActivity(i);
+
+  }
+
     private void initMain(AccessToken accessTokenFacebook) {
         new Handler().postDelayed(new Runnable() {
 
@@ -86,8 +113,8 @@ public class SplashActivity extends BaseActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(SplashActivity.this, RegisterActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(SplashActivity.this, RegisterActivity.class);
+//                startActivity(i);
 
                 initActivity(accessTokenFacebook);
                 finish();
@@ -98,15 +125,30 @@ public class SplashActivity extends BaseActivity {
 
     public void initActivity(AccessToken accessTokenFacebook){
         Log.e("init", "initActivity: "+accessTokenFacebook );
-        if(accessTokenFacebook == null){
+        boolean loggedIn = GlobalPreference.read(PrefKey.loggedIn,Boolean.class);
 
+        if(accessTokenFacebook == null && !loggedIn){
+//
             Intent i = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(i);
+            Log.e("init", "initActivity: 1" );
         }
-        if(accessTokenFacebook != null){
+        if(accessTokenFacebook == null && loggedIn){
+//
+            Intent i = new Intent(SplashActivity.this, MainActivityCustomer.class);
+            startActivity(i);
+            Log.e("init", "initActivity: 2" );
+        }
+        if(accessTokenFacebook != null && !loggedIn){
 
             Intent i = new Intent(SplashActivity.this, RegisterActivity.class);
             startActivity(i);
+            Log.e("init", "initActivity: 3" );
+        }
+        if(accessTokenFacebook != null && loggedIn){
+            Intent i = new Intent(SplashActivity.this, MainActivityCustomer.class);
+            startActivity(i);
+            Log.e("init", "initActivity: 4");
         }
 
     }

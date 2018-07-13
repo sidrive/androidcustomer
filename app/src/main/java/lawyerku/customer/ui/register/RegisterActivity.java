@@ -63,6 +63,13 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
     @BindView(R.id.et_phone_number)
     TextInputEditText txtPhone;
 
+    @BindView(R.id.et_idnumber)
+    TextInputEditText txtIdnumber;
+
+    boolean tokenFacebok;
+
+    AccessToken accessToken = AccessToken.getCurrentAccessToken();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +131,7 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
         txtLastName.setError(null);
         txtAddress.setError(null);
         txtPhone.setError(null);
+        txtIdnumber.setError(null);
 
         boolean cancel = false;
         View focusView = null;
@@ -169,6 +177,11 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
             focusView = txtLastName;
             cancel = true;
         }
+        if(TextUtils.isEmpty(txtIdnumber.getText().toString())){
+            txtIdnumber.setError(this.getBaseContext().getString(R.string.error_empty_nik));
+            focusView = txtIdnumber;
+            cancel = true;
+        }
         if(TextUtils.isEmpty(txtAddress.getText().toString())){
             txtAddress.setError(this.getBaseContext().getString(R.string.error_empty_address));
             focusView = txtAddress;
@@ -192,8 +205,19 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
             credential.phone_number_1 = txtPhone.getText().toString();
             credential.role_id = "2";
             credential.phone_number_2 = "0";
+            credential.nik = txtIdnumber.getText().toString();
 
-            presenter.register(credential,"customer");
+            if(accessToken != null){
+                tokenFacebok = true;
+                Log.e("register", "validate: "+tokenFacebok );
+                presenter.register(credential,tokenFacebok);
+            }
+            if(accessToken == null){
+                tokenFacebok = false;
+                presenter.register(credential,tokenFacebok);
+                Log.e("register", "validate: non FB" );
+            }
+
 
         }
 
