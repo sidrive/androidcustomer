@@ -7,20 +7,18 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import lawyerku.customer.MainActivity;
 import lawyerku.customer.R;
 import lawyerku.customer.MainActivityCons;
 import lawyerku.customer.api.facebook.GetUserCallback;
 import lawyerku.customer.api.facebook.User;
 import lawyerku.customer.api.facebook.UserRequest;
+import lawyerku.customer.ui.searchlawyer.SearchLawyerActivity;
 
 public class MainActivityCustomer extends AppCompatActivity implements GetUserCallback.IGetUserResponse {
 
@@ -34,7 +32,7 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
 
   @OnClick(R.id.cv_find)
   public void showCreatePerkara() {
-    Intent i = new Intent(MainActivityCustomer.this, CreatePerkaraActivityCons.class);
+    Intent i = new Intent(MainActivityCustomer.this, SearchLawyerActivity.class);
     startActivity(i);
   }
 

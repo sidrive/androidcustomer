@@ -35,11 +35,11 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.CreatePerkaraActivityCons"
+            android:name=".ui.searchlawyer.SearchLawyerActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.SearchActivity"
+            android:name=".ui.searchlawyer.search.SearchActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity

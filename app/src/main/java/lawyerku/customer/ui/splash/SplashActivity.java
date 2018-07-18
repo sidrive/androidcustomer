@@ -126,6 +126,8 @@ public class SplashActivity extends BaseActivity {
     public void initActivity(AccessToken accessTokenFacebook){
         Log.e("init", "initActivity: "+accessTokenFacebook );
         boolean loggedIn = GlobalPreference.read(PrefKey.loggedIn,Boolean.class);
+        String accessToken = GlobalPreference.read(PrefKey.accessToken, String.class);
+        Log.e("token", "initActivity: "+accessToken );
 
         if(accessTokenFacebook == null && !loggedIn){
 //

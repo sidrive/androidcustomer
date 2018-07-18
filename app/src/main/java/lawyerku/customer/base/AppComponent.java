@@ -8,6 +8,10 @@ import lawyerku.customer.ui.login.LoginActivityComponent;
 import lawyerku.customer.ui.login.LoginActivityModule;
 import lawyerku.customer.ui.register.RegisterActivityComponent;
 import lawyerku.customer.ui.register.RegisterActivityModule;
+import lawyerku.customer.ui.searchlawyer.SearchLawyerActivityComponent;
+import lawyerku.customer.ui.searchlawyer.SearchLawyerActivityModule;
+import lawyerku.customer.ui.searchlawyer.search.SearchActivityComponent;
+import lawyerku.customer.ui.searchlawyer.search.SearchActivityModule;
 import lawyerku.customer.ui.splash.SplashActivity;
 import lawyerku.customer.ui.splash.SplashActivityComponent;
 import lawyerku.customer.ui.splash.SplashActivityModule;
@@ -28,4 +32,8 @@ public interface AppComponent {
         RegisterActivityComponent plus(RegisterActivityModule activityModule);
 
         SplashActivityComponent plus(SplashActivityModule activityModule);
+
+        SearchLawyerActivityComponent plus(SearchLawyerActivityModule activityModule);
+
+        SearchActivityComponent plus(SearchActivityModule activityModule);
 }

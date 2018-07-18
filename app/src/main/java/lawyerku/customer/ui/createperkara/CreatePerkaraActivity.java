@@ -1,19 +1,13 @@
-package lawyerku.customer.ui;
+package lawyerku.customer.ui.createperkara;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraIdleListener;
@@ -21,7 +15,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lawyerku.customer.R;
@@ -29,17 +22,17 @@ import lawyerku.customer.R;
 public class CreatePerkaraActivity extends AppCompatActivity implements
  OnCameraIdleListener, OnMapReadyCallback{
 
-    @BindView(R.id.txtBahasa)
-    TextView txtBahasa;
-
-    @BindView(R.id.txtBidang)
-    TextView txtBidang;
-
-    @BindView(R.id.rel_map)
-    RelativeLayout relMap;
-
-    @BindView(R.id.img_marker)
-    ImageView imgMap;
+//    @BindView(R.id.txtBahasa)
+//    TextView txtBahasa;
+//
+//    @BindView(R.id.txtBidang)
+//    TextView txtBidang;
+//
+//    @BindView(R.id.rel_map)
+//    RelativeLayout relMap;
+//
+//    @BindView(R.id.img_marker)
+//    ImageView imgMap;
 
 
     CharSequence[] bahasa = {"Indonesia","Inggris"};
@@ -55,15 +48,15 @@ public class CreatePerkaraActivity extends AppCompatActivity implements
         ButterKnife.bind(this);
 
         LatLng indonesia = new LatLng(-7.7832754, 110.3664704);
-        initMap(indonesia);
+//        initMap(indonesia);
 
 
     }
-
-    @OnClick(R.id.txtBahasa)
-    void showBahasa(){
-        showLanguage();
-    }
+//
+//    @OnClick(R.id.txtBahasa)
+//    void showBahasa(){
+//        showLanguage();
+//    }
 
     @OnClick(R.id.txtBidang)
     void showBida(){
@@ -85,7 +78,7 @@ public class CreatePerkaraActivity extends AppCompatActivity implements
     private void handleSelectCategoryBahasa(int pos){
 //        kategoriVal = pos;
         String kategoris = bahasa[pos].toString();
-        txtBahasa.setText(kategoris);
+//        txtBahasa.setText(kategoris);
         Log.e("Bahasa", "handleSelectCategoryKategori: "+pos );
     }
 
@@ -104,28 +97,28 @@ public class CreatePerkaraActivity extends AppCompatActivity implements
     private void handleSelectCategoryBidang(int pos){
 //        kategoriVal = pos;
         String kategoris = bidang[pos].toString();
-        txtBidang.setText(kategoris);
+//        txtBidang.setText(kategoris);
         Log.e("Bahasa", "handleSelectCategoryKategori: "+pos );
     }
 
-    @OnClick(R.id.btnSearchLawyer)
-    public void showSearch(){
-        Intent i = new Intent(CreatePerkaraActivity.this, SearchActivity.class);
-        startActivity(i);
-    }
-
-    @OnClick(R.id.txtLocation)
-    void showPeta(){
-        relMap.setVisibility(View.VISIBLE);
-        mapMode = true;
-//        menuDone.setVisible(false);
-    }
-
-    @OnClick(R.id.btnSimpanMap)
-    void simpanMap(){
-        relMap.setVisibility(View.GONE);
-        mapMode = false;
-    }
+//    @OnClick(R.id.btnSearchLawyer)
+//    public void showSearch(){
+//        Intent i = new Intent(CreatePerkaraActivity.this, SearchActivity.class);
+//        startActivity(i);
+//    }
+//
+//    @OnClick(R.id.txtLocation)
+//    void showPeta(){
+//        relMap.setVisibility(View.VISIBLE);
+//        mapMode = true;
+////        menuDone.setVisible(false);
+//    }
+//
+//    @OnClick(R.id.btnSimpanMap)
+//    void simpanMap(){
+//        relMap.setVisibility(View.GONE);
+//        mapMode = false;
+//    }
 
     @Override
     public void onCameraIdle() {
@@ -140,7 +133,7 @@ public class CreatePerkaraActivity extends AppCompatActivity implements
         LatLng indonesia = new LatLng(-7.7832754, 110.3664704);
 //        LatLng indonesia = new LatLng(mlocation.getLatitude(),mlocation.getLongitude());
         Log.e("map", "initMap: "+indonesia );
-        initMap(indonesia);
+//        initMap(indonesia);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(indonesia, 16));
         mMap.setOnCameraIdleListener(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -157,22 +150,22 @@ public class CreatePerkaraActivity extends AppCompatActivity implements
     }
 
 
-    public void initMap(LatLng latLng) {
-
-            double latitude = latLng.latitude;
-            double longitude = latLng.longitude;
-
-        String url =
-                "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=800x400&maptype=roadmap%20&markers=color:red%7Clabel:S%7C"
-                        + latitude + "," + longitude + "+&sensor=false";
-        Log.d("initmap", "url = " + url);
-        Glide.with(this)
-                .load(url)
-                .placeholder(R.color.colorShadow2)
-                .centerCrop()
-                .dontAnimate()
-                .into(imgMap);
-    }
+//    public void initMap(LatLng latLng) {
+//
+//            double latitude = latLng.latitude;
+//            double longitude = latLng.longitude;
+//
+//        String url =
+//                "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=800x400&maptype=roadmap%20&markers=color:red%7Clabel:S%7C"
+//                        + latitude + "," + longitude + "+&sensor=false";
+//        Log.d("initmap", "url = " + url);
+//        Glide.with(this)
+//                .load(url)
+//                .placeholder(R.color.colorShadow2)
+//                .centerCrop()
+//                .dontAnimate()
+//                .into(imgMap);
+//    }
 
 
 }

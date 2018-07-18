@@ -47,7 +47,7 @@ public class LoginPresenter implements BasePresenter{
 
                     if(response.success.token != null){
                         GlobalPreference.write(PrefKey.loggedIn, true, Boolean.class);
-                        GlobalPreference.write(PrefKey.accessToken, String.format(Locale.US, "Bearer %s", response.accessToken), String.class);
+                        GlobalPreference.write(PrefKey.accessToken, String.format(Locale.US, "Bearer %s", response.success.token), String.class);
                         activity.loginProses();
                     }
 

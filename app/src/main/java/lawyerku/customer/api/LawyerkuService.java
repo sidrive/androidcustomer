@@ -3,7 +3,9 @@ package lawyerku.customer.api;
 import java.util.concurrent.TimeUnit;
 
 import lawyerku.customer.BuildConfig;
+import lawyerku.customer.api.model.CreatePerkaraModel;
 import lawyerku.customer.api.model.CredentialModel;
+import lawyerku.customer.api.model.LawyerModel;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -47,6 +49,11 @@ public interface LawyerkuService {
     //    ==============================================================
     //                      PROJECT
     //    ==============================================================
+        @Headers("Content-Type:application/json")
+        @POST("api/lawyers/search")
+        Observable<LawyerModel.Response> searchLawyer(
+            @Header("Authorization") String header,
+            @Body LawyerModel.Request body);
 
 //    @Headers("Accept:application/json")
 //    @GET("api/languages-and-skills?api_token=b3b45k4n")
