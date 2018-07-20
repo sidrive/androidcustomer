@@ -184,9 +184,8 @@ public interface LawyerkuService {
     //    ==============================================================
 
     @Headers("Accept:application/json")
-    @GET("api/me")
-//    Observable<ProfileModel.Response> getProfile(@Header("Authorization") String header);
-    Observable<Throwable> getProfile(@Header("Authorization") String header);
+    @POST("api/me")
+    Observable<LawyerModel.ResponseProfile> getProfile(@Header("Authorization") String header);
 
     @Headers("Accept:application/json")
     @GET("api/lawyers/{idlawyer}")

@@ -61,12 +61,7 @@ public class LoginPresenter implements BasePresenter{
 //                            //listener.onError(App.getContext().getString(R.string.error_unauthenticated));
 //                            listener.onError(response.message);
 //                        }
-                        String token = response.accessToken;
-                        subscription.add(LawyerkuService.Factory.create().getProfile(token)
-                            .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe());
-//                        activity.loginProses();
+
 
                     }
 //                    listener.hideLoading();

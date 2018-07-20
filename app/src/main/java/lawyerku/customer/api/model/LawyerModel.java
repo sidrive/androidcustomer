@@ -25,17 +25,15 @@ public class LawyerModel {
         return builder.toString();
     }
 
-    public static class Responses {
-        public int status;
-        public String message;
-        public Object data;
+    public static class ResponseProfile {
+        public String success;
+        public List<DataProfile> data;
 
         @Override
         public String toString() {
-            return "Responses{" +
-                    "status=" + status +
-                    ", message='" + message + '\'' +
-                    ", data=" + data +
+            return "ResponseProfile{" +
+                    "message='" + success + '\'' +
+                    ", status=" + success +
                     '}';
         }
     }
@@ -61,21 +59,21 @@ public class LawyerModel {
         public Data data;
     }
 
-    public static class Data1{
+    public static class DataProfile{
         public int id;
-//        public String name;
-//        public String address_1;
-//        public String address_2;
-//        @SerializedName("gps_latitude") public String latitude;
-//        @SerializedName("gps_longitude") public String longitude;
-//        @SerializedName("cellphone_number_1") public String cellphone1;
-//        @SerializedName("cellphone_number_2") public String cellphone2;
-//        public int level;
-//        @SerializedName("have_smartphone") public boolean smartphone;
-//        @SerializedName("rate_min") public String rateMin;
-//        @SerializedName("rate_max") public String rateMax;
+        public String username;
+        public String email;
+        @SerializedName("role_id") public int roleid;
 
-
+        @Override
+        public String toString() {
+            return "DataProfile{" +
+                    "id=" + id +
+                    ", username='" + username + '\'' +
+                    ", email='" + email + '\'' +
+                    ", roleid=" + roleid +
+                    '}';
+        }
     }
 
     public static class Data {

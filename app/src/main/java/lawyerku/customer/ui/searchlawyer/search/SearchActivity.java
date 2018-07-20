@@ -43,6 +43,8 @@ public class SearchActivity extends BaseActivity {
   RecyclerView lsLawyer;
 
   private AdapterLawyer adapterLawyer;
+  public static String latitudeProject = null;
+  public static String longitudeProjeect = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,9 @@ public class SearchActivity extends BaseActivity {
     requestBody.latitude = bundle.getString("latitude").toString();
     requestBody.longitude = bundle.getString("longitude").toString();
     presenter.searchLawyer(requestBody);
+
+    latitudeProject = bundle.getString("latitude").toString();
+    longitudeProjeect = bundle.getString("longitude").toString();
   }
 
     @Override
@@ -116,6 +121,8 @@ public class SearchActivity extends BaseActivity {
     Intent i = new Intent(SearchActivity.this, DetailLawyerActivity.class);
     Bundle bundle = new Bundle();
     bundle.putString("idlawyer", String.valueOf(lawyer.id));
+    bundle.putString("latitude",latitudeProject);
+    bundle.putString("longitude",longitudeProjeect);
     i.putExtras(bundle);
     startActivity(i);
   }
