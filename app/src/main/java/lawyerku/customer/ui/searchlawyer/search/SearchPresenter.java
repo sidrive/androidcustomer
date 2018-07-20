@@ -39,18 +39,23 @@ public class SearchPresenter implements BasePresenter {
     public void searchLawyer(LawyerModel.Request requestBody){
         String accessToken = GlobalPreference.read(PrefKey.accessToken, String.class);
 
-        subscription.add(LawyerkuService.Factory.create().searchLawyer(accessToken, requestBody)
+        String language = "2";
+        String skill = "1";
+        String latitude = "-59.288834";
+        String longitude = "-167.767563";
+        subscription.add(LawyerkuService.Factory.create().searchLawyer(accessToken, language,skill,latitude,longitude)
+//        subscription.add(LawyerkuService.Factory.create().searchLawyer(accessToken, String.valueOf(requestBody.language),
+//                String.valueOf(requestBody.skill),String.valueOf(requestBody.latitude),String.valueOf(requestBody.longitude))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
                     List<LawyerModel.Data> listLawyer = new ArrayList<>();
-//                    createProjectListener.hideLoading();
                     if (response.status >= 200 && response.status < 300) {
                         for (int position = 0; position < response.data.size(); position++){
                             listLawyer.add(response.data.get(position));
                         }
                         activity.initListLawyer(listLawyer);
-
+                        Log.e(TAG, "searchLawyer: "+listLawyer );
                     } else {
 //                        createProjectListener.onError(response.message);
                     }

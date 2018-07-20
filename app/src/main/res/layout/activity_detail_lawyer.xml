@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_grad1"
+    android:fitsSystemWindows="true"
+    android:theme="@style/Apptheme2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,6 +25,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/text_detail_workman"
             android:textColor="@android:color/black"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
         <android.support.v7.widget.CardView
@@ -40,7 +46,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
                     android:orientation="vertical">
@@ -50,7 +56,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
-                        android:lines="1"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
                         android:textColor="@android:color/black"
@@ -62,10 +67,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
-                        android:lines="2"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp"
                         android:text="Yogyakarta"/>
+
+                    <TextView
+                        android:id="@+id/text_cellphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        android:text="phone"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -136,6 +150,18 @@
                         android:paddingRight="8dp"
                         android:paddingStart="8dp"
                         android:text="@string/text_colon"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/text_skill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="8dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingStart="8dp"
+                        android:text="@string/text_skill"
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
@@ -265,14 +291,7 @@
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp" />
 
-                    <id.ketukang.ketukang_customer.widget.textview.TextViewItalic
-                        android:id="@+id/text_nego"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/text_nego"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp"
-                        android:visibility="gone" />
+
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -282,12 +301,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:background="@drawable/bg_radius_transparant_orange"
+            android:background="@drawable/bg_transparent_silver"
             android:text="@string/text_choose"
-            android:textColor="@android:color/white"
+            android:textColor="@color/goldenBrownLawyer"
             android:textSize="14sp" />
     </LinearLayout>
 
     </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</android.support.constraint.ConstraintLayout>

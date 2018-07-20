@@ -25,6 +25,21 @@ public class LawyerModel {
         return builder.toString();
     }
 
+    public static class Responses {
+        public int status;
+        public String message;
+        public Object data;
+
+        @Override
+        public String toString() {
+            return "Responses{" +
+                    "status=" + status +
+                    ", message='" + message + '\'' +
+                    ", data=" + data +
+                    '}';
+        }
+    }
+
     public static class Response {
         public int status;
         public String message;
@@ -48,35 +63,19 @@ public class LawyerModel {
 
     public static class Data1{
         public int id;
-        public String name;
-        public String address_1;
-        public String address_2;
-        @SerializedName("gps_latitude") public String latitude;
-        @SerializedName("gps_longitude") public String longitude;
-        @SerializedName("cellphone_number_1") public String cellphone1;
-        @SerializedName("cellphone_number_2") public String cellphone2;
-        public int level;
-        @SerializedName("have_smartphone") public boolean smartphone;
-        @SerializedName("rate_min") public String rateMin;
-        @SerializedName("rate_max") public String rateMax;
+//        public String name;
+//        public String address_1;
+//        public String address_2;
+//        @SerializedName("gps_latitude") public String latitude;
+//        @SerializedName("gps_longitude") public String longitude;
+//        @SerializedName("cellphone_number_1") public String cellphone1;
+//        @SerializedName("cellphone_number_2") public String cellphone2;
+//        public int level;
+//        @SerializedName("have_smartphone") public boolean smartphone;
+//        @SerializedName("rate_min") public String rateMin;
+//        @SerializedName("rate_max") public String rateMax;
 
-        @Override
-        public String toString() {
-            return "Data1{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    ", address_1='" + address_1 + '\'' +
-                    ", address_2='" + address_2 + '\'' +
-                    ", latitude=" + latitude +
-                    ", longitude=" + longitude +
-                    ", cellphone1='" + cellphone1 + '\'' +
-                    ", cellphone2='" + cellphone2 + '\'' +
-                    ", level='" + level + '\'' +
-                    ", smartphone=" + smartphone +
-                    ", rateMin='" + rateMin + '\'' +
-                    ", rateMax='" + rateMax + '\'' +
-                    '}';
-        }
+
     }
 
     public static class Data {

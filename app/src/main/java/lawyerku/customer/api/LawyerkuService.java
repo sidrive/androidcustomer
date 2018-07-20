@@ -1,5 +1,6 @@
 package lawyerku.customer.api;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import lawyerku.customer.BuildConfig;
@@ -49,11 +50,16 @@ public interface LawyerkuService {
     //    ==============================================================
     //                      PROJECT
     //    ==============================================================
-        @Headers("Content-Type:application/json")
-        @POST("api/lawyers/search")
-        Observable<LawyerModel.Response> searchLawyer(
+
+
+    @Headers("Content-Type:application/json")
+    @GET("api/lawyers/search")
+    Observable<LawyerModel.Response> searchLawyer(
             @Header("Authorization") String header,
-            @Body LawyerModel.Request body);
+            @Query("languageskill_id") String language,
+            @Query("jobskill_id") String skill,
+            @Query("latitude") String latitude,
+            @Query("longitude") String longitude);
 
 //    @Headers("Accept:application/json")
 //    @GET("api/languages-and-skills?api_token=b3b45k4n")
@@ -181,6 +187,16 @@ public interface LawyerkuService {
     @GET("api/me")
 //    Observable<ProfileModel.Response> getProfile(@Header("Authorization") String header);
     Observable<Throwable> getProfile(@Header("Authorization") String header);
+
+    @Headers("Accept:application/json")
+    @GET("api/lawyers/{idlawyer}")
+    Observable<LawyerModel.Response> getLawyer(
+            @Header("Authorization") String header,
+            @Path("idlawyer") int idlawyer);
+
+    @Headers("Accept:application/json")
+    @GET("api/language_skills")
+    Observable<LawyerModel.Response> getLaw(@Header("Authorization") String header);
 //
 //    @Multipart
 //    @Headers("Accept:application/json")

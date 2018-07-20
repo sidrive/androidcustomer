@@ -103,7 +103,7 @@
   <string name="text_project_cancelled">Proyek berhasil dibatalkan</string>
 
   <!-- String related to detail workman page -->
-  <string name="text_detail_workman">Detail Tukang</string>
+  <string name="text_detail_workman">Detail Lawyer</string>
   <string name="text_level">Level</string>
   <string name="text_rating">Rating</string>
   <string name="text_price">Biaya/Hari</string>
@@ -184,4 +184,9 @@
   <string name="str_location">Location</string>
   <string name="str_bahasa">Bahasa</string>
   <string name="str_bidang">Bidang</string>
+  <string name="ijin_lokasi">Membutuhkan ijin untuk akses lokasi</string>
+
+  <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyAQDqubFmR32b-2Eysf7cyAB8eh4yoqiHQ
+    </string>
 </resources>

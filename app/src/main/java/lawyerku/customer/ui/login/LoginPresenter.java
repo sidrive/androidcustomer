@@ -12,7 +12,6 @@ import lawyerku.customer.base.BaseInterface;
 import lawyerku.customer.base.BasePresenter;
 import lawyerku.customer.preference.GlobalPreference;
 import lawyerku.customer.preference.PrefKey;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;

@@ -32,6 +32,7 @@ import lawyerku.customer.api.model.LawyerModel;
 import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.ui.DetailPerkaraCons;
+import lawyerku.customer.ui.detaillawyer.DetailLawyerActivity;
 
 public class SearchActivity extends BaseActivity {
   private static final String TAG = "SearchActivity";
@@ -56,6 +57,8 @@ public class SearchActivity extends BaseActivity {
     Bundle bundle = getIntent().getExtras();
     requestBody.language = Integer.valueOf(bundle.get("languages").toString());
     requestBody.skill = Integer.valueOf(bundle.get("jobskill").toString());
+    requestBody.latitude = bundle.getString("latitude").toString();
+    requestBody.longitude = bundle.getString("longitude").toString();
     presenter.searchLawyer(requestBody);
   }
 
@@ -110,7 +113,19 @@ public class SearchActivity extends BaseActivity {
 
   public void createProject(LawyerModel.Data lawyer) {
     Log.e(TAG, "createProject: "+lawyer );
-    Intent i = new Intent(SearchActivity.this, DetailPerkaraCons.class);
+    Intent i = new Intent(SearchActivity.this, DetailLawyerActivity.class);
+    Bundle bundle = new Bundle();
+    bundle.putString("idlawyer", String.valueOf(lawyer.id));
+    i.putExtras(bundle);
+    startActivity(i);
+  }
+
+  @OnClick(R.id.img_logo)
+  public void lawyerDetail(){
+    Intent i = new Intent(SearchActivity.this, DetailLawyerActivity.class);
+    Bundle bundle = new Bundle();
+    bundle.putString("idlawyer", "1");
+    i.putExtras(bundle);
     startActivity(i);
   }
 }

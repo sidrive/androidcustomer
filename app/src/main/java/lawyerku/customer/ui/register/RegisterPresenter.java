@@ -15,7 +15,7 @@ import lawyerku.customer.api.LawyerkuService;
 import lawyerku.customer.api.model.CredentialModel;
 import lawyerku.customer.base.BasePresenter;
 import lawyerku.customer.ui.login.LoginActivity;
-import retrofit2.HttpException;
+import retrofit2.adapter.rxjava.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;

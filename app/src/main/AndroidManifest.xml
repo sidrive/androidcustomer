@@ -70,6 +70,10 @@
             android:name=".ui.ForgotPasswordActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.detaillawyer.DetailLawyerActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
 
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"
@@ -89,6 +93,10 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
 
     </application>
 
