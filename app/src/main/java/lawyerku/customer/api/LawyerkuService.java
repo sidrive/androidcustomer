@@ -65,11 +65,11 @@ public interface LawyerkuService {
 //    @GET("api/languages-and-skills?api_token=b3b45k4n")
 //    Observable<LanguageModel.Response> getLanguageAndSkill();
 //
-//    @Headers("Accept:application/json")
-//    @POST("api/project")
-//    Observable<CreateProjectModel.Response> createProject(
-//            @Header("Authorization") String header,
-//            @Body CreateProjectModel.Request body);
+    @Headers("Accept:application/json")
+    @POST("api/projects")
+    Observable<CreatePerkaraModel.Response> createProject(
+            @Header("Authorization") String header,
+            @Body CreatePerkaraModel.Response.Data body);
 //
 //    @Headers("Accept:application/json")
 //    @PUT("api/project/{projectId}")

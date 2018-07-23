@@ -99,6 +99,18 @@ public class CredentialModel {
         public String message;
         public String userType;
         public Success success;
+        public Data data;
+    }
+
+    public static class Data {
+        public String token;
+
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "token='" + token + '\'' +
+                    '}';
+        }
     }
 
     public static class Error{

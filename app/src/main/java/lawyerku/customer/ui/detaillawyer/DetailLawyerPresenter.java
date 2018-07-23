@@ -87,7 +87,22 @@ public class DetailLawyerPresenter implements BasePresenter {
     }
 
 
-    public void createPerkara(CreatePerkaraModel.Response.Data createPerkaraBody) {
+    public void createPerkara(String accessToken, CreatePerkaraModel.Response.Data createPerkaraBody) {
         Log.e(TAG, "createPerkara: "+createPerkaraBody );
+        subscription.add(LawyerkuService.Factory.create().createProject(accessToken,createPerkaraBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> {
+                    Log.e(TAG, "getLawyer: "+response.data );
+
+                    activity.detailProject(response.data);
+
+//                    profileListener.hideLoading();
+                }, throwable -> {
+                    int errorCode = ((HttpException) throwable).response().code();
+//                    if (errorCode > 400)
+//                        profileListener.onError(App.getContext().getString(R.string.error_general));
+//                    profileListener.hideLoading();
+                }));
     }
 }

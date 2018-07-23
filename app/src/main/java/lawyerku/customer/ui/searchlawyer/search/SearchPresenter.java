@@ -40,7 +40,7 @@ public class SearchPresenter implements BasePresenter {
         String accessToken = GlobalPreference.read(PrefKey.accessToken, String.class);
 
         String language = "2";
-        String skill = "1";
+        String skill = "2";
         String latitude = "-59.288834";
         String longitude = "-167.767563";
         subscription.add(LawyerkuService.Factory.create().searchLawyer(accessToken, language,skill,latitude,longitude)

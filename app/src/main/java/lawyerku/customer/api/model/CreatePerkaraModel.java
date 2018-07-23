@@ -19,35 +19,35 @@ public class CreatePerkaraModel {
 
         public static class Data {
             public int id;
-            @SerializedName("customer_id") public int customerId;
-            @SerializedName("lawyer_id") public int lawyerId;
-            @SerializedName("jobskill_id") public int jobskill;
+            @SerializedName("customer_id") public int customer_id;
+            @SerializedName("lawyer_id") public int lawyer_id;
+            @SerializedName("jobskill_id") public int jobskill_id;
             @SerializedName("number") public String number;
             public String description;
-            @SerializedName("gps_latitude") public Double latitude;
-            @SerializedName("gps_longitude")public Double longitude;
-            @SerializedName("start_date")public String startDate;
-            @SerializedName("end_date")public String endDate;
-            @SerializedName("updated_at")public String updatedAt;
-            @SerializedName("created_at")public String createdAt;
-            @SerializedName("status")public String status_projek;
+            @SerializedName("gps_latitude") public Double gps_latitude;
+            @SerializedName("gps_longitude")public Double gps_longitud;
+            @SerializedName("start_date")public String start_date;
+            @SerializedName("end_date")public String end_date;
+            @SerializedName("updated_at")public String updated_at;
+            @SerializedName("created_at")public String created_at;
+            @SerializedName("status")public String status;
 
             @Override
             public String toString() {
                 return "Data{" +
                         "id=" + id +
-                        ", customerId=" + customerId +
-                        ", lawyerId=" + lawyerId +
-                        ", jobskill=" + jobskill +
+                        ", customer_id=" + customer_id +
+                        ", lawyer_id=" + lawyer_id +
+                        ", jobskill_id=" + jobskill_id +
                         ", number='" + number + '\'' +
                         ", description='" + description + '\'' +
-                        ", latitude=" + latitude +
-                        ", longitude=" + longitude +
-                        ", startDate='" + startDate + '\'' +
-                        ", endDate='" + endDate + '\'' +
-                        ", updatedAt='" + updatedAt + '\'' +
-                        ", createdAt='" + createdAt + '\'' +
-                        ", status_projek='" + status_projek + '\'' +
+                        ", gps_latitude=" + gps_latitude +
+                        ", gps_longitud=" + gps_longitud +
+                        ", start_date='" + start_date + '\'' +
+                        ", end_date='" + end_date + '\'' +
+                        ", updated_at='" + updated_at + '\'' +
+                        ", created_at='" + created_at + '\'' +
+                        ", status='" + status + '\'' +
                         '}';
             }
         }

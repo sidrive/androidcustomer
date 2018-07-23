@@ -2,6 +2,7 @@ package lawyerku.customer.ui.detaillawyer;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.preference.GlobalPreference;
 import lawyerku.customer.preference.PrefKey;
+import lawyerku.customer.ui.DetailPerkara;
+import lawyerku.customer.ui.DetailPerkaraCons;
 
 public class DetailLawyerActivity extends BaseActivity {
 
@@ -201,17 +204,26 @@ public class DetailLawyerActivity extends BaseActivity {
     public void initProject(LawyerModel.DataProfile customer, LawyerModel.Data lawyer) {
         CreatePerkaraModel.Response.Data createPerkaraBody = new CreatePerkaraModel.Response.Data();
 
-        createPerkaraBody.customerId = customer.id;
-        createPerkaraBody.lawyerId = lawyer.id;
-        createPerkaraBody.jobskill = lawyer.jobskills.get(0).id;
+        createPerkaraBody.customer_id = customer.id;
+        createPerkaraBody.lawyer_id = lawyer.id;
+        createPerkaraBody.jobskill_id = lawyer.jobskills.get(0).id;
         createPerkaraBody.description = "Pencurian Uang";
-        createPerkaraBody.latitude = Double.valueOf(latitudeProject);
-        createPerkaraBody.longitude = Double.valueOf(longitudeProjeect);
-        createPerkaraBody.startDate = starDate;
-        createPerkaraBody.endDate = endDate;
+        createPerkaraBody.gps_latitude = Double.valueOf(latitudeProject);
+        createPerkaraBody.gps_longitud = Double.valueOf(longitudeProjeect);
+        createPerkaraBody.start_date = starDate;
+        createPerkaraBody.end_date = endDate;
+        createPerkaraBody.number = "1";
 
-        presenter.createPerkara(createPerkaraBody);
+        presenter.createPerkara(accessToken,createPerkaraBody);
 
 
+    }
+
+    public void detailProject(CreatePerkaraModel.Response.Data data) {
+        Intent i = new Intent(DetailLawyerActivity.this, DetailPerkaraCons.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("id", String.valueOf(data.id));
+        i.putExtras(bundle);
+        startActivity(i);
     }
 }
