@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -32,8 +31,7 @@ import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.preference.GlobalPreference;
 import lawyerku.customer.preference.PrefKey;
-import lawyerku.customer.ui.DetailPerkara;
-import lawyerku.customer.ui.DetailPerkaraCons;
+import lawyerku.customer.ui.detailperkara.DetailPerkaraActivity;
 
 public class DetailLawyerActivity extends BaseActivity {
 
@@ -220,7 +218,7 @@ public class DetailLawyerActivity extends BaseActivity {
     }
 
     public void detailProject(CreatePerkaraModel.Response.Data data) {
-        Intent i = new Intent(DetailLawyerActivity.this, DetailPerkaraCons.class);
+        Intent i = new Intent(DetailLawyerActivity.this, DetailPerkaraActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("id", String.valueOf(data.id));
         i.putExtras(bundle);

@@ -47,7 +47,7 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-          android:name=".ui.DetailPerkaraCons"
+          android:name=".ui.detailperkara.DetailPerkaraActivity"
           android:theme="@style/AppTheme"
           android:windowSoftInputMode="stateHidden" />
         <activity

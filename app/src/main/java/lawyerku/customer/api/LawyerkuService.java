@@ -7,6 +7,7 @@ import lawyerku.customer.BuildConfig;
 import lawyerku.customer.api.model.CreatePerkaraModel;
 import lawyerku.customer.api.model.CredentialModel;
 import lawyerku.customer.api.model.LawyerModel;
+import lawyerku.customer.api.model.PerkaraModel;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -70,6 +71,12 @@ public interface LawyerkuService {
     Observable<CreatePerkaraModel.Response> createProject(
             @Header("Authorization") String header,
             @Body CreatePerkaraModel.Response.Data body);
+
+    @Headers("Content-Type:application/json")
+    @GET("api/projects/{idProject}")
+    Observable<PerkaraModel.Response> getProject(
+            @Header("Authorization") String header,
+            @Path ("idProject") String idProject );
 //
 //    @Headers("Accept:application/json")
 //    @PUT("api/project/{projectId}")

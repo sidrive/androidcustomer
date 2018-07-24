@@ -6,6 +6,8 @@ import dagger.Component;
 import lawyerku.customer.api.data.remote.CredentialModelModule;
 import lawyerku.customer.ui.detaillawyer.DetailLawyerActivityComponent;
 import lawyerku.customer.ui.detaillawyer.DetailLawyerActivityModule;
+import lawyerku.customer.ui.detailperkara.DetailPerkaraActivityComponent;
+import lawyerku.customer.ui.detailperkara.DetailPerkaraActivityModule;
 import lawyerku.customer.ui.login.LoginActivityComponent;
 import lawyerku.customer.ui.login.LoginActivityModule;
 import lawyerku.customer.ui.register.RegisterActivityComponent;
@@ -40,4 +42,6 @@ public interface AppComponent {
         SearchActivityComponent plus(SearchActivityModule activityModule);
 
         DetailLawyerActivityComponent plus(DetailLawyerActivityModule activityModule);
+
+        DetailPerkaraActivityComponent plus(DetailPerkaraActivityModule activityModule);
 }

@@ -62,15 +62,15 @@
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintBottom_toTopOf="@id/tv_nama_perkara"
+          app:layout_constraintBottom_toTopOf="@id/tv_nama_customer"
           />
 
         <TextView
-          android:id="@+id/tv_nama_perkara"
+          android:id="@+id/tv_nama_customer"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_margin="8dp"
-          android:text="Nama Perkara "
+          android:text="Nama Customer"
           app:layout_constraintTop_toBottomOf="@id/tv_judul"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +83,7 @@
           android:layout_height="wrap_content"
           android:layout_margin="8dp"
           android:text="Bidang Perkara "
-          app:layout_constraintTop_toBottomOf="@id/tv_nama_perkara"
+          app:layout_constraintTop_toBottomOf="@id/tv_nama_customer"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           />

@@ -1,4 +1,4 @@
-package lawyerku.customer.ui;
+package lawyerku.customer.ui.detailperkara;
 
 import android.Manifest.permission;
 import android.app.Activity;
@@ -21,6 +21,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -31,10 +33,22 @@ import com.google.android.gms.maps.GoogleMap.OnCameraIdleListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import lawyerku.customer.R;
 
-public class DetailPerkaraCons extends AppCompatActivity implements OnCameraIdleListener,
+import java.util.List;
+
+import javax.inject.Inject;
+
+import lawyerku.customer.R;
+import lawyerku.customer.api.model.PerkaraModel;
+import lawyerku.customer.base.BaseActivity;
+import lawyerku.customer.base.BaseApplication;
+import lawyerku.customer.ui.MessageActivity;
+
+public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleListener,
     OnMapReadyCallback {
+
+  @Inject
+  DetailPerkaraPresenter presenter;
 
   @BindView(R.id.img_msg)
   ImageView imgMsg;
@@ -42,6 +56,25 @@ public class DetailPerkaraCons extends AppCompatActivity implements OnCameraIdle
   Button btnBayar;
   @BindView(R.id.img_maps)
   ImageView imgMaps;
+
+  @BindView(R.id.tv_nama_customer)
+  TextView txtNamaCustomer;
+
+  @BindView(R.id.tv_bidang_hukum)
+  TextView txtbidangHukum;
+
+  @BindView(R.id.tv_desc)
+  TextView txtdescription;
+
+  @BindView(R.id.tv_nama_lawyer)
+  TextView txtnamaLawyer;
+
+  @BindView(R.id.tv_telp)
+  TextView txttelpLawyer;
+
+  @BindView(R.id.tv_hp)
+  TextView txthpLawyer;
+
   private GoogleMap mMap;
   private LocationManager lm;
   private Location mlocation;
@@ -55,9 +88,18 @@ public class DetailPerkaraCons extends AppCompatActivity implements OnCameraIdle
     setContentView(R.layout.activity_detail_perkara_cons);
     ButterKnife.bind(this);
 
-    LatLng indo = new LatLng(-7.803249, 110.3398253);
-    initMap(indo);
+//    LatLng indo = new LatLng(-7.803249, 110.3398253);
+//    initMap(indo);
     transparentStatusBar();
+
+    presenter.getProject(14);
+  }
+
+  @Override
+  protected void setupActivityComponent() {
+    BaseApplication.get(this).getAppComponent()
+            .plus(new DetailPerkaraActivityModule(this))
+            .inject(this);
   }
 
   private void transparentStatusBar(){
@@ -97,7 +139,7 @@ public class DetailPerkaraCons extends AppCompatActivity implements OnCameraIdle
 
     LatLng indonesia = new LatLng(mlocation.getLatitude(), mlocation.getLongitude());
     Log.e("map", "initMap: " + indonesia);
-    initMap(indonesia);
+//    initMap(indonesia);
     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(indonesia, 16));
     mMap.setOnCameraIdleListener(this);
     if (ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION)
@@ -138,7 +180,7 @@ public class DetailPerkaraCons extends AppCompatActivity implements OnCameraIdle
 
   @OnClick(R.id.img_msg)
   public void onImgMsgClicked() {
-    Intent intent = new Intent(DetailPerkaraCons.this, MessageActivity.class);
+    Intent intent = new Intent(DetailPerkaraActivity.this, MessageActivity.class);
     startActivity(intent);
   }
 
@@ -178,5 +220,17 @@ public class DetailPerkaraCons extends AppCompatActivity implements OnCameraIdle
 
   @OnClick(R.id.img_maps)
   public void onViewClicked() {
+  }
+
+  public void initProject(List<PerkaraModel.Response.Data> data) {
+    Log.e("DetailPerkara", "initProject: "+data );
+    LatLng latLng = new LatLng(data.get(0).gps_latitude,data.get(0).gps_longitud);
+    initMap(latLng);
+    txtNamaCustomer.setText(data.get(0).customer.name);
+    txtbidangHukum.setText(data.get(0).jobskill.name);
+    txtdescription.setText(data.get(0).description);
+    txtnamaLawyer.setText(data.get(0).lawyer.lawyername);
+    txthpLawyer.setText(data.get(0).lawyer.lawyerPhone2);
+    txttelpLawyer.setText(data.get(0).lawyer.lawyerPhone1);
   }
 }
