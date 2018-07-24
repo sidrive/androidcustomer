@@ -202,7 +202,7 @@ public class DetailLawyerActivity extends BaseActivity {
     public void initProject(LawyerModel.DataProfile customer, LawyerModel.Data lawyer) {
         CreatePerkaraModel.Response.Data createPerkaraBody = new CreatePerkaraModel.Response.Data();
 
-        createPerkaraBody.customer_id = customer.id;
+        createPerkaraBody.customer_id = customer.customerId;
         createPerkaraBody.lawyer_id = lawyer.id;
         createPerkaraBody.jobskill_id = lawyer.jobskills.get(0).id;
         createPerkaraBody.description = "Pencurian Uang";

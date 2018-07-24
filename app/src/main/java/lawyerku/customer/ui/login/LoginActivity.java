@@ -123,6 +123,7 @@ public class LoginActivity extends BaseActivity{
         CredentialModel.Request credential = new CredentialModel.Request();
         credential.email = txtEmail.getText().toString();
         credential.password = txtPassword.getText().toString();
+        credential.role_id = "3";
 
         presenter.validateLogin(credential);
 
