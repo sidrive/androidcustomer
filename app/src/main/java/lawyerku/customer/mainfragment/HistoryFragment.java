@@ -5,13 +5,32 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lawyerku.customer.R;
+import lawyerku.customer.api.LawyerkuService;
+import lawyerku.customer.api.adapter.AdapterPerkara;
+import lawyerku.customer.api.model.PerkaraModel;
+import lawyerku.customer.preference.GlobalPreference;
+import lawyerku.customer.preference.PrefKey;
 import lawyerku.customer.ui.detailperkara.DetailPerkaraActivity;
+import lawyerku.customer.ui.listperkara.ListPerkaraActivity;
+import retrofit2.adapter.rxjava.HttpException;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
+
+import static android.support.constraint.Constraints.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +49,9 @@ public class HistoryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    AdapterPerkara adapterPerkara;
+    private CompositeSubscription subscription;
 
     private OnFragmentInteractionListener mListener;
 
@@ -63,7 +85,7 @@ public class HistoryFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
+        this.subscription = new CompositeSubscription();
     }
 
     @Override
@@ -71,22 +93,11 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history, container, false);
-        LinearLayout lnHistory = (LinearLayout) view.findViewById(R.id.lnhistory);
 
-        lnHistory.setOnClickListener(new View.OnClickListener() {
+        RecyclerView lsperkara = (RecyclerView) view.findViewById(R.id.lsperkara);
 
-            @Override
-            public void onClick(View arg0) {
-
-                Intent i = new Intent(getActivity(), DetailPerkaraActivity.class);
-                startActivity(i);
-
-            }
-        });
-
-
-
-
+        initRecycleView(lsperkara);
+        getPerkara(lsperkara);
 
         return view;
     }
@@ -128,5 +139,53 @@ public class HistoryFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void initRecycleView(RecyclerView lsperkara) {
+
+        lsperkara.setHasFixedSize(true);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        lsperkara.addItemDecoration(
+                new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        lsperkara.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        lsbarang.setLayoutManager(layoutManager);
+        lsperkara.setNestedScrollingEnabled(false);
+
+    }
+
+    private void getPerkara(RecyclerView lsperkara) {
+        String accessToken = GlobalPreference.read(PrefKey.accessToken, String.class);
+
+        subscription.add(LawyerkuService.Factory.create().getListProject(accessToken)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> {
+
+                    List<PerkaraModel.Response.Data> listPerkara = new ArrayList<>();
+
+                    if (response.status >= 200 && response.status < 300) {
+                        for (int position = 0; position < response.data.size(); position++){
+                            listPerkara.add(response.data.get(position));
+                        }
+                        initListPerkara(listPerkara,lsperkara);
+                        Log.e(TAG, "searchLawyer: "+listPerkara );
+                    } else {
+//                        createProjectListener.onError(response.message);
+                    }
+                }, throwable -> {
+                    int errorCode = ((HttpException) throwable).response().code();
+                    if (errorCode > 400)
+                        Log.e(TAG, "getPerkara: "+throwable );
+//                        createProjectListener.onError(App.getContext().getString(R.string.error_general));
+//                    createProjectListener.hideLoading();
+                }));
+    }
+
+    public void initListPerkara(List<PerkaraModel.Response.Data> listPerkara, RecyclerView lsperkara){
+        Log.e(TAG, "initListService: "+listPerkara );
+        adapterPerkara = new AdapterPerkara((ArrayList<PerkaraModel.Response.Data>) listPerkara,getContext(), (ListPerkaraActivity) getActivity());
+        adapterPerkara.UpdatePerkara(listPerkara);
+        lsperkara.setAdapter(adapterPerkara);
+        Log.e(TAG, "initListService: "+adapterPerkara );
     }
 }

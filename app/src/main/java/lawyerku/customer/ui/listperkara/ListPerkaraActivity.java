@@ -1,4 +1,4 @@
-package lawyerku.customer;
+package lawyerku.customer.ui.listperkara;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,17 +18,27 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import lawyerku.customer.R;
+import lawyerku.customer.api.model.PerkaraModel;
+import lawyerku.customer.base.BaseActivity;
+import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.mainfragment.HistoryFragment;
 import lawyerku.customer.mainfragment.PerkaraNewFragment.OnFragmentInteractionListener;
 import lawyerku.customer.mainfragment.ViewPagerAdapter;
-import lawyerku.customer.ui.DetailProfileActivity;
 import lawyerku.customer.ui.DetailProfileActivityCons;
 import lawyerku.customer.ui.MessageActivity;
+import lawyerku.customer.ui.detailperkara.DetailPerkaraActivity;
 
-public class MainActivityCons extends AppCompatActivity implements OnFragmentInteractionListener,
+public class ListPerkaraActivity extends BaseActivity implements OnFragmentInteractionListener,
     HistoryFragment.OnFragmentInteractionListener {
+
+  @Inject
+  ListPerkaraPresenter presenter;
 
   ViewPagerAdapter viewPagerAdapter;
   @BindView(R.id.tb_main)
@@ -60,6 +70,13 @@ public class MainActivityCons extends AppCompatActivity implements OnFragmentInt
         finish();
       }
     });
+  }
+
+  @Override
+  protected void setupActivityComponent() {
+    BaseApplication.get(this).getAppComponent()
+            .plus(new ListPerkaraActivityModule(this))
+            .inject(this);
   }
 
 
@@ -99,11 +116,11 @@ public class MainActivityCons extends AppCompatActivity implements OnFragmentInt
   public boolean onOptionsItemSelected(MenuItem item) {
     switch(item.getItemId()){
       case R.id.action_profile:
-        Intent i = new Intent(MainActivityCons.this, DetailProfileActivityCons.class);
+        Intent i = new Intent(ListPerkaraActivity.this, DetailProfileActivityCons.class);
         startActivity(i);
         break;
       case R.id.action_message:
-        Intent a = new Intent(MainActivityCons.this, MessageActivity.class);
+        Intent a = new Intent(ListPerkaraActivity.this, MessageActivity.class);
         startActivity(a);
         break;
     }
@@ -112,6 +129,16 @@ public class MainActivityCons extends AppCompatActivity implements OnFragmentInt
 
   @Override
   public void onFragmentInteraction(Uri uri) {
+
+  }
+
+  public void detailLawyer(PerkaraModel.Response.Data perkara) {
+      Intent i = new Intent(ListPerkaraActivity.this, DetailPerkaraActivity.class);
+      Bundle bundle = new Bundle();
+      bundle.putString("id", String.valueOf(perkara.id));
+      i.putExtras(bundle);
+      startActivity(i);
+
 
   }
 }

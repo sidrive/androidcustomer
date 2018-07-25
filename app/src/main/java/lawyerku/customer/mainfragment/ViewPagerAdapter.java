@@ -39,7 +39,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
         }
         else if (position == 1)
         {
-            title = "Perkara Berjalan";
+            title = "Perkara Baru";
         }
 
         return title;

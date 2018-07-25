@@ -203,9 +203,10 @@ public class DetailLawyerActivity extends BaseActivity {
         CreatePerkaraModel.Response.Data createPerkaraBody = new CreatePerkaraModel.Response.Data();
 
         createPerkaraBody.customer_id = customer.customerId;
-        createPerkaraBody.lawyer_id = lawyer.id;
+//        createPerkaraBody.lawyer_id = lawyer.id;
+        createPerkaraBody.lawyer_id = 1;
         createPerkaraBody.jobskill_id = lawyer.jobskills.get(0).id;
-        createPerkaraBody.description = "Pencurian Uang";
+        createPerkaraBody.description = "Hak Warisan";
         createPerkaraBody.gps_latitude = Double.valueOf(latitudeProject);
         createPerkaraBody.gps_longitud = Double.valueOf(longitudeProjeect);
         createPerkaraBody.start_date = starDate;

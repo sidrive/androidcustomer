@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,7 +23,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import lawyerku.customer.MainActivityCons;
+import lawyerku.customer.ui.listperkara.ListPerkaraActivity;
 import lawyerku.customer.R;
 
 public class DetailProfileActivityCons extends AppCompatActivity {
@@ -117,7 +116,7 @@ public class DetailProfileActivityCons extends AppCompatActivity {
   @OnClick(R.id.btn_save)
   public void onBtnSaveClicked() {
     Toast.makeText(this, "Profile Berhasil Disimpan", Toast.LENGTH_SHORT).show();
-    Intent i = new Intent(DetailProfileActivityCons.this, MainActivityCons.class);
+    Intent i = new Intent(DetailProfileActivityCons.this, ListPerkaraActivity.class);
     startActivity(i);
   }
 

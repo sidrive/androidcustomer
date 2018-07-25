@@ -28,6 +28,7 @@ public class PerkaraModel {
             public Customer customer;
             public Lawyer lawyer;
             public Jobskill jobskill;
+            public Status last_status;
 
             @Override
             public String toString() {
@@ -117,6 +118,19 @@ public class PerkaraModel {
             return "Jobskill{" +
                     "id=" + id +
                     ", name='" + name + '\'' +
+                    '}';
+        }
+    }
+
+    public static class Status {
+        public int id;
+        public String status;
+
+        @Override
+        public String toString() {
+            return "Status{" +
+                    "id=" + id +
+                    ", status='" + status + '\'' +
                     '}';
         }
     }

@@ -80,6 +80,7 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
   private Location mlocation;
   private double latitude = 0;
   private double longitude = 0;
+  public static int id;
 
 
   @Override
@@ -92,7 +93,11 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
 //    initMap(indo);
     transparentStatusBar();
 
-    presenter.getProject(14);
+    Bundle bundle = getIntent().getExtras();
+    Log.e("detailperkara", "onCreate: "+bundle );
+    id = Integer.parseInt(bundle.getString("id"));
+
+    presenter.getProject(id);
   }
 
   @Override

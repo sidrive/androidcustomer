@@ -21,7 +21,7 @@ import java.lang.reflect.Method;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lawyerku.customer.R;
-import lawyerku.customer.MainActivityCons;
+import lawyerku.customer.ui.listperkara.ListPerkaraActivity;
 import lawyerku.customer.api.facebook.GetUserCallback;
 import lawyerku.customer.api.facebook.User;
 import lawyerku.customer.api.facebook.UserRequest;
@@ -93,7 +93,7 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
 
   @OnClick(R.id.cv_history)
   public void showProject() {
-    Intent i = new Intent(MainActivityCustomer.this, MainActivityCons.class);
+    Intent i = new Intent(MainActivityCustomer.this, ListPerkaraActivity.class);
     startActivity(i);
   }
 

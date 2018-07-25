@@ -77,6 +77,16 @@ public interface LawyerkuService {
     Observable<PerkaraModel.Response> getProject(
             @Header("Authorization") String header,
             @Path ("idProject") String idProject );
+
+    @Headers("Content-Type:application/json")
+    @GET("api/projects/new/get")
+    Observable<PerkaraModel.Response> getProjectNew(
+            @Header("Authorization") String header );
+
+    @Headers("Content-Type:application/json")
+    @GET("api/projects")
+    Observable<PerkaraModel.Response> getListProject(
+            @Header("Authorization") String header );
 //
 //    @Headers("Accept:application/json")
 //    @PUT("api/project/{projectId}")
