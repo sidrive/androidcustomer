@@ -75,7 +75,7 @@ public class DetailLawyerPresenter implements BasePresenter {
                 .subscribe(response -> {
                     Log.e(TAG, "getLawyer: "+response.success );
 
-                        activity.initProject(response.data.get(0),lawyer);
+                        activity.initProject(response.data,lawyer);
 
 //                    profileListener.hideLoading();
                 }, throwable -> {

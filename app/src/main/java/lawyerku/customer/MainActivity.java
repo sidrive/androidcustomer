@@ -1,22 +1,12 @@
 package lawyerku.customer;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +14,7 @@ import butterknife.OnClick;
 import lawyerku.customer.mainfragment.HistoryFragment;
 import lawyerku.customer.mainfragment.PerkaraNewFragment;
 import lawyerku.customer.mainfragment.ViewPagerAdapter;
-import lawyerku.customer.ui.DetailProfileActivity;
+import lawyerku.customer.ui.DetailProfile;
 import lawyerku.customer.ui.MessageActivity;
 
 
@@ -59,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @OnClick(R.id.lnProfile)
     public void showProfile(){
-        Intent i = new Intent(MainActivity.this, DetailProfileActivity.class);
+        Intent i = new Intent(MainActivity.this, DetailProfile.class);
         startActivity(i);
     }
 

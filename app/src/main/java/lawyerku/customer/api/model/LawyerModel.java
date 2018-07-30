@@ -26,8 +26,8 @@ public class LawyerModel {
     }
 
     public static class ResponseProfile {
-        public String success;
-        public List<DataProfile> data;
+        public int success;
+        public DataProfile data;
 
         @Override
         public String toString() {
@@ -53,10 +53,17 @@ public class LawyerModel {
         }
     }
 
-    public static class ResponseAddWorkman {
+    public static class ResponseCustomer {
         public int status;
-        public String message;
-        public Data data;
+        public DataCustomer data;
+
+        @Override
+        public String toString() {
+            return "ResponseProfile{" +
+                    "message='" + status + '\'' +
+                    ", status=" + status +
+                    '}';
+        }
     }
 
     public static class DataProfile{
@@ -73,9 +80,45 @@ public class LawyerModel {
                     ", username='" + username + '\'' +
                     ", email='" + email + '\'' +
                     ", roleid=" + roleid +
+                    ", customerId=" + customerId +
                     '}';
         }
     }
+
+    public static class DataCustomer {
+        public int id;
+        public String name;
+        public String address;
+        @SerializedName("phone_number_1") public String phone1;
+        @SerializedName("phone_number_2") public String phone2;
+        @SerializedName("id_number") public String idnumber;
+        public DataProfile user;
+        public List<Images> images;
+
+        @Override
+        public String toString() {
+            return "DataCustomer{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    ", address='" + address + '\'' +
+                    ", phone1='" + phone1 + '\'' +
+                    ", phone2='" + phone2 + '\'' +
+                    ", idnumber='" + idnumber + '\'' +
+                    ", user=" + user +
+                    ", images=" + images +
+                    '}';
+        }
+    }
+
+    public static class Images {
+        public int id;
+        @SerializedName("imageable_id") public int imageId;
+        public String path;
+
+    }
+
+
+
 
     public static class Data {
         public int id;
@@ -153,5 +196,14 @@ public class LawyerModel {
                     ", jobskills=" + jobskills +
                     '}';
         }
+    }
+
+    public static class DataUpdata {
+        public String email;
+        public String first_name;
+        public String last_name;
+        public String phone_number_1;
+        public String address;
+        public int id;
     }
 }

@@ -15,7 +15,7 @@ import butterknife.OnClick;
 import lawyerku.customer.MainActivity;
 import lawyerku.customer.R;
 
-public class DetailProfileActivity extends AppCompatActivity{
+public class DetailProfile extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class DetailProfileActivity extends AppCompatActivity{
     @OnClick(R.id.btnSimpanProfile)
     public void saveProfile(){
         Toast.makeText(this, "Profile Berhasil Disimpan", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(DetailProfileActivity.this, MainActivity.class);
+        Intent i = new Intent(DetailProfile.this, MainActivity.class);
         startActivity(i);
     }
 
@@ -58,7 +58,7 @@ public class DetailProfileActivity extends AppCompatActivity{
 //                                barang.setUpdateTerakhir(System.currentTimeMillis());
 //                                showLoading(true,holder.viewProgress);
 //                                updateStok(barang,holder);
-                                Toast.makeText(DetailProfileActivity.this, "Saldo Berhasil Direedem, silahkan tunggu konfirmasi admin", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DetailProfile.this, "Saldo Berhasil Direedem, silahkan tunggu konfirmasi admin", Toast.LENGTH_LONG).show();
 
                             }
                         })

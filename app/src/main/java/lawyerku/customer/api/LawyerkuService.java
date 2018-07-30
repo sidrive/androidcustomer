@@ -205,6 +205,10 @@ public interface LawyerkuService {
     Observable<LawyerModel.ResponseProfile> getProfile(@Header("Authorization") String header);
 
     @Headers("Accept:application/json")
+    @POST("api/me")
+    Observable<LawyerModel.ResponseCustomer> getProfileCustomer(@Header("Authorization") String header);
+
+    @Headers("Accept:application/json")
     @GET("api/lawyers/{idlawyer}")
     Observable<LawyerModel.Response> getLawyer(
             @Header("Authorization") String header,
@@ -213,6 +217,13 @@ public interface LawyerkuService {
     @Headers("Accept:application/json")
     @GET("api/language_skills")
     Observable<LawyerModel.Response> getLaw(@Header("Authorization") String header);
+
+    @Headers("Accept:application/json")
+    @PUT("api/customers/{id}")
+    Observable<LawyerModel.Response> updateProfile(
+            @Header("Authorization") String header,
+            @Body LawyerModel.DataUpdata body,
+            @Path("id") int id);
 //
 //    @Multipart
 //    @Headers("Accept:application/json")

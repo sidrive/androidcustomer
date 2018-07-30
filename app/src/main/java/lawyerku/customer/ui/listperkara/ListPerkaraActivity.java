@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,7 +29,7 @@ import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.mainfragment.HistoryFragment;
 import lawyerku.customer.mainfragment.PerkaraNewFragment.OnFragmentInteractionListener;
 import lawyerku.customer.mainfragment.ViewPagerAdapter;
-import lawyerku.customer.ui.DetailProfileActivityCons;
+import lawyerku.customer.ui.profilcustomer.DetailProfileActivity;
 import lawyerku.customer.ui.MessageActivity;
 import lawyerku.customer.ui.detailperkara.DetailPerkaraActivity;
 
@@ -116,7 +115,7 @@ public class ListPerkaraActivity extends BaseActivity implements OnFragmentInter
   public boolean onOptionsItemSelected(MenuItem item) {
     switch(item.getItemId()){
       case R.id.action_profile:
-        Intent i = new Intent(ListPerkaraActivity.this, DetailProfileActivityCons.class);
+        Intent i = new Intent(ListPerkaraActivity.this, DetailProfileActivity.class);
         startActivity(i);
         break;
       case R.id.action_message:
