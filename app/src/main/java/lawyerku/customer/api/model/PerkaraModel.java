@@ -49,6 +49,7 @@ public class PerkaraModel {
                         ", customer=" + customer +
                         ", lawyer=" + lawyer +
                         ", jobskill=" + jobskill +
+                        ", last_status=" + last_status +
                         '}';
             }
         }

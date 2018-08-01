@@ -61,12 +61,15 @@ public class RegisterPresenter implements BasePresenter {
                 .subscribe(response -> {
 //                    listener.hideLoading();
                     Log.e(TAG, "register: "+response );
-                    if(response.success != null && !tokenFacebook){
+                    if(response.status <= 200 && !tokenFacebook){
                         login();
                     }
-                    if(response.success != null && tokenFacebook){
+                    if(response.status <= 200 && tokenFacebook){
                         loginFB(request);
                         Log.e(TAG, "register: "+tokenFacebook );
+                    }
+                    if(response.error != null){
+                        Toast.makeText(activity, ""+response.error, Toast.LENGTH_SHORT).show();
                     }
                     else {
                         Log.e(TAG, "register: "+response.error );
@@ -127,7 +130,7 @@ public class RegisterPresenter implements BasePresenter {
 
                     }
 //                    listener.hideLoading();
-                    Log.e(ProfilePictureView.TAG, "validateLogin: "+response.message );
+                    Log.e(ProfilePictureView.TAG, "validateLogin: "+response.error );
                 }, throwable -> {
 //                    String msg = ErrorUtils.getError(throwable);
                     Log.e("loginNow", "CredentialPresenter : Error bro");

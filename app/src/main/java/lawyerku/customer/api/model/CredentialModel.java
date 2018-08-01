@@ -37,7 +37,7 @@ public class CredentialModel {
         public String first_name;
         public String last_name;
         public String role_id;
-        public String phone_number_1;
+        public String cellphone_number;
         public String phone_number_2;
 
 
@@ -52,7 +52,7 @@ public class CredentialModel {
                     ", first_name='" + first_name + '\'' +
                     ", last_name='" + last_name + '\'' +
                     ", role_id='" + role_id + '\'' +
-                    ", phone_number_1='" + phone_number_1 + '\'' +
+                    ", phone_number_1='" + cellphone_number + '\'' +
                     ", phone_number_2='" + phone_number_2 + '\'' +
                     '}';
         }
@@ -60,7 +60,7 @@ public class CredentialModel {
 
     public static class RegistrationResponse {
         public int status;
-        public Error message;
+        public String message;
         public Request data;
         public Success success;
         public String error;
@@ -96,7 +96,7 @@ public class CredentialModel {
         // Response for Login
         public int status;
         public String accessToken;
-        public String message;
+        public String error;
         public String userType;
         public Success success;
         public Data data;

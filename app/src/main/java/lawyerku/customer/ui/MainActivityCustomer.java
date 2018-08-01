@@ -40,8 +40,12 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
     ButterKnife.bind(this);
     transparentStatusBar();
 
-    locationTask();
+
     checkCon(true);
+    locationTask();
+    checkPermission();
+
+
   }
 
   @AfterPermissionGranted(RC_LOC_PERM)
@@ -55,6 +59,15 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
       EasyPermissions.requestPermissions(this, getString(R.string.ijin_lokasi),
               RC_LOC_PERM, perms);
     }
+  }
+
+  public void checkPermission(){
+    String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION};
+    if (!EasyPermissions.hasPermissions(this, Manifest.permission.ACCESS_COARSE_LOCATION)){
+      EasyPermissions.requestPermissions(this, getString(R.string.ijin_lokasi),
+              RC_LOC_PERM, perms);
+    }
+    Log.e("MainAct", "onCreate: "+EasyPermissions.hasPermissions(this, Manifest.permission.ACCESS_COARSE_LOCATION) );
   }
 
   public void checkCon(boolean enabled){

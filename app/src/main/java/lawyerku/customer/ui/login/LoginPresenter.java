@@ -49,25 +49,19 @@ public class LoginPresenter implements BasePresenter{
                         activity.loginProses();
                     }
 
-                    if (response.status >= 200 && response.status < 300) {
-//                        GlobalPreferences.write(PrefKeys.loggedIn, true, Boolean.class);
-//                        GlobalPreferences.write(PrefKeys.accessToken, String.format(Locale.US, "Bearer %s", response.accessToken), String.class);
-//                        GlobalPreferences.write(PrefKeys.userType, String.format(Locale.US, response.userType, response.accessToken), String.class);
-
-//                        if (response.userType.equals(UserType.userTypeWorkman))
-//                            listener.onLoginWorkman();
-//                            /* else listener.onLoginWorkman();*/else{
-//                            //listener.onError(App.getContext().getString(R.string.error_unauthenticated));
-//                            listener.onError(response.message);
-//                        }
-
-
+//                    if (response.status >= 200 && response.status < 300) {
+////
+//
+//                    }
+                    if(response.error != null){
+                        Toast.makeText(activity, ""+response.error, Toast.LENGTH_SHORT).show();
                     }
 //                    listener.hideLoading();
-                    Log.e(TAG, "validateLogin: "+response.message );
+                    Log.e(TAG, "validateLogin: "+response.error );
                 }, throwable -> {
 //                    String msg = ErrorUtils.getError(throwable);
                     Log.e("loginNow", "CredentialPresenter :"+throwable);
+                    Toast.makeText(activity, "Username/Password Salah", Toast.LENGTH_SHORT).show();
 //
                 }));
     }

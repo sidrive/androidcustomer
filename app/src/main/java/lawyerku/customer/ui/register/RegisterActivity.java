@@ -202,8 +202,8 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
             credential.first_name = txtFirstName.getText().toString();
             credential.last_name = txtLastName.getText().toString();
             credential.address = txtAddress.getText().toString();
-            credential.phone_number_1 = txtPhone.getText().toString();
-            credential.role_id = "2";
+            credential.cellphone_number = txtPhone.getText().toString();
+            credential.role_id = "3";
             credential.phone_number_2 = "0";
             credential.nik = txtIdnumber.getText().toString();
 

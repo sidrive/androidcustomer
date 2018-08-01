@@ -1,19 +1,27 @@
 package lawyerku.customer.ui.detailperkara;
 
+import android.Manifest;
 import android.Manifest.permission;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +30,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,16 +42,29 @@ import com.google.android.gms.maps.GoogleMap.OnCameraIdleListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import lawyerku.customer.R;
+import lawyerku.customer.api.model.LawyerModel;
 import lawyerku.customer.api.model.PerkaraModel;
 import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.ui.MessageActivity;
+import lawyerku.customer.ui.dialog.DialogUploadOption;
+import lawyerku.customer.ui.purchase.PurchaseActivity;
+import lawyerku.customer.utils.DateFormatter;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
 
 public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleListener,
     OnMapReadyCallback {
@@ -75,12 +97,30 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
   @BindView(R.id.tv_hp)
   TextView txthpLawyer;
 
+  @BindView(R.id.tv_status)
+  TextView txtStatus;
+
+  @BindView(R.id.tv_tgl_mulai)
+  TextView txtStartDate;
+
+  @BindView(R.id.tv_tgl_selesai)
+  TextView txtEndDate;
+
   private GoogleMap mMap;
   private LocationManager lm;
   private Location mlocation;
   private double latitude = 0;
   private double longitude = 0;
   public static int id;
+  public static List<PerkaraModel.Response.Data> perkara;
+
+  private static final String TAG = "DetailPerkaraActivity";
+  public static final int REQUST_CODE_CAMERA = 1002;
+  public static final int REQUST_CODE_GALLERY = 1001;
+  private static final int RC_CAMERA_PERM = 205;
+  public static Uri mCapturedImageURI;
+  byte[] imgSmall;
+  Uri imgOriginal;
 
 
   @Override
@@ -191,43 +231,21 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
 
   @OnClick(R.id.btn_bayar)
   public void onBtnBayarClicked() {
-    LayoutInflater li = LayoutInflater.from(this);
-    View promptsView = li.inflate(R.layout.activity_purchase_cons, null);
-
-    Builder alertDialogBuilder = new Builder(
-        this, R.style.MyAlertDialogStyle);
-
-    // set prompts.xml to alertdialog builder
-    alertDialogBuilder.setView(promptsView);
-//        final Button btnAccept = (Button) promptsView
-//                .findViewById(R.id.btnAccept);
-
-//        userInput.setText(String.valueOf(barang.getStokBarang()));
-    // set dialog message
-    alertDialogBuilder
-        .setCancelable(true);
-
-    // create alert dialog
-    AlertDialog alertDialog = alertDialogBuilder.create();
-
-//        btnDecline.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View arg0) {
-//
-//                alertDialog.dismiss();
-//
-//            }
-//        });
-
-    // show it
-    alertDialog.show();
+    Intent intent = new Intent(DetailPerkaraActivity.this, PurchaseActivity.class);
+    Bundle bundle = new Bundle();
+    bundle.putString("id",String.valueOf(perkara.get(0).id));
+    intent.putExtras(bundle);
+    startActivity(intent);
   }
+
+
 
   @OnClick(R.id.img_maps)
   public void onViewClicked() {
   }
 
   public void initProject(List<PerkaraModel.Response.Data> data) {
+    perkara = data;
     Log.e("DetailPerkara", "initProject: "+data );
     LatLng latLng = new LatLng(data.get(0).gps_latitude,data.get(0).gps_longitud);
     initMap(latLng);
@@ -237,5 +255,55 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
     txtnamaLawyer.setText(data.get(0).lawyer.lawyername);
     txthpLawyer.setText(data.get(0).lawyer.lawyerPhone2);
     txttelpLawyer.setText(data.get(0).lawyer.lawyerPhone1);
+    if(data.get(0).last_status == null){
+      btnBayar.setVisibility(View.GONE);
+    }
+    if(data.get(0).last_status.status.toString().equals("new")){
+      btnBayar.setVisibility(View.GONE);
+      txthpLawyer.setVisibility(View.GONE);
+      txttelpLawyer.setVisibility(View.GONE);
+    }
+    if(data.get(0).last_status.status.toString().equals("confirmed")){
+      btnBayar.setVisibility(View.VISIBLE);
+    }
+
+    if(data.get(0).last_status.status.equals("new"))
+    {
+      txtStatus.setText("Status : Baru");
+    }
+    if(data.get(0).last_status.status.equals("on-progress"))
+    {
+      txtStatus.setText("Status : Sedang Berlangsung");
+      btnBayar.setVisibility(View.VISIBLE);
+      txthpLawyer.setVisibility(View.VISIBLE);
+      txttelpLawyer.setVisibility(View.VISIBLE);
+    }
+    if(data.get(0).last_status.status.equals("rejected"))
+    {
+      txtStatus.setText("Status : Ditolak");
+      btnBayar.setVisibility(View.GONE);
+      txthpLawyer.setVisibility(View.GONE);
+      txttelpLawyer.setVisibility(View.GONE);
+    }
+    if(data.get(0).last_status.status.equals("canceled"))
+    {
+      txtStatus.setText("Status : Dibatalkan");
+      btnBayar.setVisibility(View.GONE);
+      txthpLawyer.setVisibility(View.GONE);
+      txttelpLawyer.setVisibility(View.GONE);
+    }
+    if(data.get(0).last_status.status.equals("finished"))
+    {
+      txtStatus.setText("Status : Selesai");
+      txthpLawyer.setVisibility(View.VISIBLE);
+      txttelpLawyer.setVisibility(View.VISIBLE);
+    }
+
+    String starDate = DateFormatter.getDate(data.get(0).start_date,"yyyy-MM-dd");
+    String endDate = DateFormatter.getDate(data.get(0).end_date,"yyyy-MM-dd");
+
+    txtStartDate.setText(starDate);
+    txtEndDate.setText(endDate);
   }
+
 }
