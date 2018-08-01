@@ -219,11 +219,10 @@ public interface LawyerkuService {
     Observable<LawyerModel.Response> getLaw(@Header("Authorization") String header);
 
     @Headers("Accept:application/json")
-    @PUT("api/customers/{id}")
+    @PUT("api/customers/update")
     Observable<LawyerModel.Response> updateProfile(
             @Header("Authorization") String header,
-            @Body LawyerModel.DataUpdata body,
-            @Path("id") int id);
+            @Body LawyerModel.DataUpdata body);
 //
 //    @Multipart
 //    @Headers("Accept:application/json")

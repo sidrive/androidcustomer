@@ -32,6 +32,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import lawyerku.customer.api.model.LawyerModel;
 import lawyerku.customer.base.BaseActivity;
@@ -50,8 +51,8 @@ public class DetailProfileActivity extends BaseActivity {
   ImageButton imgTopup;
   @BindView(R.id.btn_save)
   Button btnSave;
-  @BindView(R.id.et_nama)
-  TextInputEditText txtNama;
+  @BindView(R.id.tv_name)
+  TextView txtNama;
   @BindView(R.id.et_address)
   TextInputEditText txtAddress;
   @BindView(R.id.et_email)
@@ -60,9 +61,15 @@ public class DetailProfileActivity extends BaseActivity {
   TextInputEditText txtPhone;
   @BindView(R.id.et_idcard)
   TextInputEditText txtIdcard;
+  @BindView(R.id.et_first_name)
+  TextInputEditText txtFirstName;
+  @BindView(R.id.et_last_name)
+  TextInputEditText txtLastName;
 
   public static String accessToken;
   public static LawyerModel.DataCustomer customer;
+  public static String firstname;
+  public static String lastname;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -157,55 +164,56 @@ public class DetailProfileActivity extends BaseActivity {
 
   @OnClick(R.id.btn_save)
   public void onBtnSaveClicked() {
-      LawyerModel.DataUpdata dataUpdata = new LawyerModel.DataUpdata();
-    Toast.makeText(this, "Profile Berhasil Disimpan", Toast.LENGTH_SHORT).show();
-    txtNama.setError(null);
-    txtAddress.setError(null);
-    txtEmail.setError(null);
-    txtIdcard.setError(null);
-    txtPhone.setError(null);
-
-    boolean cancel = false;
-    View focusView = null;
-
-    if(TextUtils.isEmpty(txtNama.getText().toString())){
-      txtNama.setError(this.getBaseContext().getString(R.string.error_empty_name));
-      cancel = true;
-      focusView = txtNama;
-    }
-    if(TextUtils.isEmpty(txtAddress.getText().toString())){
-      txtAddress.setError(this.getBaseContext().getString(R.string.error_empty_address));
-      cancel = true;
-      focusView = txtAddress;
-    }
-    if(TextUtils.isEmpty(txtEmail.getText().toString())){
-      txtEmail.setError(this.getBaseContext().getString(R.string.error_empty_email));
-      cancel = true;
-      focusView = txtEmail;
-    }
-    if(isValidateEmail(txtEmail.getText())){
-      txtEmail.setError(this.getBaseContext().getString(R.string.error_empty_email));
-      cancel = true;
-      focusView = txtEmail;
-    }
-    if(TextUtils.isEmpty(txtPhone.getText().toString())){
-      txtEmail.setError(this.getBaseContext().getString(R.string.error_empty_phone));
-      cancel = true;
-      focusView = txtPhone;
-    }
-    if(cancel){
-      focusView.requestFocus();
-    }
-    else {
-        dataUpdata.id = customer.id;
-        dataUpdata.first_name = txtNama.getText().toString();
-        dataUpdata.address = txtAddress.getText().toString();
-        dataUpdata.email = txtEmail.getText().toString();
-        dataUpdata.phone_number_1 = txtPhone.getText().toString();
-        dataUpdata.last_name = customer.user.username;
-
-        presenter.saveUpdate(accessToken,dataUpdata);
-    }
+    validate();
+//      LawyerModel.DataUpdata dataUpdata = new LawyerModel.DataUpdata();
+//    Toast.makeText(this, "Profile Berhasil Disimpan", Toast.LENGTH_SHORT).show();
+//    txtNama.setError(null);
+//    txtAddress.setError(null);
+//    txtEmail.setError(null);
+//    txtIdcard.setError(null);
+//    txtPhone.setError(null);
+//
+//    boolean cancel = false;
+//    View focusView = null;
+//
+//    if(TextUtils.isEmpty(txtNama.getText().toString())){
+//      txtNama.setError(this.getBaseContext().getString(R.string.error_empty_name));
+//      cancel = true;
+//      focusView = txtNama;
+//    }
+//    if(TextUtils.isEmpty(txtAddress.getText().toString())){
+//      txtAddress.setError(this.getBaseContext().getString(R.string.error_empty_address));
+//      cancel = true;
+//      focusView = txtAddress;
+//    }
+//    if(TextUtils.isEmpty(txtEmail.getText().toString())){
+//      txtEmail.setError(this.getBaseContext().getString(R.string.error_empty_email));
+//      cancel = true;
+//      focusView = txtEmail;
+//    }
+//    if(isValidateEmail(txtEmail.getText())){
+//      txtEmail.setError(this.getBaseContext().getString(R.string.error_empty_email));
+//      cancel = true;
+//      focusView = txtEmail;
+//    }
+//    if(TextUtils.isEmpty(txtPhone.getText().toString())){
+//      txtEmail.setError(this.getBaseContext().getString(R.string.error_empty_phone));
+//      cancel = true;
+//      focusView = txtPhone;
+//    }
+//    if(cancel){
+//      focusView.requestFocus();
+//    }
+//    else {
+//        dataUpdata.id = customer.id;
+//        dataUpdata.first_name = txtNama.getText().toString();
+//        dataUpdata.address = txtAddress.getText().toString();
+//        dataUpdata.email = txtEmail.getText().toString();
+//        dataUpdata.phone_number_1 = txtPhone.getText().toString();
+//        dataUpdata.last_name = customer.user.username;
+//
+//        presenter.saveUpdate(accessToken,dataUpdata);
+//    }
   }
 
   @OnClick(R.id.img_profile)
@@ -222,7 +230,7 @@ public class DetailProfileActivity extends BaseActivity {
 
     txtNama.setText(data.name);
     txtAddress.setText(data.address);
-    txtEmail.setText(data.user.email);
+    txtEmail.setText(data.email);
     txtIdcard.setText(data.idnumber);
     txtPhone.setText(data.phone1);
   }
@@ -243,7 +251,90 @@ public class DetailProfileActivity extends BaseActivity {
   }
 
   public void showMainActivity() {
+    Toast.makeText(this, "Profile Berhasil Disimpan", Toast.LENGTH_SHORT).show();
     Intent i = new Intent(DetailProfileActivity.this, ListPerkaraActivity.class);
     startActivity(i);
   }
+
+  public void validate(){
+    LawyerModel.DataUpdata profile = new LawyerModel.DataUpdata();
+
+    txtFirstName.setError(null);
+    txtLastName.setError(null);
+    txtEmail.setError(null);
+    txtAddress.setError(null);
+    txtIdcard.setError(null);
+    txtPhone.setError(null);
+
+    boolean cancel = false;
+    View focusView = null;
+
+
+    if(TextUtils.isEmpty(txtEmail.getText().toString())){
+      txtEmail.setError(this.getBaseContext().getString(R.string.error_empty_email));
+      focusView = txtEmail;
+      cancel = true;
+    }
+    if(TextUtils.isEmpty(txtFirstName.getText().toString())){
+      txtFirstName.setError(this.getBaseContext().getString(R.string.error_empty_name));
+      focusView = txtFirstName;
+      cancel = true;
+    }
+    if(TextUtils.isEmpty(txtLastName.getText().toString())){
+      txtLastName.setError(this.getBaseContext().getString(R.string.error_empty_name));
+      focusView = txtLastName;
+      cancel = true;
+    }
+//    if(isValidateEmail(txtEmail.getText())){
+//      txtEmail.setError(this.getBaseContext().getString(R.string.error_empty_email));
+//      focusView = txtEmail;
+//      cancel = true;
+//    }
+    if(TextUtils.isEmpty(txtAddress.getText().toString())){
+      txtAddress.setError(this.getBaseContext().getString(R.string.error_empty_password));
+      focusView = txtAddress;
+      cancel = true;
+    }
+
+
+    if(TextUtils.isEmpty(txtAddress.getText().toString())){
+      txtAddress.setError(this.getBaseContext().getString(R.string.error_empty_address));
+      focusView = txtAddress;
+      cancel = true;
+    }
+    if(TextUtils.isEmpty(txtPhone.getText().toString())){
+      txtPhone.setError(this.getBaseContext().getString(R.string.error_empty_phone));
+      focusView = txtPhone;
+      cancel = true;
+    }
+    if (cancel) {
+      focusView.requestFocus();
+    }else{
+
+      if(!TextUtils.isEmpty(txtFirstName.getText().toString())){
+        firstname = txtFirstName.getText().toString();
+      }
+      if(!TextUtils.isEmpty(txtLastName.getText().toString())){
+        lastname = txtLastName.getText().toString();
+      }
+      if(TextUtils.isEmpty(txtFirstName.getText().toString())){
+        firstname = customer.name;
+      }
+      if(TextUtils.isEmpty(txtLastName.getText().toString())){
+        lastname = customer.user.username;
+      }
+
+      profile.first_name = firstname;
+      profile.last_name = lastname;
+      profile.email = txtEmail.getText().toString();
+      profile.address = txtAddress.getText().toString();
+      profile.phone_number_1 = txtPhone.getText().toString();
+      profile.id = customer.id;
+
+      presenter.saveUpdate(accessToken,profile);
+
+    }
+
+  }
+
 }
