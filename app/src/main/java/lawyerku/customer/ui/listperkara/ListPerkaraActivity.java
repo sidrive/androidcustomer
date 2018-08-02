@@ -29,6 +29,7 @@ import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.mainfragment.HistoryFragment;
 import lawyerku.customer.mainfragment.PerkaraNewFragment.OnFragmentInteractionListener;
 import lawyerku.customer.mainfragment.ViewPagerAdapter;
+import lawyerku.customer.ui.MainActivityCustomer;
 import lawyerku.customer.ui.profilcustomer.DetailProfileActivity;
 import lawyerku.customer.ui.MessageActivity;
 import lawyerku.customer.ui.detailperkara.DetailPerkaraActivity;
@@ -139,5 +140,10 @@ public class ListPerkaraActivity extends BaseActivity implements OnFragmentInter
       startActivity(i);
 
 
+  }
+
+  public void onBackPressed() {
+    startActivity(new Intent(ListPerkaraActivity.this, MainActivityCustomer.class));
+    finish();
   }
 }

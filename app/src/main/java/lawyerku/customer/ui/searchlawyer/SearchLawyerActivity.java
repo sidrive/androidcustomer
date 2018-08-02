@@ -50,6 +50,7 @@ import lawyerku.customer.R;
 import lawyerku.customer.api.model.LawyerModel;
 import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
+import lawyerku.customer.ui.MainActivityCustomer;
 import lawyerku.customer.ui.searchlawyer.search.SearchActivity;
 
 public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCallback, GoogleMap.OnCameraIdleListener {
@@ -413,5 +414,9 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
 
     String [] add = fulladdress.split(",");
 
+  }
+  public void onBackPressed() {
+    startActivity(new Intent(SearchLawyerActivity.this, MainActivityCustomer.class));
+    finish();
   }
 }
