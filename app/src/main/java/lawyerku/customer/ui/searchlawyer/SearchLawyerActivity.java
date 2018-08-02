@@ -361,13 +361,13 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
 
   }
 
-  @OnClick(R.id.imgMap)
-  void showMap() {
-    relMap.setVisibility(View.VISIBLE);
-    mapMode = true;
-    btnCariLawyer.setVisibility(View.GONE);
-//        menuDone.setVisible(true);
-  }
+//  @OnClick(R.id.imgMap)
+//  void showMap() {
+//    relMap.setVisibility(View.VISIBLE);
+//    mapMode = true;
+//    btnCariLawyer.setVisibility(View.GONE);
+////        menuDone.setVisible(true);
+//  }
 
   @OnClick(R.id.btn_maps)
   void showPeta(){
