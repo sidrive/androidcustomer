@@ -72,6 +72,7 @@ public class LawyerModel {
         public String email;
         @SerializedName("role_id") public int roleid;
         @SerializedName("userable_id") public int customerId;
+//        public
 
         @Override
         public String toString() {

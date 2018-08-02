@@ -21,11 +21,13 @@ import java.lang.reflect.Method;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lawyerku.customer.R;
+import lawyerku.customer.preference.GlobalPreference;
 import lawyerku.customer.ui.listperkara.ListPerkaraActivity;
 import lawyerku.customer.api.facebook.GetUserCallback;
 import lawyerku.customer.api.facebook.User;
 import lawyerku.customer.api.facebook.UserRequest;
 import lawyerku.customer.ui.searchlawyer.SearchLawyerActivity;
+import lawyerku.customer.ui.splash.SplashActivity;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -132,5 +134,12 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
   @Override
   public void onCompleted(User user) {
 
+  }
+
+  @OnClick(R.id.cv_logout)
+  public void logout(){
+    GlobalPreference.clear();
+    Intent intent = new Intent(MainActivityCustomer.this, SplashActivity.class);
+    startActivity(intent);
   }
 }

@@ -247,7 +247,7 @@
     app:layout_constraintTop_toBottomOf="@id/cv_help"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/cv_logout"
     >
 
     <android.support.constraint.ConstraintLayout
@@ -300,6 +300,77 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/img_infor"
         />
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/cv_logout"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/res_9dp"
+      android:layout_marginBottom="@dimen/res_18dp"
+      app:cardCornerRadius="9dp"
+      app:cardElevation="4dp"
+      app:cardBackgroundColor="@color/grayLawyer"
+      android:layout_marginStart="@dimen/res_18dp"
+      android:layout_marginEnd="@dimen/res_18dp"
+      app:layout_constraintTop_toBottomOf="@id/cv_info"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        >
+
+      <ImageView
+          android:id="@+id/img_logout"
+          android:layout_width="54dp"
+          android:layout_height="0dp"
+          android:background="@drawable/bg_grad1"
+          android:src="@drawable/ic_info_white_24dp"
+          android:paddingStart="@dimen/res_9dp"
+          android:paddingEnd="@dimen/res_9dp"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toStartOf="@id/tv_logout"
+          app:layout_constraintBottom_toBottomOf="parent"
+          />
+
+      <TextView
+          android:id="@+id/tv_logout"
+          android:textSize="18sp"
+          android:textStyle="bold"
+          android:layout_width="0dp"
+          android:textAlignment="center"
+          android:textColor="@color/goldenBrownLawyer"
+          android:layout_height="wrap_content"
+          android:text="Logout"
+          android:layout_marginTop="@dimen/res_18dp"
+          android:layout_marginBottom="8dp"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintBottom_toTopOf="@id/tv_logout_desc"
+          app:layout_constraintStart_toEndOf="@id/img_logout"
+          app:layout_constraintEnd_toEndOf="parent"
+          />
+
+      <TextView
+          android:id="@+id/tv_logout_desc"
+          android:layout_width="0dp"
+          android:textAlignment="center"
+          android:layout_height="wrap_content"
+          android:textColor="@color/charcoalLawyer"
+          android:layout_marginBottom="@dimen/res_18dp"
+          android:text="@string/str_information"
+          app:layout_constraintTop_toBottomOf="@id/tv_logout"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@id/img_logout"
+          />
     </android.support.constraint.ConstraintLayout>
 
   </android.support.v7.widget.CardView>
