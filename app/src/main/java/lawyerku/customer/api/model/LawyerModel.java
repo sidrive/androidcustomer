@@ -90,6 +90,7 @@ public class LawyerModel {
         public int id;
         public String name;
         public String address;
+        public String email;
         @SerializedName("phone_number_1") public String phone1;
         @SerializedName("phone_number_2") public String phone2;
         @SerializedName("id_number") public String idnumber;
@@ -206,5 +207,17 @@ public class LawyerModel {
         public String phone_number_1;
         public String address;
         public int id;
+
+        @Override
+        public String toString() {
+            return "DataUpdata{" +
+                    "email='" + email + '\'' +
+                    ", first_name='" + first_name + '\'' +
+                    ", last_name='" + last_name + '\'' +
+                    ", phone_number_1='" + phone_number_1 + '\'' +
+                    ", address='" + address + '\'' +
+                    ", id=" + id +
+                    '}';
+        }
     }
 }

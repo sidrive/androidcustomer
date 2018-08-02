@@ -27,4 +27,5 @@
     <color name="primary">#bf9b30</color>
     <color name="colorShadowWhite">#5Effffff</color>
   <color name="dark_green">#388E3C</color>
+    <color name="colorSoft">#BFB9B9</color>
 </resources>

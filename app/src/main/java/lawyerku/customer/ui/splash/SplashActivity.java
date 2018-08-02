@@ -2,6 +2,7 @@ package lawyerku.customer.ui.splash;
 
 import static lawyerku.customer.ui.login.LoginActivity.setWindowFlag;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -18,6 +19,8 @@ import lawyerku.customer.preference.PrefKey;
 import lawyerku.customer.ui.MainActivityCustomer;
 import lawyerku.customer.ui.login.LoginActivity;
 import lawyerku.customer.ui.register.RegisterActivity;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
 import android.util.Log;
 import android.view.View;
@@ -39,6 +42,7 @@ public class SplashActivity extends BaseActivity {
 
 
     private static int SPLASH_TIME_OUT = 3000;
+    private static final int RC_LOC_PERM = 1001;
     private CallbackManager callbackManager;
     private ProfileTracker profileTracker;
 
@@ -64,6 +68,19 @@ public class SplashActivity extends BaseActivity {
         BaseApplication.get(this).getAppComponent()
                 .plus(new SplashActivityModule(this))
                 .inject(this);
+    }
+
+    @AfterPermissionGranted(RC_LOC_PERM)
+    public void locationTask() {
+        String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION};
+        if (EasyPermissions.hasPermissions(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            // Have permission, do the thing!
+//            onLaunchCamera();
+        } else {
+            // Ask for one permission
+            EasyPermissions.requestPermissions(this, getString(R.string.ijin_lokasi),
+                    RC_LOC_PERM, perms);
+        }
     }
 
     private void transparentStatusBar() {

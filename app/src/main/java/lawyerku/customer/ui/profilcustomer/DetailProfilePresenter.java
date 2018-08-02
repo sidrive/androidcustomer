@@ -54,7 +54,7 @@ public class DetailProfilePresenter implements BasePresenter {
     }
 
     public void saveUpdate(String accessToken, LawyerModel.DataUpdata customer) {
-        subscription.add(LawyerkuService.Factory.create().updateProfile(accessToken,customer,customer.id)
+        subscription.add(LawyerkuService.Factory.create().updateProfile(accessToken,customer)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
@@ -73,4 +73,6 @@ public class DetailProfilePresenter implements BasePresenter {
 //                    profileListener.hideLoading();
                 }));
     }
+
+
 }
