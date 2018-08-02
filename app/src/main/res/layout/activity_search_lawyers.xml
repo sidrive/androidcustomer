@@ -9,6 +9,12 @@
   android:theme="@style/LoginTheme"
   android:fitsSystemWindows="true"
   >
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+  </ScrollView>
+
 
   <ImageView
     android:id="@+id/img_logo"
@@ -173,29 +179,33 @@
             android:src="@color/colorShadowWhite"
             android:id="@+id/imgMap"
             android:layout_marginBottom="5dp"/>
+            />
 
       </LinearLayout>
+
+
 
     </android.support.constraint.ConstraintLayout>
 
   </android.support.v7.widget.CardView>
 
   <Button
-    android:id="@+id/btn_cari_lawyer"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:text="@string/str_cari_lawyer"
-    android:textColor="@color/goldenBrownLawyer"
-    android:layout_marginStart="@dimen/res_24dp"
-    android:layout_marginEnd="@dimen/res_24dp"
-    android:layout_marginTop="@dimen/res_18dp"
-    android:layout_marginBottom="@dimen/res_24dp"
-    android:background="@drawable/bg_radius_transparant_silver"
-    app:layout_constraintTop_toBottomOf="@id/cv_container_create"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    />
+      android:id="@+id/btn_cari_lawyer"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="@string/str_cari_lawyer"
+      android:textColor="@color/goldenBrownLawyer"
+      android:layout_marginStart="@dimen/res_24dp"
+      android:layout_marginEnd="@dimen/res_24dp"
+      android:layout_marginTop="@dimen/res_18dp"
+      android:layout_marginBottom="@dimen/res_24dp"
+      android:background="@drawable/bg_radius_transparant_silver"
+      app:layout_constraintTop_toBottomOf="@id/cv_container_create"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="@id/rel_map">
+
+  </Button>
 
   <RelativeLayout
       android:layout_width="match_parent"
@@ -205,7 +215,7 @@
       android:layout_height="match_parent"
       android:layout_marginTop="?actionBarSize"
       android:background="@color/colorWhite"
-      app:layout_constraintTop_toBottomOf="@id/btn_cari_lawyer"
+      app:layout_constraintTop_toBottomOf="@id/cv_container_create"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintBottom_toBottomOf="parent">

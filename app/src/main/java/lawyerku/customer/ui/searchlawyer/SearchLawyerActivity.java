@@ -365,6 +365,7 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
   void showMap() {
     relMap.setVisibility(View.VISIBLE);
     mapMode = true;
+    btnCariLawyer.setVisibility(View.GONE);
 //        menuDone.setVisible(true);
   }
 
