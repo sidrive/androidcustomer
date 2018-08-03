@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import lawyerku.customer.R;
 import lawyerku.customer.api.model.PerkaraModel;
 import lawyerku.customer.ui.listperkara.ListPerkaraActivity;
+import lawyerku.customer.utils.DateFormatter;
 
 import static android.support.constraint.Constraints.TAG;
 
@@ -49,13 +50,32 @@ public class AdapterPerkara extends RecyclerView.Adapter<AdapterPerkara.ViewHold
 
         holder.txtCustomer.setText(perkara.customer.name);
         holder.txtBidangHukum.setText("Bidang Hukum :"+perkara.jobskill.name);
-        holder.txtMulai.setText("Mulai : "+perkara.start_date);
-        holder.txtSelesai.setText("Selesai : "+perkara.end_date);
+
         holder.txtLawyer.setText(perkara.lawyer.lawyername);
         holder.txtLevel.setText("Level : "+perkara.lawyer.level);
         holder.txtRating.setText("Rating : "+String.valueOf(perkara.lawyer.rateMax));
         holder.txtKeahlian.setText("Keahlian : "+perkara.jobskill.name);
-        holder.txtStatus.setText("Status Perkara : "+perkara.last_status.status);
+        if(perkara.last_status.status.equals("new")){
+            holder.txtStatus.setText("Status Perkara : Perkara Baru");
+        }
+        if(perkara.last_status.status.equals("on-progress")){
+            holder.txtStatus.setText("Status Perkara : Sedang Berlangsung");
+        }
+        if(perkara.last_status.status.equals("rejected")){
+            holder.txtStatus.setText("Status Perkara : Ditolak");
+        }
+        if(perkara.last_status.status.equals("canceled")){
+            holder.txtStatus.setText("Status Perkara : Dibatalkan ");
+        }
+        if(perkara.last_status.status.equals("finished")){
+            holder.txtStatus.setText("Status Perkara : Selesai");
+        }
+
+        String starDate = DateFormatter.getDate(perkara.start_date,"yyyy-MM-dd");
+        String endDate = DateFormatter.getDate(perkara.end_date,"yyyy-MM-dd");
+
+        holder.txtMulai.setText(starDate);
+        holder.txtSelesai.setText(endDate);
 
 
     }
