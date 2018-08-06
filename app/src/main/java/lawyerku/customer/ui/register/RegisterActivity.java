@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
@@ -66,6 +68,9 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
     @BindView(R.id.et_idnumber)
     TextInputEditText txtIdnumber;
 
+    @BindView(R.id.view_progress)
+    LinearLayout viewProgress;
+
     boolean tokenFacebok;
 
     AccessToken accessToken = AccessToken.getCurrentAccessToken();
@@ -78,6 +83,8 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         initProfileFB(accessToken);
+
+        showLoading(false);
     }
 
     @Override
@@ -116,8 +123,10 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
     }
 
     public void logogin(){
+        Toast.makeText(this, "Register Berhasil, Silahkan Login untuk masuk aplikasi", Toast.LENGTH_LONG).show();
         Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(i);
+        showLoading(false);
     }
 
     private void validate(){
@@ -211,10 +220,12 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
                 tokenFacebok = true;
                 Log.e("register", "validate: "+tokenFacebok );
                 presenter.register(credential,tokenFacebok);
+                showLoading(true);
             }
             if(accessToken == null){
                 tokenFacebok = false;
                 presenter.register(credential,tokenFacebok);
+                showLoading(true);
                 Log.e("register", "validate: non FB" );
             }
 
@@ -250,6 +261,14 @@ public class RegisterActivity extends BaseActivity implements GetUserCallback.IG
             txtEmail.setText(user.getEmail());
             txtFirstName.setText(Profile.getCurrentProfile().getFirstName().toString());
             txtLastName.setText(Profile.getCurrentProfile().getMiddleName().toString()+" "+Profile.getCurrentProfile().getLastName().toString());
+        }
+    }
+
+    public void showLoading(boolean show) {
+        if (show) {
+            viewProgress.setVisibility(View.VISIBLE);
+        } else {
+            viewProgress.setVisibility(View.GONE);
         }
     }
 }

@@ -283,4 +283,5 @@
         />
     </android.support.constraint.ConstraintLayout>
   </ScrollView>
+  <include layout="@layout/view_progress"/>
 </android.support.constraint.ConstraintLayout>

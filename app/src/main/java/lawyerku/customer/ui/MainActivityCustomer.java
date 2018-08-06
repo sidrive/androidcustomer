@@ -15,11 +15,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lawyerku.customer.R;
@@ -37,6 +39,9 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
 
     private static final int RC_LOC_PERM = 1001;
 
+    @BindView(R.id.view_progress)
+  LinearLayout viewProgress;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -49,6 +54,7 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
     locationTask();
     checkPermission();
 
+    showLoading(false);
 
   }
 
@@ -186,5 +192,13 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
         doubleBackToExitPressedOnce = false;
       }
     }, 2000);
+  }
+
+  public void showLoading(boolean show) {
+    if (show) {
+      viewProgress.setVisibility(View.VISIBLE);
+    } else {
+      viewProgress.setVisibility(View.GONE);
+    }
   }
 }

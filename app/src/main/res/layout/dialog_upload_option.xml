@@ -20,6 +20,7 @@
         android:id="@+id/btn_gallery"
         android:drawableLeft="@drawable/ic_collections"
         android:text="Galeri Foto"
+        android:visibility="gone"
         />
 
     <View

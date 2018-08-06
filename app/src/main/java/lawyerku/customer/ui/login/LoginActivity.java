@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +55,9 @@ public class LoginActivity extends BaseActivity{
     @BindView(R.id.et_password)
     EditText txtPassword;
 
+    @BindView(R.id.view_progress)
+    LinearLayout viewProgress;
+
     private LoginButton loginButton;
     private static final String EMAIL = "email";
     private static final String PROFILE = "public_profile";
@@ -81,6 +85,7 @@ public class LoginActivity extends BaseActivity{
 
 
         initFBbutton();
+        showLoading(false);
 
 
     }
@@ -127,8 +132,7 @@ public class LoginActivity extends BaseActivity{
 
         presenter.validateLogin(credential);
 
-//        Intent i = new Intent(LoginActivity.this, MainActivityCustomer.class);
-//        startActivity(i);
+        showLoading(true);
     }
 
     @OnClick(R.id.tv_forgot)
@@ -168,6 +172,7 @@ public class LoginActivity extends BaseActivity{
             public void onSuccess(LoginResult loginResult) {
 
                 loginProsesFB();
+                showLoading(true);
             }
 
             @Override
@@ -188,5 +193,12 @@ public class LoginActivity extends BaseActivity{
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void showLoading(boolean show) {
+        if (show) {
+            viewProgress.setVisibility(View.VISIBLE);
+        } else {
+            viewProgress.setVisibility(View.GONE);
+        }
+    }
 
 }

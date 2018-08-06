@@ -70,6 +70,7 @@ public class RegisterPresenter implements BasePresenter {
                     }
                     if(response.error != null){
                         Toast.makeText(activity, ""+response.error, Toast.LENGTH_SHORT).show();
+                        activity.showLoading(false);
                     }
                     else {
                         Log.e(TAG, "register: "+response.error );

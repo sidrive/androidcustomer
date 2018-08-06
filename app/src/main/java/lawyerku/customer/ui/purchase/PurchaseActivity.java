@@ -22,6 +22,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -37,6 +38,7 @@ import lawyerku.customer.api.model.PerkaraModel;
 import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.ui.dialog.DialogUploadOption;
+import lawyerku.customer.utils.ImageUtils;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -71,6 +73,7 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
     public static final int REQUST_CODE_GALLERY = 1001;
     private static final int RC_CAMERA_PERM = 205;
     public static Uri mCapturedImageURI;
+    public static String realpath;
     byte[] imgSmall;
     Uri imgOriginal;
 
@@ -126,13 +129,25 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
       if (resultCode == Activity.RESULT_OK) {
         Uri uri = mCapturedImageURI;
         handleCrop(uri);
+
+//          String realpath;
+//          if(mCapturedImageURI.getScheme().equals("content")){
+//              realpath = ImageUtils.getRealPathFromURI(PurchaseActivity.this,data.getData());
+//          }
+//          else {
+//              realpath = data.getData().getPath();
+//          }
+//          if(realpath != null){
+//              File file = new File(realpath);
+//
+//          }
       }
     }
 
     if (requestCode == REQUST_CODE_GALLERY) {
       if (resultCode == Activity.RESULT_OK) {
         Uri uri = data.getData();
-        handleCrop(uri);
+//        handleCrop(uri);
 
       }
     }
@@ -143,7 +158,8 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
         Uri uri = result.getUri();
         imgOriginal = uri;
           RequestBody image = RequestBody.create(MediaType.parse("image/*"), String.valueOf(uri));
-          Log.e(TAG, "onActivityResult: "+uri);
+          Log.e(TAG, "onActivityResult: "+imgOriginal);
+          Log.e(TAG, "onActivityResult: "+mCapturedImageURI);
 
         try {
           Bitmap bitmap2 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
@@ -153,6 +169,18 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
         } catch (IOException e) {
           e.printStackTrace();
         }
+
+
+          if(mCapturedImageURI.getScheme().equals("content")){
+              realpath = ImageUtils.getRealPathFromURI(PurchaseActivity.this,mCapturedImageURI);
+          }
+          else {
+              realpath = data.getData().getPath();
+          }
+          if(realpath != null){
+              File file = new File(realpath);
+
+          }
 
 
       } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
@@ -183,7 +211,7 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
   private void handleCrop(Uri uri) {
     CropImage.activity(uri)
             .setCropShape(CropImageView.CropShape.RECTANGLE)
-            .setAspectRatio(500, 500)
+            .setAspectRatio(900, 1280)
             .start(this);
   }
 

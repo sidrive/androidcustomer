@@ -375,5 +375,6 @@
 
   </android.support.v7.widget.CardView>
 
+  <include layout="@layout/view_progress"/>
 
 </android.support.constraint.ConstraintLayout>
