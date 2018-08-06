@@ -434,8 +434,16 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
 
   }
   public void onBackPressed() {
-    startActivity(new Intent(SearchLawyerActivity.this, MainActivityCustomer.class));
-    finish();
+    if(mapMode){
+      relMap.setVisibility(View.GONE);
+      mapMode = false;
+      btnCariLawyer.setVisibility(View.VISIBLE);
+    }
+    else {
+      startActivity(new Intent(SearchLawyerActivity.this, MainActivityCustomer.class));
+      finish();
+    }
+
   }
   public void showLoading(boolean show) {
     if (show) {

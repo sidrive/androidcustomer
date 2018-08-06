@@ -42,8 +42,8 @@
   <string name="prompt_cellphone1">Telepon / HP 1</string>
   <string name="prompt_cellphone2">Telepon / HP 2</string>
   <string name="prompt_nik">No.KTP/SIM</string>
-  <string name="text_forgot_password">Forgot Password</string>
-  <string name="text_or">OR</string>
+  <string name="text_forgot_password">Lupa Password</string>
+  <string name="text_or">ATAU</string>
   <string name="text_please_wait">Tunggu sebentar</string>
   <string name="action_register_customer">Register Customer</string>
   <string name="action_register_workman">Register Mitra Ketukang</string>
@@ -158,7 +158,7 @@
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="str_fblogin">LOGIN WITH FACEBOOK</string>
-  <string name="str_register">CREATE AN ACCOUNT</string>
+  <string name="str_register">BUAT AKUN BARU</string>
   <string name="desc_forgot">We just need your registered email address to send your password reset</string>
   <string name="str_btn_resetpass">RESET PASSWORD</string>
   <string name="str_username">Username</string>
@@ -174,14 +174,14 @@
   <string name="str_decline">Decline</string>
   <string name="str_pilih_lawyer_yang_sesuai">Pilih lawyer yang sesuai</string>
   <string name="str_find_lawyer">Cari Pengacara</string>
-  <string name="str_information">Information</string>
+  <string name="str_information">Informasi</string>
   <string name="str_panduan_penggunaan_aplikasi">Panduan penggunaan aplikasi</string>
   <string name="str_bantuan">Bantuan</string>
-  <string name="str_daftar_transaksi">Daftar transaksi</string>
-  <string name="str_history">History Project</string>
+  <string name="str_daftar_transaksi">Daftar Perkara</string>
+  <string name="str_history">Daftar Perkara</string>
   <string name="str_deskripsi">Deskripsi</string>
   <string name="str_cari_lawyer">CARI LAWYER</string>
-  <string name="str_location">Location</string>
+  <string name="str_location">Set Lokasi</string>
   <string name="str_bahasa">Bahasa</string>
   <string name="str_bidang">Bidang</string>
   <string name="ijin_lokasi">Membutuhkan ijin untuk akses lokasi</string>
