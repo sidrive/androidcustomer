@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,9 @@ import lawyerku.customer.api.adapter.AdapterLawyer;
 import lawyerku.customer.api.model.LawyerModel;
 import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
+import lawyerku.customer.ui.MainActivityCustomer;
 import lawyerku.customer.ui.detaillawyer.DetailLawyerActivity;
+import lawyerku.customer.ui.searchlawyer.SearchLawyerActivity;
 
 public class SearchActivity extends BaseActivity {
   private static final String TAG = "SearchActivity";
@@ -38,9 +41,13 @@ public class SearchActivity extends BaseActivity {
   @BindView(R.id.rcvLawyer)
   RecyclerView lsLawyer;
 
+  @BindView(R.id.view_progress)
+  LinearLayout viewProgress;
+
   private AdapterLawyer adapterLawyer;
   public static String latitudeProject = null;
   public static String longitudeProjeect = null;
+  public static String deskripsiProject;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +56,12 @@ public class SearchActivity extends BaseActivity {
     ButterKnife.bind(this);
     transparentStatusBar();
 
+    showLoading(true);
     LawyerModel.Request requestBody = new LawyerModel.Request();
     initRecycleView();
 
     Bundle bundle = getIntent().getExtras();
+
     requestBody.language = Integer.valueOf(bundle.get("languages").toString());
     requestBody.skill = Integer.valueOf(bundle.get("jobskill").toString());
     requestBody.latitude = bundle.getString("latitude").toString();
@@ -61,6 +70,7 @@ public class SearchActivity extends BaseActivity {
 
     latitudeProject = bundle.getString("latitude").toString();
     longitudeProjeect = bundle.getString("longitude").toString();
+    deskripsiProject = bundle.get("deskripsi").toString();
   }
 
     @Override
@@ -110,25 +120,35 @@ public class SearchActivity extends BaseActivity {
     adapterLawyer = new AdapterLawyer((ArrayList<LawyerModel.Data>) listLawyer,this, this);
 ////        adapterStatusMotor.UpdateMotor(listMotor);
     lsLawyer.setAdapter(adapterLawyer);
+    showLoading(false);
   }
 
   public void createProject(LawyerModel.Data lawyer) {
     Log.e(TAG, "createProject: "+lawyer );
+    showLoading(true);
     Intent i = new Intent(SearchActivity.this, DetailLawyerActivity.class);
     Bundle bundle = new Bundle();
     bundle.putString("idlawyer", String.valueOf(lawyer.id));
+    bundle.putString("deskripsi",deskripsiProject);
     bundle.putString("latitude",latitudeProject);
     bundle.putString("longitude",longitudeProjeect);
     i.putExtras(bundle);
     startActivity(i);
   }
 
-  @OnClick(R.id.img_logo)
-  public void lawyerDetail(){
-    Intent i = new Intent(SearchActivity.this, DetailLawyerActivity.class);
-    Bundle bundle = new Bundle();
-    bundle.putString("idlawyer", "1");
-    i.putExtras(bundle);
-    startActivity(i);
+
+
+  public void showLoading(boolean show) {
+    if (show) {
+      viewProgress.setVisibility(View.VISIBLE);
+    } else {
+      viewProgress.setVisibility(View.GONE);
+    }
+  }
+
+  public void onBackPressed() {
+    startActivity(new Intent(SearchActivity.this, SearchLawyerActivity.class));
+    finish();
+    showLoading(false);
   }
 }

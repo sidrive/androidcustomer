@@ -29,6 +29,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +59,7 @@ import lawyerku.customer.api.model.LawyerModel;
 import lawyerku.customer.api.model.PerkaraModel;
 import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
+import lawyerku.customer.ui.MainActivityCustomer;
 import lawyerku.customer.ui.MessageActivity;
 import lawyerku.customer.ui.dialog.DialogUploadOption;
 import lawyerku.customer.ui.purchase.PurchaseActivity;
@@ -105,6 +107,9 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
 
   @BindView(R.id.tv_tgl_selesai)
   TextView txtEndDate;
+
+  @BindView(R.id.view_progress)
+  LinearLayout viewProgress;
 
   private GoogleMap mMap;
   private LocationManager lm;
@@ -304,6 +309,27 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
 
     txtStartDate.setText(starDate);
     txtEndDate.setText(endDate);
+
+    showLoading(false);
+  }
+
+  public void showLoading(boolean show) {
+    if (show) {
+      viewProgress.setVisibility(View.VISIBLE);
+    } else {
+      viewProgress.setVisibility(View.GONE);
+    }
+  }
+
+  public void onBackPressed() {
+    startActivity(new Intent(DetailPerkaraActivity.this, MainActivityCustomer.class));
+    finish();
+  }
+
+  @OnClick(R.id.btn_home)
+  public void returnHome(){
+    startActivity(new Intent(DetailPerkaraActivity.this, MainActivityCustomer.class));
+    finish();
   }
 
 }

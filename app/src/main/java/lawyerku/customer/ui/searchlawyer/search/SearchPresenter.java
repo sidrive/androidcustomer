@@ -40,13 +40,7 @@ public class SearchPresenter implements BasePresenter {
     public void searchLawyer(LawyerModel.Request requestBody){
         String accessToken = GlobalPreference.read(PrefKey.accessToken, String.class);
 
-//        String language = "2";
-//        String skill = "2";
-//        String latitude = "-59.288834";
-//        String longitude = "-167.767563";
         subscription.add(LawyerkuService.Factory.create().searchLawyer(accessToken, String.valueOf(requestBody.language),String.valueOf(requestBody.skill),requestBody.latitude,requestBody.longitude)
-//        subscription.add(LawyerkuService.Factory.create().searchLawyer(accessToken, String.valueOf(requestBody.language),
-//                String.valueOf(requestBody.skill),String.valueOf(requestBody.latitude),String.valueOf(requestBody.longitude))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
@@ -61,6 +55,7 @@ public class SearchPresenter implements BasePresenter {
                     if(response.status >= 200 && response.message.equals("Data tidak ditemukan"))
                     {
                         Toast.makeText(activity, "Lawyer yang anda cari tidak ditemukan, silahkan ganti preferensi atau pindah lokasi pencarian", Toast.LENGTH_LONG).show();
+                        activity.showLoading(false);
                     }
                         else {
 //                        createProjectListener.onError(response.message);

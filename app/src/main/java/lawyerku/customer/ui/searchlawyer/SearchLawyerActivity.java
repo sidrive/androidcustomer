@@ -25,6 +25,7 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,6 +77,8 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
   ImageView imgMap;
   @BindView(R.id.rel_map)
   RelativeLayout relMap;
+  @BindView(R.id.view_progress)
+  LinearLayout viewProgress;
 
   @Inject SearchLawyerPresenter presenter;
 
@@ -107,6 +110,8 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
     mapFragment = (SupportMapFragment) getSupportFragmentManager()
             .findFragmentById(R.id.map);
     mapFragment.getMapAsync(this);
+
+    showLoading(false);
   }
 
   @Override
@@ -147,6 +152,7 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
 
     spinnerBahasa.setError(null);
     spinnerBidang.setError(null);
+    etDeskripsi.setError(null);
 
     LatLng latLng = mMap.getCameraPosition().target;
     Log.e(TAG, "showSerach: "+latLng );
@@ -163,6 +169,11 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
       focusView = spinnerBidang;
       cancel = true;
     }
+    if(TextUtils.isEmpty(etDeskripsi.getText().toString())){
+      etDeskripsi.setError("");
+      focusView = etDeskripsi;
+      cancel = true;
+    }
     if(cancel){
       focusView.requestFocus();
       if(focusView == spinnerBidang){
@@ -170,6 +181,9 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
       }
       if(focusView == spinnerBahasa){
         Toast.makeText(this, "Silahkan Pilih Bahasa", Toast.LENGTH_SHORT).show();
+      }
+      if(focusView == etDeskripsi){
+        Toast.makeText(this, "Silahkan Masukan Deskripsi Perkara", Toast.LENGTH_SHORT).show();
       }
 
     }
@@ -193,15 +207,19 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
         skill = 2;
       }
 
+      showLoading(true);
+
       Log.e("skill", "showSerach: "+lang+" "+skill );
       Intent i = new Intent(SearchLawyerActivity.this, SearchActivity.class);
       Bundle bundle = new Bundle();
+      bundle.putString("deskripsi",etDeskripsi.getText().toString());
       bundle.putString("languages", String.valueOf(lang));
       bundle.putString("jobskill", String.valueOf(skill));
       bundle.putString("latitude",String.valueOf(latLng.latitude));
       bundle.putString("longitude",String.valueOf(latLng.longitude));
       i.putExtras(bundle);
       startActivity(i);
+
     }
 //    validateSearch();
   }
@@ -418,5 +436,12 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
   public void onBackPressed() {
     startActivity(new Intent(SearchLawyerActivity.this, MainActivityCustomer.class));
     finish();
+  }
+  public void showLoading(boolean show) {
+    if (show) {
+      viewProgress.setVisibility(View.VISIBLE);
+    } else {
+      viewProgress.setVisibility(View.GONE);
+    }
   }
 }

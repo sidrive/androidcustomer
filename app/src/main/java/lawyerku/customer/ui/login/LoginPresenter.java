@@ -62,6 +62,7 @@ public class LoginPresenter implements BasePresenter{
 //                    String msg = ErrorUtils.getError(throwable);
                     Log.e("loginNow", "CredentialPresenter :"+throwable);
                     Toast.makeText(activity, "Username/Password Salah", Toast.LENGTH_SHORT).show();
+                    activity.showLoading(false);
 //
                 }));
     }

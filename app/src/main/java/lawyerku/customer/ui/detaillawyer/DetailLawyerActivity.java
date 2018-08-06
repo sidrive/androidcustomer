@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.preference.GlobalPreference;
 import lawyerku.customer.preference.PrefKey;
 import lawyerku.customer.ui.detailperkara.DetailPerkaraActivity;
+import lawyerku.customer.ui.searchlawyer.SearchLawyerActivity;
 
 public class DetailLawyerActivity extends BaseActivity {
 
@@ -62,10 +64,15 @@ public class DetailLawyerActivity extends BaseActivity {
     @BindView(R.id.btn_end_date)
     Button btnEndDate;
 
+    @BindView(R.id.view_progress)
+    LinearLayout viewProgress;
+
+
     public String accessToken = GlobalPreference.read(PrefKey.accessToken, String.class);
     public static String idlawyer = null;
     public static String starDate = null;
     public static String endDate = null;
+    public static String deskripsiProject = null;
     public static String latitudeProject = null;
     public static String longitudeProjeect = null;
 
@@ -87,6 +94,7 @@ public class DetailLawyerActivity extends BaseActivity {
         idlawyer = bundle.get("idlawyer").toString();
         latitudeProject = bundle.getString("latitude").toString();
         longitudeProjeect = bundle.getString("longitude").toString();
+        deskripsiProject = bundle.getString("deskripsi").toString();
 
         presenter.getLawyer(Integer.valueOf(bundle.get("idlawyer").toString()),false);
 
@@ -131,6 +139,8 @@ public class DetailLawyerActivity extends BaseActivity {
         txtSkill.setText(lawyer.jobskills.get(0).name.toString());
         txtLevel.setText(String.valueOf(lawyer.level));
         txtPhone.setText(lawyer.cellphone1.toString());
+
+        showLoading(false);
     }
 
     @OnClick(R.id.btn_start_date)
@@ -203,16 +213,16 @@ public class DetailLawyerActivity extends BaseActivity {
         CreatePerkaraModel.Response.Data createPerkaraBody = new CreatePerkaraModel.Response.Data();
 
         createPerkaraBody.customer_id = customer.customerId;
-//        createPerkaraBody.lawyer_id = lawyer.id;
-        createPerkaraBody.lawyer_id = 1;
+        createPerkaraBody.lawyer_id = lawyer.id;
+//        createPerkaraBody.lawyer_id = 1;
         createPerkaraBody.jobskill_id = lawyer.jobskills.get(0).id;
-        createPerkaraBody.description = "Hak Warisan";
+        createPerkaraBody.description = deskripsiProject;
         createPerkaraBody.gps_latitude = Double.valueOf(latitudeProject);
         createPerkaraBody.gps_longitud = Double.valueOf(longitudeProjeect);
         createPerkaraBody.start_date = starDate;
         createPerkaraBody.end_date = endDate;
         createPerkaraBody.number = "1";
-
+        showLoading(true);
         presenter.createPerkara(accessToken,createPerkaraBody);
 
 
@@ -224,5 +234,18 @@ public class DetailLawyerActivity extends BaseActivity {
         bundle.putString("id", String.valueOf(data.id));
         i.putExtras(bundle);
         startActivity(i);
+    }
+
+    public void showLoading(boolean show) {
+        if (show) {
+            viewProgress.setVisibility(View.VISIBLE);
+        } else {
+            viewProgress.setVisibility(View.GONE);
+        }
+    }
+
+    public void onBackPressed() {
+        startActivity(new Intent(DetailLawyerActivity.this, SearchLawyerActivity.class));
+//        finish();
     }
 }

@@ -132,7 +132,7 @@
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
                            android:paddingBottom="4dp"
-                           android:textColor="@android:color/darker_gray"
+                           android:textColor="@android:color/white"
                            android:textSize="14sp" />
                    </LinearLayout>
 
@@ -202,7 +202,7 @@
                            android:id="@+id/text_level"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:textColor="@android:color/darker_gray"
+                           android:textColor="@android:color/white"
                            android:textSize="14sp" />
                    </LinearLayout>
 
@@ -351,7 +351,7 @@
        </LinearLayout>
    </ScrollView>
 
-
+    <include layout="@layout/view_progress"/>
 
 
 </android.support.constraint.ConstraintLayout>
