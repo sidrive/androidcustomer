@@ -35,7 +35,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
         String title = null;
         if (position == 0)
         {
-            title = "History";
+            title = "Riwayat Perkara";
         }
         else if (position == 1)
         {

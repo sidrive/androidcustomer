@@ -40,6 +40,7 @@ import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.ui.dialog.DialogUploadOption;
 import lawyerku.customer.utils.ImageUtils;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
@@ -67,6 +68,7 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
 
     public static int id;
     public static List<PerkaraModel.Response.Data> perkara;
+    public static PerkaraModel.Purchase purchase;
 
     private static final String TAG = "PurchaseActivity";
     public static final int REQUST_CODE_CAMERA = 1002;
@@ -74,6 +76,7 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
     private static final int RC_CAMERA_PERM = 205;
     public static Uri mCapturedImageURI;
     public static String realpath;
+    public static File file;
     byte[] imgSmall;
     Uri imgOriginal;
 
@@ -99,7 +102,10 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
     }
 
     public void initPayment(List<PerkaraModel.Response.Data> data) {
-        perkara = data;
+        purchase = new PerkaraModel.Purchase();
+        purchase.id = data.get(0).id;
+        purchase.status = data.get(0).last_status.status;
+        purchase.total = 10000000;
     }
 
     @Override
@@ -154,12 +160,11 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
 
     if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
       CropImage.ActivityResult result = CropImage.getActivityResult(data);
+
       if (resultCode == Activity.RESULT_OK) {
         Uri uri = result.getUri();
         imgOriginal = uri;
           RequestBody image = RequestBody.create(MediaType.parse("image/*"), String.valueOf(uri));
-          Log.e(TAG, "onActivityResult: "+imgOriginal);
-          Log.e(TAG, "onActivityResult: "+mCapturedImageURI);
 
         try {
           Bitmap bitmap2 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
@@ -178,10 +183,8 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
               realpath = data.getData().getPath();
           }
           if(realpath != null){
-              File file = new File(realpath);
-
+              file = new File(realpath);
           }
-
 
       } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
         Exception error = result.getError();
@@ -306,6 +309,6 @@ public class PurchaseActivity extends BaseActivity implements DialogUploadOption
 
   @OnClick(R.id.btn_input)
     public void savePurchase(){
-      presenter.savePurchase(perkara,imgOriginal);
+      presenter.savePurchase(purchase,file);
   }
 }

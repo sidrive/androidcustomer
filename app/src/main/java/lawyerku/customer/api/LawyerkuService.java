@@ -10,6 +10,7 @@ import lawyerku.customer.api.model.LawyerModel;
 import lawyerku.customer.api.model.PerkaraModel;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -87,6 +88,16 @@ public interface LawyerkuService {
     @GET("api/projects")
     Observable<PerkaraModel.Response> getListProject(
             @Header("Authorization") String header );
+
+    @Multipart
+    @Headers("Accept:application/json")
+    @POST("api/payments")
+    Observable<PerkaraModel.Response> purchase(
+            @Header("Authorization") String header,
+            @Part("project_id") int id,
+            @Part("status") String status,
+            @Part("total_transfers") int total,
+            @Part MultipartBody.Part image);
 //
 //    @Headers("Accept:application/json")
 //    @PUT("api/project/{projectId}")

@@ -62,7 +62,7 @@ public class ListPerkaraActivity extends BaseActivity implements OnFragmentInter
     setSupportActionBar(tbMain);
     getSupportActionBar().setDisplayShowHomeEnabled(true);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setTitle("History Penanganan Hukum");
+    getSupportActionBar().setTitle("Daftar Penanganan Perkara");
     tbMain.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_black_24dp);
     tbMain.setNavigationOnClickListener(new OnClickListener() {
       @Override

@@ -66,11 +66,35 @@ public class PurchasePresenter implements BasePresenter {
                 }));
     }
 
-    public void savePurchase(List<PerkaraModel.Response.Data> perkara, Uri imgOriginal) {
-        File file = new File(String.valueOf(imgOriginal));
-        if (imgOriginal != null) {
+    public void savePurchase(PerkaraModel.Purchase purchase, File file) {
+        String accessToken = GlobalPreference.read(PrefKey.accessToken, String.class);
+        MultipartBody.Part imageBody = null;
+        if (file != null) {
             RequestBody image = RequestBody.create(MediaType.parse("image/*"), file);
-//            imageBody = MultipartBody.Part.createFormData("image", file.getName(), image);
+            imageBody = MultipartBody.Part.createFormData("image", file.getName(), image);
         }
+
+        subscription.add(LawyerkuService.Factory.create().purchase(accessToken,purchase.id,"New",purchase.total,imageBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> {
+                    Log.e(TAG, "getLawyer: "+response.data );
+
+                    if (response.status >= 200 && response.status < 300) {
+
+//                        activity.initPayment(response.data);
+
+                    } else {
+//                        profileListener.onError(response.message);
+                    }
+//                    profileListener.hideLoading();
+                }, throwable -> {
+                    int errorCode = ((HttpException) throwable).response().code();
+                    Log.e(TAG, "getProject: "+throwable );
+//                    if (errorCode > 400)
+//                        profileListener.onError(App.getContext().getString(R.string.error_general));
+//                    profileListener.hideLoading();
+                }));
+
     }
 }

@@ -30,6 +30,7 @@ import lawyerku.customer.ui.listperkara.ListPerkaraActivity;
 import lawyerku.customer.api.facebook.GetUserCallback;
 import lawyerku.customer.api.facebook.User;
 import lawyerku.customer.api.facebook.UserRequest;
+import lawyerku.customer.ui.profilcustomer.DetailProfileActivity;
 import lawyerku.customer.ui.searchlawyer.SearchLawyerActivity;
 import lawyerku.customer.ui.splash.SplashActivity;
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -106,6 +107,12 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
     ConnectivityManager connect = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
     Log.e("cyes", "checkCon: "+connect.getNetworkInfo(0).getState() );
 
+  }
+
+  @OnClick(R.id.cv_profile)
+  public void showProfile(){
+    Intent i = new Intent(MainActivityCustomer.this, DetailProfileActivity.class);
+    startActivity(i);
   }
 
   @OnClick(R.id.cv_find)

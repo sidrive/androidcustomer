@@ -135,4 +135,47 @@ public class PerkaraModel {
                     '}';
         }
     }
+
+    public static class Purchase {
+        @SerializedName("project_id") public int id;
+        public String status;
+        @SerializedName("total_transfers") public int total;
+        public String path;
+    }
+
+    public static class purchaseResponse {
+        public int status;
+        public String message;
+        public List<Payment> data;
+
+        @Override
+        public String toString() {
+            return "purchaseResponse{" +
+                    "status=" + status +
+                    ", message='" + message + '\'' +
+                    ", data=" + data +
+                    '}';
+        }
+
+        public static class Payment {
+            @SerializedName("project_id") public String idProject;
+            public String status;
+            @SerializedName("customer_id") public int idCustomer;
+            @SerializedName("paid_at") public String paidAt;
+            @SerializedName("total_transfers") public String total;
+            public int id;
+
+            @Override
+            public String toString() {
+                return "Payment{" +
+                        "idProject='" + idProject + '\'' +
+                        ", status='" + status + '\'' +
+                        ", idCustomer=" + idCustomer +
+                        ", paidAt='" + paidAt + '\'' +
+                        ", total='" + total + '\'' +
+                        ", id=" + id +
+                        '}';
+            }
+        }
+    }
 }
