@@ -55,7 +55,7 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.MessageActivity"
+            android:name=".ui.message.MessageActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity

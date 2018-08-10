@@ -24,8 +24,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import lawyerku.customer.MainActivity;
 import lawyerku.customer.R;
+import lawyerku.customer.ui.message.MessageActivity;
 
 public class DetailPerkara extends AppCompatActivity implements GoogleMap.OnCameraIdleListener,
         OnMapReadyCallback {

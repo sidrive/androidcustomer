@@ -96,6 +96,8 @@ public class LawyerModel {
         @SerializedName("id_number") public String idnumber;
         public DataProfile user;
         public List<Images> images;
+        public String first_name;
+        public String last_name;
 
         @Override
         public String toString() {
@@ -103,11 +105,14 @@ public class LawyerModel {
                     "id=" + id +
                     ", name='" + name + '\'' +
                     ", address='" + address + '\'' +
+                    ", email='" + email + '\'' +
                     ", phone1='" + phone1 + '\'' +
                     ", phone2='" + phone2 + '\'' +
                     ", idnumber='" + idnumber + '\'' +
                     ", user=" + user +
                     ", images=" + images +
+                    ", first_name='" + first_name + '\'' +
+                    ", last_name='" + last_name + '\'' +
                     '}';
         }
     }

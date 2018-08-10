@@ -15,7 +15,7 @@ import lawyerku.customer.mainfragment.HistoryFragment;
 import lawyerku.customer.mainfragment.PerkaraNewFragment;
 import lawyerku.customer.mainfragment.ViewPagerAdapter;
 import lawyerku.customer.ui.DetailProfile;
-import lawyerku.customer.ui.MessageActivity;
+import lawyerku.customer.ui.message.MessageActivity;
 
 
 public class MainActivity extends AppCompatActivity implements

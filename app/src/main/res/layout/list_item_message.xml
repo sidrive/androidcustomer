@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/res_24dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_chat"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/res_24dp"
+        android:layout_marginStart="@dimen/res_9dp"
+        android:layout_marginEnd="@dimen/res_9dp"
+        android:padding="@dimen/res_18dp"
+        android:background="@drawable/card_shape2"
+        android:text="Hai, Bolehkah saya bertanya?"
+        android:textAlignment="textStart"
+        android:textColor="@color/charcoalLawyer"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/tv_date_receiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01-01-2000"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_chat"
+        app:layout_constraintStart_toStartOf="@id/tv_chat"
+        />
+
+    <TextView
+        android:id="@+id/tv_chat2"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/res_9dp"
+        android:layout_marginStart="@dimen/res_9dp"
+        android:layout_marginEnd="@dimen/res_9dp"
+        android:padding="@dimen/res_18dp"
+        android:background="@drawable/card_shape3"
+        android:text="Silahkan, apa yang bisa saya bantu?"
+        android:textAlignment="textStart"
+        android:textColor="@color/charcoalLawyer"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_date_receiver"
+        />
+
+    <TextView
+        android:id="@+id/tv_date_sender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/res_24dp"
+        android:text="01-01-2000"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_chat2"
+        app:layout_constraintEnd_toEndOf="@id/tv_chat2"
+        />
+
+</android.support.constraint.ConstraintLayout>

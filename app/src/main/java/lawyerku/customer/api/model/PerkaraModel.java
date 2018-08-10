@@ -62,6 +62,7 @@ public class PerkaraModel {
         @SerializedName("address") public String customerAddress;
         @SerializedName("phone_number_1") public String customerPhone;
         @SerializedName("id_number") public String customerId;
+        public int user_id;
 
         @Override
         public String toString() {
@@ -71,6 +72,7 @@ public class PerkaraModel {
                     ", customerAddress='" + customerAddress + '\'' +
                     ", customerPhone='" + customerPhone + '\'' +
                     ", customerId='" + customerId + '\'' +
+                    ", user_id=" + user_id +
                     '}';
         }
     }
@@ -89,6 +91,7 @@ public class PerkaraModel {
          @SerializedName("rate_min") public double rateMin;
          @SerializedName("rate_max") public double rateMax;
          @SerializedName("id_number") public String lawyerId;
+         public int user_id;
 
         @Override
         public String toString() {
@@ -106,6 +109,7 @@ public class PerkaraModel {
                     ", rateMin=" + rateMin +
                     ", rateMax=" + rateMax +
                     ", lawyerId='" + lawyerId + '\'' +
+                    ", user_id=" + user_id +
                     '}';
         }
     }

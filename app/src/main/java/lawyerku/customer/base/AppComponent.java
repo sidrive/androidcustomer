@@ -12,6 +12,8 @@ import lawyerku.customer.ui.listperkara.ListPerkaraActivityModule;
 import lawyerku.customer.ui.listperkara.ListPerkaraActiviyComponent;
 import lawyerku.customer.ui.login.LoginActivityComponent;
 import lawyerku.customer.ui.login.LoginActivityModule;
+import lawyerku.customer.ui.message.MessageActivityComponent;
+import lawyerku.customer.ui.message.MessageActivityModule;
 import lawyerku.customer.ui.profilcustomer.DetailProfileActivityComponent;
 import lawyerku.customer.ui.profilcustomer.DetailProfileActivityModule;
 import lawyerku.customer.ui.purchase.PurchaseActivityComponent;
@@ -56,4 +58,6 @@ public interface AppComponent {
         DetailProfileActivityComponent plus(DetailProfileActivityModule activityModule);
 
         PurchaseActivityComponent plus(PurchaseActivityModule activityModule);
+
+        MessageActivityComponent plus(MessageActivityModule activityModule);
 }

@@ -228,6 +228,12 @@ public class DetailProfileActivity extends BaseActivity {
     Log.e("profile", "showProfile: "+data );
     customer = data;
 
+    if(data.first_name != null){
+      txtFirstName.setText(data.first_name);
+    }
+    if(data.last_name != null){
+      txtLastName.setText(data.last_name);
+    }
     txtNama.setText(data.name);
     txtAddress.setText(data.address);
     txtEmail.setText(data.email);

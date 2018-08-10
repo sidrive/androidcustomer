@@ -39,6 +39,7 @@
     app:layout_constraintBottom_toTopOf="@id/tv_example_chat2"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/img_logo"
+      android:visibility="gone"
     />
 
   <TextView
@@ -57,12 +58,12 @@
     android:textSize="14sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@id/tv_example_chat"
-
+    android:visibility="gone"
     />
   <android.support.v7.widget.RecyclerView
     android:id="@+id/rv_message"
     android:layout_width="0dp"
-    android:layout_height="wrap_content"
+    android:layout_height="0dp"
     android:layout_marginStart="@dimen/res_9dp"
     android:layout_marginEnd="@dimen/res_9dp"
     app:layout_constraintBottom_toTopOf="@id/et_message"

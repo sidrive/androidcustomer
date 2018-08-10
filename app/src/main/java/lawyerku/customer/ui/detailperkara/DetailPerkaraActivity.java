@@ -1,29 +1,18 @@
 package lawyerku.customer.ui.detailperkara;
 
-import android.Manifest;
 import android.Manifest.permission;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,7 +20,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,30 +31,19 @@ import com.google.android.gms.maps.GoogleMap.OnCameraIdleListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import lawyerku.customer.R;
-import lawyerku.customer.api.model.LawyerModel;
 import lawyerku.customer.api.model.PerkaraModel;
 import lawyerku.customer.base.BaseActivity;
 import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.ui.MainActivityCustomer;
-import lawyerku.customer.ui.MessageActivity;
-import lawyerku.customer.ui.dialog.DialogUploadOption;
+import lawyerku.customer.ui.message.MessageActivity;
 import lawyerku.customer.ui.purchase.PurchaseActivity;
 import lawyerku.customer.utils.DateFormatter;
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.AppSettingsDialog;
-import pub.devrel.easypermissions.EasyPermissions;
 
 public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleListener,
     OnMapReadyCallback {
@@ -231,6 +208,11 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
   @OnClick(R.id.img_msg)
   public void onImgMsgClicked() {
     Intent intent = new Intent(DetailPerkaraActivity.this, MessageActivity.class);
+    Bundle bundle = new Bundle();
+    bundle.putString("idcustomer",String.valueOf(perkara.get(0).customer.user_id));
+    bundle.putString("idlawyer",String.valueOf(perkara.get(0).lawyer.user_id));
+    bundle.putString("projectid",String.valueOf(perkara.get(0).id));
+    intent.putExtras(bundle);
     startActivity(intent);
   }
 

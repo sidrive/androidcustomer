@@ -7,6 +7,7 @@ import lawyerku.customer.BuildConfig;
 import lawyerku.customer.api.model.CreatePerkaraModel;
 import lawyerku.customer.api.model.CredentialModel;
 import lawyerku.customer.api.model.LawyerModel;
+import lawyerku.customer.api.model.MessageModel;
 import lawyerku.customer.api.model.PerkaraModel;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -253,6 +254,21 @@ public interface LawyerkuService {
 //    Observable<FcmToken.Response> updateFcmToken(
 //            @Header("Authorization") String header,
 //            @Body BodyToken fcmToken);
+    //    ==============================================================
+    //                      SERVICE
+    //    ==============================================================
+
+    @Headers("Accept:application/json")
+    @GET("api/message/{id}")
+    Observable<MessageModel.Response> getMessage
+            (@Header("Authorization") String header,
+             @Path("id") int id);
+
+    @Headers("Accept:application/json")
+    @POST("api/message")
+    Observable<MessageModel.Response> sendMessage
+            (@Header("Authorization") String header,
+             @Body MessageModel.MessageToSend body);
 
     //    ==============================================================
     //                      SERVICE

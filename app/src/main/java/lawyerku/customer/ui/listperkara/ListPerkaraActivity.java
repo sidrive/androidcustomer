@@ -31,7 +31,7 @@ import lawyerku.customer.mainfragment.PerkaraNewFragment.OnFragmentInteractionLi
 import lawyerku.customer.mainfragment.ViewPagerAdapter;
 import lawyerku.customer.ui.MainActivityCustomer;
 import lawyerku.customer.ui.profilcustomer.DetailProfileActivity;
-import lawyerku.customer.ui.MessageActivity;
+import lawyerku.customer.ui.message.MessageActivity;
 import lawyerku.customer.ui.detailperkara.DetailPerkaraActivity;
 
 public class ListPerkaraActivity extends BaseActivity implements OnFragmentInteractionListener,

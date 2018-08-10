@@ -44,6 +44,7 @@ public class RegisterPresenter implements BasePresenter {
     }
 
     public void login(){
+        Toast.makeText(activity, "Registrasi Berhasil, Silahkan Login menggunakan Akun Anda", Toast.LENGTH_SHORT).show();
         activity.logogin();
     }
 
