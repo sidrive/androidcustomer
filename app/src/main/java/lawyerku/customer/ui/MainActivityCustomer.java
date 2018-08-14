@@ -3,13 +3,20 @@ package lawyerku.customer.ui;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +24,16 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -39,9 +56,14 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class MainActivityCustomer extends AppCompatActivity implements GetUserCallback.IGetUserResponse {
 
     private static final int RC_LOC_PERM = 1001;
+  private static final String TAG = "MainActivity";
 
-    @BindView(R.id.view_progress)
+  @BindView(R.id.view_progress)
   LinearLayout viewProgress;
+
+  protected static final int REQUEST_CHECK_SETTINGS = 0x1;
+  private android.location.Location mlocation;
+  private LocationManager lm;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +71,7 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
     setContentView(R.layout.activity_main_customer_cons);
     ButterKnife.bind(this);
     transparentStatusBar();
-
+    displayLocationSettingsRequest(this);
 
     checkCon(true);
     locationTask();
@@ -163,6 +185,91 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
   public void onCompleted(User user) {
 
   }
+
+  private void displayLocationSettingsRequest(Context context) {
+    GoogleApiClient googleApiClient = new GoogleApiClient.Builder(context)
+            .addApi(LocationServices.API).build();
+    googleApiClient.connect();
+
+    LocationRequest locationRequest = LocationRequest.create();
+    locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+    locationRequest.setInterval(10000);
+    locationRequest.setFastestInterval(10000 / 2);
+
+    LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(locationRequest);
+    builder.setAlwaysShow(true);
+
+    PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+    result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+      @Override
+      public void onResult(LocationSettingsResult result) {
+        final Status status = result.getStatus();
+        switch (status.getStatusCode()) {
+          case LocationSettingsStatusCodes.SUCCESS:
+            Log.i(TAG, "All location settings are satisfied.");
+            break;
+          case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+            Log.i(TAG, "Location settings are not satisfied. Show the user a dialog to upgrade location settings ");
+
+            try {
+              // Show the dialog by calling startResolutionForResult(), and check the result
+              // in onActivityResult().
+              status.startResolutionForResult(MainActivityCustomer.this, REQUEST_CHECK_SETTINGS);
+              getCurrentLocationUser();
+            } catch (IntentSender.SendIntentException e) {
+              Log.i(TAG, "PendingIntent unable to execute request.");
+            }
+            break;
+          case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+            Log.i(TAG, "Location settings are inadequate, and cannot be fixed here. Dialog not created.");
+            break;
+        }
+      }
+    });
+  }
+
+  private void getCurrentLocationUser() {
+    lm = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+    boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+    boolean isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    Log.e(TAG, "getCurrentLocationUser: GPS "+isGPSEnabled );
+    Log.e(TAG, "getCurrentLocationUser: Network "+isNetworkEnabled );
+    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+      if (isNetworkEnabled) {
+        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, locationListener);
+        mlocation = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        Log.e(TAG, "getCurrentLocationUser: net"+mlocation );
+      } if (isGPSEnabled) {
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
+        mlocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Log.e(TAG, "getCurrentLocationUser: gps"+mlocation );
+      }
+    }
+    Log.e(TAG, "getCurrentLocationUser: "+mlocation );
+  }
+
+  private android.location.LocationListener locationListener = new android.location.LocationListener() {
+    @Override
+    public void onLocationChanged(android.location.Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+  };
 
   @OnClick(R.id.cv_logout)
   public void logout(){

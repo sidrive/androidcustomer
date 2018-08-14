@@ -2,6 +2,7 @@ package lawyerku.customer.ui.searchlawyer;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -87,6 +89,8 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
   private GoogleMap mMap;
 
   private boolean mapMode = false;
+  private static boolean gps_enabled;
+  private static boolean network_enabled;
 
   private double latitude = 0;
   private double longitude = 0;
@@ -105,7 +109,8 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
     ButterKnife.bind(this);
     transparentStatusBar();
 
-    getCurrentLocationUser();
+//    enableGPS();
+//    getCurrentLocationUser();
 
     mapFragment = (SupportMapFragment) getSupportFragmentManager()
             .findFragmentById(R.id.map);
@@ -290,16 +295,18 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
     lm = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
     boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
     boolean isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    Log.e(TAG, "getCurrentLocationUser: GPS "+isGPSEnabled );
+    Log.e(TAG, "getCurrentLocationUser: Network "+isNetworkEnabled );
     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
             && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
       if (isNetworkEnabled) {
         lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, locationListener);
         mlocation = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        Log.e(TAG, "getCurrentLocationUser: "+mlocation );
+        Log.e(TAG, "getCurrentLocationUser: net"+mlocation );
       } else if (isGPSEnabled) {
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
         mlocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        Log.e(TAG, "getCurrentLocationUser: "+mlocation );
+        Log.e(TAG, "getCurrentLocationUser: gps"+mlocation );
       }
     }
     Log.e(TAG, "getCurrentLocationUser: "+mlocation );
@@ -334,23 +341,33 @@ public class SearchLawyerActivity extends BaseActivity implements OnMapReadyCall
     mMap = googleMap;
 
 //        LatLng indonesia = new LatLng(-7.803249, 110.3398253);
-    LatLng indonesia = new LatLng(mlocation.getLatitude(),mlocation.getLongitude());
-    Log.e(TAG, "initMap: "+indonesia );
-    initMap(indonesia);
-    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(indonesia, 16));
-    mMap.setOnCameraIdleListener(this);
-    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED
-            && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED) {
-      return;
-    }
-    mMap.setMyLocationEnabled(true);
+//      if(mlocation == null){
+//          enableGPS();
+          getCurrentLocationUser();
+//      }
+//      else {
+          LatLng indonesia = new LatLng(mlocation.getLatitude(), mlocation.getLongitude());
+          Log.e(TAG, "initMap: " + indonesia);
+          initMap(indonesia);
+          mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(indonesia, 16));
+          mMap.setOnCameraIdleListener(this);
+          if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                  != PackageManager.PERMISSION_GRANTED
+                  && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                  != PackageManager.PERMISSION_GRANTED) {
+              return;
+          }
+          mMap.setMyLocationEnabled(true);
 
-    mMap.addMarker(new MarkerOptions()
-            .position(mMap.getCameraPosition().target)
-            .title("Marker"));
+//      }
+//    mMap.addMarker(new MarkerOptions()
+//            .position(mMap.getCameraPosition().target)
+//            .title("Marker"));
+
+
   }
+
+
 
   public void initMap(LatLng latLng) {
 

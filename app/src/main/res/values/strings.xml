@@ -186,6 +186,9 @@
   <string name="str_bidang">Bidang</string>
   <string name="ijin_lokasi">Membutuhkan ijin untuk akses lokasi</string>
   <string name="ijin_camera">Membutuhkan ijin untuk akses kamera</string>
+  <string name="gps_network_not_enabled">Untuk Melanjutkan, aktifkan lokasi perangkat, yang menggunakan layanan lokasi Google</string>
+  <string name="open_location_settings">Aktifkan</string>
+  <string name="Cancel">cancel</string>
 
   <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
         AIzaSyAQDqubFmR32b-2Eysf7cyAB8eh4yoqiHQ
