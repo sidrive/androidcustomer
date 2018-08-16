@@ -309,7 +309,7 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
       txthpLawyer.setVisibility(View.VISIBLE);
       txttelpLawyer.setVisibility(View.VISIBLE);
       btnClose.setVisibility(View.GONE);
-      ratingBar.setVisibility(View.VISIBLE);
+      rate.setVisibility(View.VISIBLE);
     }
 
     String starDate = DateFormatter.getDate(data.get(0).start_date,"yyyy-MM-dd");
