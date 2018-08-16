@@ -78,6 +78,10 @@
             android:name=".ui.purchase.PurchaseActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.rating.RatingActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"

@@ -105,6 +105,12 @@ public interface LawyerkuService {
     Observable<PerkaraModel.ResponseSetStatus> setStatus(
             @Header("Authorization") String header,
             @Body PerkaraModel.Status body );
+
+    @Headers("Accept:application/json")
+    @POST("api/rating")
+    Observable<PerkaraModel.ResponseRating> Rating(
+            @Header("Authorization") String header,
+            @Body PerkaraModel.Rating body);
 //
 //    @Headers("Accept:application/json")
 //    @PUT("api/project/{projectId}")

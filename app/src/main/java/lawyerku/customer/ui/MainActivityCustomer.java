@@ -71,6 +71,7 @@ public class MainActivityCustomer extends AppCompatActivity implements GetUserCa
     setContentView(R.layout.activity_main_customer_cons);
     ButterKnife.bind(this);
     transparentStatusBar();
+    getCurrentLocationUser();
     displayLocationSettingsRequest(this);
 
     checkCon(true);

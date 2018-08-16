@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -43,6 +45,7 @@ import lawyerku.customer.base.BaseApplication;
 import lawyerku.customer.ui.MainActivityCustomer;
 import lawyerku.customer.ui.message.MessageActivity;
 import lawyerku.customer.ui.purchase.PurchaseActivity;
+import lawyerku.customer.ui.rating.RatingActivity;
 import lawyerku.customer.utils.DateFormatter;
 
 public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleListener,
@@ -59,6 +62,8 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
   Button btnClose;
   @BindView(R.id.img_maps)
   ImageView imgMaps;
+  @BindView(R.id.rating)
+  RatingBar ratingBar;
 
   @BindView(R.id.tv_nama_customer)
   TextView txtNamaCustomer;
@@ -89,6 +94,9 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
 
   @BindView(R.id.view_progress)
   LinearLayout viewProgress;
+
+  @BindView(R.id.cv_giverate)
+  ConstraintLayout rate;
 
   private GoogleMap mMap;
   private LocationManager lm;
@@ -238,12 +246,21 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
     Log.e("DetailPerkara", "initProject: "+data );
     LatLng latLng = new LatLng(data.get(0).gps_latitude,data.get(0).gps_longitud);
     initMap(latLng);
+    ratingBar.setIsIndicator(true);
     txtNamaCustomer.setText(data.get(0).customer.name);
     txtbidangHukum.setText(data.get(0).jobskill.name);
     txtdescription.setText(data.get(0).description);
     txtnamaLawyer.setText(data.get(0).lawyer.lawyername);
     txthpLawyer.setText(data.get(0).lawyer.lawyerPhone2);
     txttelpLawyer.setText(data.get(0).lawyer.lawyerPhone1);
+    if(data.get(0).rating != null){
+      ratingBar.setRating(data.get(0).rating.rating);
+      rate.setVisibility(View.GONE);
+
+    }
+    /*if(data.get(0).rating == null){
+      ratingBar.setVisibility(View.GONE);
+    }*/
     if(data.get(0).last_status == null){
       btnBayar.setVisibility(View.GONE);
       btnClose.setVisibility(View.GONE);
@@ -292,6 +309,7 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
       txthpLawyer.setVisibility(View.VISIBLE);
       txttelpLawyer.setVisibility(View.VISIBLE);
       btnClose.setVisibility(View.GONE);
+      ratingBar.setVisibility(View.VISIBLE);
     }
 
     String starDate = DateFormatter.getDate(data.get(0).start_date,"yyyy-MM-dd");
@@ -318,13 +336,25 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
 
   @OnClick(R.id.btn_home)
   public void returnHome(){
+
     startActivity(new Intent(DetailPerkaraActivity.this, MainActivityCustomer.class));
     finish();
   }
 
   @OnClick(R.id.btn_close_project)
   public void closeProject(){
+    showLoading(true);
     presenter.closeCase(id);
+  }
+
+  @OnClick(R.id.cv_giverate)
+  public void showRating(){
+    Intent intent = new Intent(DetailPerkaraActivity.this, RatingActivity.class);
+    Bundle bundle = new Bundle();
+    bundle.putString("idlawyer",String.valueOf(perkara.get(0).lawyer_id));
+    bundle.putString("idproject",String.valueOf(perkara.get(0).id));
+    intent.putExtras(bundle);
+    startActivity(intent);
   }
 
 }

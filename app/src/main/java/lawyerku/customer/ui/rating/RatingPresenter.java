@@ -1,4 +1,4 @@
-package lawyerku.customer.ui.detailperkara;
+package lawyerku.customer.ui.rating;
 
 import android.util.Log;
 
@@ -18,16 +18,15 @@ import rx.subscriptions.CompositeSubscription;
 
 import static com.facebook.GraphRequest.TAG;
 
-public class DetailPerkaraPresenter implements BasePresenter {
-    DetailPerkaraActivity activity;
+public class RatingPresenter implements BasePresenter{
+    RatingActivity activity;
     private CompositeSubscription subscription;
-    private PerkaraModel.Status perkara;
 
-    public DetailPerkaraPresenter(DetailPerkaraActivity activity){
+    public RatingPresenter(RatingActivity activity){
         this.activity = activity;
         this.subscription = new CompositeSubscription();
-        this.perkara = new PerkaraModel.Status();
     }
+
     @Override
     public void subscribe() {
 
@@ -38,10 +37,10 @@ public class DetailPerkaraPresenter implements BasePresenter {
 
     }
 
-    public void getProject(int idproject){
+    public void getLawyer(int id) {
         String accessToken = GlobalPreference.read(PrefKey.accessToken, String.class);
 
-        subscription.add(LawyerkuService.Factory.create().getProject(accessToken,String.valueOf(idproject))
+        subscription.add(LawyerkuService.Factory.create().getLawyer(accessToken,id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
@@ -49,42 +48,37 @@ public class DetailPerkaraPresenter implements BasePresenter {
 
                     if (response.status >= 200 && response.status < 300) {
 
-                        activity.initProject(response.data);
-
+                        activity.initLawyer(response.data.get(0));
                     } else {
 //                        profileListener.onError(response.message);
                     }
 //                    profileListener.hideLoading();
                 }, throwable -> {
                     int errorCode = ((HttpException) throwable).response().code();
-                    Log.e(TAG, "getProject: "+throwable );
 //                    if (errorCode > 400)
 //                        profileListener.onError(App.getContext().getString(R.string.error_general));
 //                    profileListener.hideLoading();
                 }));
     }
 
-    public void closeCase(int id){
+    public void postRating(PerkaraModel.Rating rating){
         String accessToken = GlobalPreference.read(PrefKey.accessToken, String.class);
-        perkara.id = id;
-        perkara.status = "finished";
-        subscription.add(LawyerkuService.Factory.create().setStatus(accessToken,perkara)
+
+        subscription.add(LawyerkuService.Factory.create().Rating(accessToken,rating)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
-                    Log.e(TAG, "closeCase: "+response.data );
+                    Log.e(TAG, "getLawyer: "+response.data );
 
                     if (response.status >= 200 && response.status < 300) {
 
-                        activity.returnHome();
-
+                        activity.showHome();
                     } else {
 //                        profileListener.onError(response.message);
                     }
 //                    profileListener.hideLoading();
                 }, throwable -> {
                     int errorCode = ((HttpException) throwable).response().code();
-                    Log.e(TAG, "getProject: "+throwable );
 //                    if (errorCode > 400)
 //                        profileListener.onError(App.getContext().getString(R.string.error_general));
 //                    profileListener.hideLoading();

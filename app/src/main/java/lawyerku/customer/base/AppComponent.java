@@ -18,6 +18,8 @@ import lawyerku.customer.ui.profilcustomer.DetailProfileActivityComponent;
 import lawyerku.customer.ui.profilcustomer.DetailProfileActivityModule;
 import lawyerku.customer.ui.purchase.PurchaseActivityComponent;
 import lawyerku.customer.ui.purchase.PurchaseActivityModule;
+import lawyerku.customer.ui.rating.RatingActivityComponent;
+import lawyerku.customer.ui.rating.RatingActivityModule;
 import lawyerku.customer.ui.register.RegisterActivityComponent;
 import lawyerku.customer.ui.register.RegisterActivityModule;
 import lawyerku.customer.ui.searchlawyer.SearchLawyerActivityComponent;
@@ -60,4 +62,6 @@ public interface AppComponent {
         PurchaseActivityComponent plus(PurchaseActivityModule activityModule);
 
         MessageActivityComponent plus(MessageActivityModule activityModule);
+
+        RatingActivityComponent plus(RatingActivityModule activityModule);
 }

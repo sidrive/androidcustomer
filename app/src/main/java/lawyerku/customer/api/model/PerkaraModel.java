@@ -29,6 +29,7 @@ public class PerkaraModel {
             public Lawyer lawyer;
             public Jobskill jobskill;
             public Status last_status;
+            public Rating rating;
 
             @Override
             public String toString() {
@@ -50,6 +51,7 @@ public class PerkaraModel {
                         ", lawyer=" + lawyer +
                         ", jobskill=" + jobskill +
                         ", last_status=" + last_status +
+                        ", rating=" + rating +
                         '}';
             }
         }
@@ -140,6 +142,23 @@ public class PerkaraModel {
         }
     }
 
+    public static class Rating {
+        public int id;
+        public int project_id;
+        public String comment;
+        public float rating;
+
+        @Override
+        public String toString() {
+            return "Rating{" +
+                    "id=" + id +
+                    ", project_id=" + project_id +
+                    ", comment='" + comment + '\'' +
+                    ", rating=" + rating +
+                    '}';
+        }
+    }
+
     public static class Purchase {
         @SerializedName("project_id") public int id;
         public String status;
@@ -191,6 +210,21 @@ public class PerkaraModel {
         @Override
         public String toString() {
             return "ResponseSetStatus{" +
+                    "status=" + status +
+                    ", message='" + message + '\'' +
+                    ", data=" + data +
+                    '}';
+        }
+    }
+
+    public static class ResponseRating {
+        public int status;
+        public String message;
+        public Rating data;
+
+        @Override
+        public String toString() {
+            return "ResponseRating{" +
                     "status=" + status +
                     ", message='" + message + '\'' +
                     ", data=" + data +
