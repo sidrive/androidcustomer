@@ -99,6 +99,12 @@ public interface LawyerkuService {
             @Part("status") String status,
             @Part("total_transfers") int total,
             @Part MultipartBody.Part image);
+
+    @Headers("Content-Type:application/json")
+    @POST("api/projects/setStatus")
+    Observable<PerkaraModel.ResponseSetStatus> setStatus(
+            @Header("Authorization") String header,
+            @Body PerkaraModel.Status body );
 //
 //    @Headers("Accept:application/json")
 //    @PUT("api/project/{projectId}")

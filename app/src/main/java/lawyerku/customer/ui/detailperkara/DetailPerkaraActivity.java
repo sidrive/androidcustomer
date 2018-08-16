@@ -55,6 +55,8 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
   ImageView imgMsg;
   @BindView(R.id.btn_bayar)
   Button btnBayar;
+  @BindView(R.id.btn_close_project)
+  Button btnClose;
   @BindView(R.id.img_maps)
   ImageView imgMaps;
 
@@ -244,14 +246,17 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
     txttelpLawyer.setText(data.get(0).lawyer.lawyerPhone1);
     if(data.get(0).last_status == null){
       btnBayar.setVisibility(View.GONE);
+      btnClose.setVisibility(View.GONE);
     }
     if(data.get(0).last_status.status.toString().equals("new")){
       btnBayar.setVisibility(View.GONE);
+      btnClose.setVisibility(View.GONE);
       txthpLawyer.setVisibility(View.GONE);
       txttelpLawyer.setVisibility(View.GONE);
     }
     if(data.get(0).last_status.status.toString().equals("confirmed")){
       btnBayar.setVisibility(View.VISIBLE);
+      btnClose.setVisibility(View.GONE);
     }
 
     if(data.get(0).last_status.status.equals("new"))
@@ -269,6 +274,7 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
     {
       txtStatus.setText("Status : Ditolak");
       btnBayar.setVisibility(View.GONE);
+      btnClose.setVisibility(View.GONE);
       txthpLawyer.setVisibility(View.GONE);
       txttelpLawyer.setVisibility(View.GONE);
     }
@@ -276,6 +282,7 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
     {
       txtStatus.setText("Status : Dibatalkan");
       btnBayar.setVisibility(View.GONE);
+      btnClose.setVisibility(View.GONE);
       txthpLawyer.setVisibility(View.GONE);
       txttelpLawyer.setVisibility(View.GONE);
     }
@@ -284,6 +291,7 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
       txtStatus.setText("Status : Selesai");
       txthpLawyer.setVisibility(View.VISIBLE);
       txttelpLawyer.setVisibility(View.VISIBLE);
+      btnClose.setVisibility(View.GONE);
     }
 
     String starDate = DateFormatter.getDate(data.get(0).start_date,"yyyy-MM-dd");
@@ -312,6 +320,11 @@ public class DetailPerkaraActivity extends BaseActivity implements OnCameraIdleL
   public void returnHome(){
     startActivity(new Intent(DetailPerkaraActivity.this, MainActivityCustomer.class));
     finish();
+  }
+
+  @OnClick(R.id.btn_close_project)
+  public void closeProject(){
+    presenter.closeCase(id);
   }
 
 }
