@@ -44,11 +44,15 @@ public class AdapterLawyer extends RecyclerView.Adapter<AdapterLawyer.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         LawyerModel.Data lawyer = getItem(position);
-        Log.e(TAG, "onBindViewHolder: "+lawyer );
+        Log.e(TAG, "onBindViewHolder: "+lawyer.name+"skill"+lawyer.jobskills.size() );
 
         holder.txtLawyer.setText(lawyer.name);
-        holder.txtKeahlian.setText("Keahlian : "+lawyer.jobskills.get(0).name);
-
+        if(lawyer.jobskills.size() == 0) {
+            holder.txtKeahlian.setText("Keahlian : ");
+        }
+        if(lawyer.jobskills.size() >= 1){
+            holder.txtKeahlian.setText("Keahlian : "+lawyer.jobskills.get(0).name);
+        }
 
     }
 
